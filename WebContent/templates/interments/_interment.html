@@ -1,0 +1,24 @@
+<% var patient = new Patient(interment.get('patient')) %>
+<% var ward = new Ward(interment.get('ward')) %>
+<a name="interments/<%= interment.id %>" href="#interments/<%= interment.id %>">
+	<%= patient.get('name') %> (<%= ward.get('description') %>)
+</a>
+<% if(selected !== undefined) { %>
+<div>
+	<% var diets = new Diets(selected.get('patient').diets) %>
+	<% for(var i in diets.models) { %>
+		<% var diet = diets.models[i] %>
+		<% var meals = new Meals(diet.get('meals')) %>
+		<% for(var i in meals.models) { %>
+			<% var meal = meals.models[i] %>
+			<%= meal.get('period') %>
+			<% var dish = new Dish(meal.get('dish')) %>
+			<%= dish.period() %>
+			
+			<% var nature = new Nature(dish.get('nature')) %>
+			(<%= nature.get('description') %>)
+			|
+		<% } %>
+	<% } %>
+</div>
+<% } %>

@@ -1,0 +1,19 @@
+#contem {
+    display: -webkit-flex;
+    display: flex;
+}
+
+#contem section {
+    margin-right: 10px;
+ 
+    -webkit-flex: 3;
+    flex: 3;
+}
+
+#contem aside {
+	margin-right:10px;
+	white-space: nowrap;
+	-webkit-flex: 1;
+    flex: 1;
+}
+
