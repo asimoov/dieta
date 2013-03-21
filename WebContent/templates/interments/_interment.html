@@ -1,6 +1,6 @@
 <% var patient = new Patient(interment.get('patient')) %>
 <% var ward = new Ward(interment.get('ward')) %>
-<a name="interments/<%= interment.id %>" href="#interments/<%= interment.id %>">
+<a href="#interments/<%= interment.id %>">
 	<%= patient.get('name') %> (<%= ward.get('description') %>)
 </a>
 <% if(selected !== undefined) { %>

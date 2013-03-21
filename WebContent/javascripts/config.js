@@ -2,6 +2,7 @@ require([
 	'jquery' 
 ], function($) {
 	$.ajaxSetup({
+		cache: false,
         beforeSend: function(xhr) {
            $('#loader').show();
         },
