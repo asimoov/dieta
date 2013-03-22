@@ -3,7 +3,7 @@
 <a href="#interments/<%= interment.id %>">
 	<%= patient.get('name') %> (<%= ward.get('description') %>)
 </a>
-<% if(selected !== undefined) { %>
+<% if(selected !== undefined && selected.id === interment.id) { %>
 <div>
 	<% var diets = new Diets(selected.get('patient').diets) %>
 	<% for(var i in diets.models) { %>

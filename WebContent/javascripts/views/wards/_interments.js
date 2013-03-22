@@ -16,11 +16,7 @@ define([
 			for(var i in interments.models) {
 				var interment = interments.models[i];
 				
-				if(this.options.interment !== undefined && this.options.interment.id === interment.id) {
-					$("ul", this.el).append(IntermentView.initialize({"model": this.model, "interment": interment, "selected": this.options.interment}));
-				} else {
-					$("ul", this.el).append(IntermentView.initialize({"model": this.model, "interment": interment}));
-				}
+				$("ul", this.el).append(IntermentView.initialize({"model": this.model, "interment": interment, "selected": this.options.interment}));
 			}
 		},
 	});

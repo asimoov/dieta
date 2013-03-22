@@ -13,11 +13,7 @@ define([
 			for(var i in this.collection.models) {
 				var interment = this.collection.models[i];
 				
-				if(this.options.selected !== undefined && this.options.selected.id === interment.id) {
-					$("ul", this.el).append(IntermentView.initialize({model: interment, "selected": this.options.selected}));
-				} else {
-					$("ul", this.el).append(IntermentView.initialize({model: interment}));
-				}
+				$("ul", this.el).append(IntermentView.initialize({model: interment, "selected": this.options.selected}));
 			}
 		}
 	});

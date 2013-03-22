@@ -34,8 +34,14 @@ public class IntermentController {
 	}
 	
 	@Get("/interments")
-	public List<Interment> index() {
+	public List<Interment> index(String q) {
+		if (q != null) {
+			System.out.println(q);
+			return repository.findByQuery(q);
+		}
+		
 		return repository.findAll();
+		
 	}
 	
 	@Post("/interments")
@@ -43,7 +49,7 @@ public class IntermentController {
 		validator.validate(interment);
 		validator.onErrorUsePageOf(this).newInterment();
 		repository.create(interment);
-		result.redirectTo(this).index();
+		result.redirectTo(this).index(null);
 	}
 	
 	@Get("/interments/new")
@@ -58,7 +64,7 @@ public class IntermentController {
 		validator.validate(interment);
 		validator.onErrorUsePageOf(this).edit(interment);
 		repository.update(interment);
-		result.redirectTo(this).index();
+		result.redirectTo(this).index(null);
 	}
 	
 	@Get("/interments/{interment.id}/edit")
@@ -77,6 +83,6 @@ public class IntermentController {
 	@Delete("/interments/{interment.id}")
 	public void destroy(Interment interment) {
 		repository.destroy(repository.find(interment.getId()));
-		result.redirectTo(this).index();  
+		result.redirectTo(this).index(null);  
 	}
 }

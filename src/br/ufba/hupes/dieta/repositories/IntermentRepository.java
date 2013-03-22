@@ -19,4 +19,5 @@ public interface IntermentRepository {
 	
 	List<Interment> findAll();
 
+	List<Interment> findByQuery(String q);
 }

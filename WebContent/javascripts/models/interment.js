@@ -4,6 +4,6 @@ define([
   'backbone',
 ], function($, _, Backbone) {
   return Backbone.Model.extend({
-	  urlRoot: "/interments"
+	  urlRoot: "interments"
   });
 });

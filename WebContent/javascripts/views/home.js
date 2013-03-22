@@ -6,9 +6,19 @@ define([
 ], function($, _, Backbone, home) {
 	var HomeView = Backbone.View.extend({
 		el : $('body'),
+		events: {
+			"submit #search":	"search"
+		},
 		render : function() {
 			this.el.innerHTML = home;
 		},
+		search: function(ev) {
+			ev.preventDefault();
+			ev.stopPropagation();
+			
+			Backbone.history.navigate('search?q=' + $("#q").val(), true); 
+			return false;
+		}
 	});
 
 	var initialize = function() {
