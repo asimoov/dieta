@@ -4,10 +4,10 @@ require([
 	$.ajaxSetup({
 		cache: false,
         beforeSend: function(xhr) {
-           $('#loader').show();
+           $('#loading').show();
         },
         complete: function(xhr) {
-           $('#loader').hide();
+           $('#loading').delay(1000).hide(0);
         },
         error: function(xhr, status, exception) {
     		var message;
