@@ -23,3 +23,9 @@
 	top: 0px;
 	left: 0px;
 }
+
+#loading > img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
