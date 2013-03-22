@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+	
+	<!-- HTTP security configurations -->
+    <http auto-config="true" use-expressions="true">
+    	<form-login login-processing-url="/resources/j_spring_security_check" login-page="/login" authentication-failure-url="/login?login_error=t"/>
+        <logout logout-url="/resources/j_spring_security_logout"/>
+        
+        <!-- Configure these elements to secure URIs in your application -->
+        <intercept-url pattern="/**" access="permitAll" />
+    </http>
+
+	<!-- Configure Authentication mechanism -->
+    <authentication-manager alias="authenticationManager">
+    	<!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
+    	<authentication-provider>
+	    	<password-encoder hash="sha-256"/>
+	        <user-service>
+	            <user name="admin" password="8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918" authorities="ROLE_ADMIN"/>
+	            <user name="roseane" password="bbdefa2950f49882f295b1285d4fa9dec45fc4144bfb07ee6acc68762d12c2e3" authorities="ROLE_ADMIN"/> <!-- google -->
+	            <user name="ivellise" password="56584949957de203b0b6cb347b57e0553cb31115cc3049e9839b7fb944465a9b" authorities="ROLE_ADMIN"/> <!-- hotmail -->
+		    </user-service>
+    	</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
