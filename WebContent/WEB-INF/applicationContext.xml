@@ -24,8 +24,6 @@
 	    	<password-encoder hash="sha-256"/>
 	        <user-service>
 	            <user name="admin" password="8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918" authorities="ROLE_ADMIN"/>
-	            <user name="roseane" password="bbdefa2950f49882f295b1285d4fa9dec45fc4144bfb07ee6acc68762d12c2e3" authorities="ROLE_ADMIN"/> <!-- google -->
-	            <user name="ivellise" password="56584949957de203b0b6cb347b57e0553cb31115cc3049e9839b7fb944465a9b" authorities="ROLE_ADMIN"/> <!-- hotmail -->
 		    </user-service>
     	</authentication-provider>
 	</authentication-manager>
