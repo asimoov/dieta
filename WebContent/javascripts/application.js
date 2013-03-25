@@ -4,12 +4,13 @@ define([
   'backbone',
   'collections/wards',
   'routers/app',
+  'routers/diets',
   'routers/interments',
   'routers/search',
   'routers/wards',
   'views/home',
   'views/wards/_wards',
-], function($, _, Backbone, Wards, AppRouter, IntermentsRouter, SearchRouter, WardsRouter, HomeView, WardsView) {
+], function($, _, Backbone, Wards, AppRouter, DietsRouter, IntermentsRouter, SearchRouter, WardsRouter, HomeView, WardsView) {
   var initialize = function() {
 	HomeView.initialize();
 	var wards = new Wards();
@@ -21,6 +22,7 @@ define([
     });
     
     AppRouter.initialize();
+    DietsRouter.initialize();
     SearchRouter.initialize();
     IntermentsRouter.initialize();
     WardsRouter.initialize();
