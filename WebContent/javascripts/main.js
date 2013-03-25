@@ -2,6 +2,7 @@
 // Require.js allows us to configure shortcut alias
 // There usage will become more apparent further along in the tutorial.
 require.config({
+  urlArgs: "bust=" +  (new Date()).getTime(),
   paths: {
     jquery: 'vendor/jquery',
     underscore: 'vendor/underscore',
