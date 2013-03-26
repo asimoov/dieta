@@ -6,8 +6,8 @@ insert into menu(id, status, week) values(5, 0, 4);
 insert into menu(id, status, week) values(6, 0, 5);
 insert into menu(id, status, week) values(7, 0, 6);
 
-insert into nature(id, tipo, description) values(1, 0, 'Normal');
-insert into nature(id, tipo, description) values(2, 0, 'Branda');
+insert into nature(id, "type", description) values(1, 0, 'Normal');
+insert into nature(id, "type", description) values(2, 0, 'Branda');
 
 insert into dish(id, period, menu_id, nature_id) values(1, 2, 1, 1);
 insert into dish(id, period, menu_id, nature_id) values(2, 3, 2, 1);

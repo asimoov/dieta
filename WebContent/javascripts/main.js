@@ -9,6 +9,7 @@ require.config({
     backbone: 'vendor/backbone',
     fetchCache: 'vendor/backbone.fetch-cache',
     templates: '../templates',
+    "jquery-ui": 'vendor/jquery-ui-1.10.2.custom'
   },
 
   shim: {
@@ -18,6 +19,10 @@ require.config({
     backbone: {
       deps: ["underscore", "jquery"],
       exports: "Backbone"
+    },
+    "jquery-ui": {
+        exports: "$",
+        deps: ['jquery']
     }
   }
 });

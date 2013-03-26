@@ -16,7 +16,7 @@
 		<c:forEach items="${natureList}" var="nature">
 			<tr>
 				<td>${nature.description}</td>
-				<td>${nature.tipo}</td>
+				<td>${nature.type}</td>
 				<td><a href="${pageContext.request.contextPath}/natures/${nature.id}">show</a></td>
 				<td><a href="${pageContext.request.contextPath}/natures/${nature.id}/edit">edit</a></td>
 				<td>

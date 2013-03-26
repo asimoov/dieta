@@ -7,6 +7,7 @@
         <title>Dieta &amp; Nutrição</title>
 
         <link rel="stylesheet" href="stylesheets/reset.css" />
+        <link rel="stylesheet" href="stylesheets/jquery-ui-1.10.2.custom.css" />
         <link rel="stylesheet" href="stylesheets/application.css" />
 	</head>
 	<body>

@@ -3,12 +3,13 @@ define([
   'underscore',
   'backbone',
   'fetchCache',
+  'models/period',
   'collections/wards',
   'collections/interments',
   'views/home',
   'views/wards/_wards',
   'views/interments/_interments',
-], function($, _, Backbone, fetchCache, Wards, Interments, HomeView, WardsView, IntermentsView) {
+], function($, _, Backbone, fetchCache, Period, Wards, Interments, HomeView, WardsView, IntermentsView) {
   var AppRouter = Backbone.Router.extend({
       routes: {
         // Default
@@ -16,7 +17,7 @@ define([
         '/':        "home",
         '*actions': "defaultAction"
       },
-      home: function() {        
+      home: function() {
         var interments = new Interments();
         interments.fetch({
         	cache: true,

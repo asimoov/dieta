@@ -1,1 +1,38 @@
-oiiiiiiii
+<div>
+	<% var patient = new Patient(model.get('patient')) %>
+	Paciente: <%= patient.get('name') %> (<%= patient.get('handbook') %>) <br />
+	Leito: <%= model.get('bed') %>
+
+	<div id="tabs">
+	  <ul>
+	  	<% for(var i in Type) { %>
+	  		<% var type = Type[i] %>
+	    	<li><a href="#tabs-<%= i %>"><%= type %></a></li>
+	    <% } %>
+	  </ul>
+
+	  <% for(var i in Type) { %>
+		  <% var type = Type[i] %>
+		  <div id="tabs-<%= i %>">
+		  	<% var meals = new Meals(patient.get('diets')[0].meals) %>
+		  	<ui id="selectable">
+			  	<% _.forEach(meals.byType(i), function(meal) { %>
+			  		<li class="ui-widget-content"><%= meal.get('dish').period %>h (<%= meal.get('dish').nature.description %>)</li>
+			  	<% }) %>
+		  	</ui>
+		  </div>
+	  <% } %>
+	</div>
+	<aside>
+		<div id="naturea">
+		<% natures.forEach(function(nature) { %>
+			<span><%= nature.get('description') %></span>
+		<% }); %>
+		</div>
+		<div id="foods">
+		<% foods.forEach(function(food) { %>
+			<span><%= food.get('description') %></span>
+		<% }); %>
+		</div>
+	</aside>
+<div>
