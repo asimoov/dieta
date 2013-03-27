@@ -13,19 +13,26 @@ define([
 ], function($, UI, _, Backbone, Meal, Patient, Period, Type, Meals, MealView, home) {
 	var NewView = Backbone.View.extend({
 		el: 'section#center',
-		render : function() {
+		collection: new Meals(),
+		render: function() {
 			$(this.el).html(_.template(home, {model: this.model, "natures": this.options.natures, "foods": this.options.foods, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
 			$("#tabs").tabs();
 
 			for(var i in Type) {
 				var meals = new Meals(this.model.get('patient').diets[0].meals);
+				var self = this;
 				_.forEach(Period.periods[i], function(hour) {
 		  			var meal = meals.byHourAndType(hour, i)[0];
+		  			var mealView;
 		  			if(meal !== undefined && meal.length !== 0) {
-		  				$("#selectable-" + i, this.el).append(MealView.initialize({model: meal}));
+		  				mealView = MealView.initialize({model: meal});
+		  				$("#selectable-" + i, this.el).append(mealView);
 		  			} else {
-		  				$("#selectable-" + i, this.el).append(MealView.initialize({model: new Meal({"dish": {"period": hour, "nature": {"description": "+"}}})}));
+		  				mealView = MealView.initialize({model: new Meal({"dish": {"period": hour, "nature": {"description": "+", "type": i}}})});
+		  				$("#selectable-" + i, this.el).append(mealView);
 		  			}
+
+		  			self.collection.push(mealView);
 	  			});
 			}
 			

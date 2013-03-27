@@ -1,6 +1,3 @@
-// Filename: main.js
-// Require.js allows us to configure shortcut alias
-// There usage will become more apparent further along in the tutorial.
 require.config({
   urlArgs: "bust=" +  (new Date()).getTime(),
   paths: {
@@ -8,6 +5,7 @@ require.config({
     underscore: 'vendor/underscore',
     backbone: 'vendor/backbone',
     fetchCache: 'vendor/backbone.fetch-cache',
+    modernizr: 'vendor/modernizr.custom.20355',
     templates: '../templates',
     "jquery-ui": 'vendor/jquery-ui-1.10.2.custom'
   },
@@ -30,8 +28,13 @@ require.config({
 require([
   // Load our app module and pass it to our definition function
   'config',
-  'application'
-  ], function(Config, Application) {
-  // The "app" dependency is passed in as "App"
-    Application.initialize();
+  'application',
+  'views/noComplatible',
+  'modernizr'
+  ], function(Config, Application, noComplatible) {
+	if (Modernizr.input.required && Modernizr.flexbox) {
+		Application.initialize();
+	} else {
+		noComplatible.initialize();
+	}
 });
