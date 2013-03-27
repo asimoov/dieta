@@ -1,5 +1,5 @@
 require.config({
-  urlArgs: "bust=" +  (new Date()).getTime(),
+  //urlArgs: "bust=" +  (new Date()).getTime(),
   paths: {
     jquery: 'vendor/jquery',
     underscore: 'vendor/underscore',
@@ -32,7 +32,7 @@ require([
   'views/noComplatible',
   'modernizr'
   ], function(Config, Application, noComplatible) {
-	if (Modernizr.input.required && Modernizr.flexbox) {
+	if (Modernizr.input.required && (Modernizr.flexbox || Modernizr.flexboxlegacy)) {
 		Application.initialize();
 	} else {
 		noComplatible.initialize();

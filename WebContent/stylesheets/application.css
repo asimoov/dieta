@@ -1,19 +1,33 @@
 #contem {
-    display: -webkit-flex;
-    display: flex;
+  /* old syntax */
+  display: -webkit-box;
+  display: -moz-box;
+
+  /* new syntax */
+  display: -webkit-flex; 
+  display: -moz-flex; 
+  display: -o-flex; 
+  display: -ms-flex; 
+  display: flex; 
 }
 
 #contem section {
     margin-right: 10px;
  
     -webkit-flex: 3;
+    -moz-flex: 3;
     flex: 3;
+    
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
 }
 
 #contem aside {
 	margin-right:10px;
 	white-space: nowrap;
 	-webkit-flex: 1;
+	-moz-flex: 1;
     flex: 1;
 }
 

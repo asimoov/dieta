@@ -15,19 +15,17 @@
 		  <div id="tabs-<%= i %>">
 		  	<ui id="selectable-<%= i %>" class="selectable">
 		  	</ui>
+		  	<aside>
+				<div id="nature">
+				
+				</div>
+				<div id="foods">
+				<% foods.forEach(function(food) { %>
+					<span><%= food.get('description') %></span>
+				<% }); %>
+				</div>
+			</aside>
 		  </div>
 	  <% } %>
 	</div>
-	<aside>
-		<div id="naturea">
-		<% natures.forEach(function(nature) { %>
-			<span><%= nature.get('description') %></span>
-		<% }); %>
-		</div>
-		<div id="foods">
-		<% foods.forEach(function(food) { %>
-			<span><%= food.get('description') %></span>
-		<% }); %>
-		</div>
-	</aside>
 <div>
