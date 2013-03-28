@@ -21,7 +21,9 @@ define([
 			
 			var my = this;
 			for(var i in Type) {
-				var meals = new Meals(this.model.get('patient').diets[0].meals);	
+				var diets = this.model.get('patient').diets;
+				
+				var meals = new Meals(diets.length === 0 ? {} : diets[0].meals);	
 				_.forEach(Period.periods[i], function(hour) {
 		  			var meal = meals.byHourAndType(hour, i)[0];
 		  			var mealView;
