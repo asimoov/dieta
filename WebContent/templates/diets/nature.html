@@ -1,0 +1,8 @@
+<%= model.get('dish').period %>h 
+(<span> 
+	<%= model.get('dish').nature.description %>
+	
+	<% if(model.get('dish').nature.description !== '+') { %>
+		<a class='tagit-close'>X</a>
+	<% } %>
+</span>)
