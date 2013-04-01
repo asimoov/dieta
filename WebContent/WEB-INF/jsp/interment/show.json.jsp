@@ -34,7 +34,18 @@
 								"id": "${meal.dish.menu.id}",
 								"week": "${meal.dish.menu.week}"
 							}
-						}
+						},
+						"variations": [
+						<c:forEach items="${meal.variations}" var="variation" varStatus="n" >
+						{
+							"id": "${variation.id}",
+							"food": {
+								"id": "${variation.food.id}",
+								"description": "${variation.food.description}"
+							}
+						} ${n.last ? "" : ","}
+						</c:forEach>
+						]
 					} ${j.last ? "" : ","}
 					</c:forEach>
 				]

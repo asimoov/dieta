@@ -6,3 +6,6 @@
 		<a class='tagit-close'>X</a>
 	<% } %>
 </span>)
+<% _.forEach(model.get('variations'), function(variation) { %>
+	<span><%= variation.food.description %></span>
+<% }) %>

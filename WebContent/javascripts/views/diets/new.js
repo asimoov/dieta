@@ -41,7 +41,7 @@ define([
 				this.options.natures.forEach(function(nature) {
 					$('#tabs-' + i + ' #nature').append(NatureView.initialize({model: nature, collection: my.collection}));
 				});
-				
+
 				my.collection = new Backbone.Collection();
 			}
 			

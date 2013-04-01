@@ -20,6 +20,10 @@
 			
 			<% var nature = new Nature(dish.get('nature')) %>
 			(<%= nature.get('description') %>)
+			
+			<% _.forEach(meal.get('variations'), function(variation) { %>
+				<%= variation.food.description %>,
+			<% }) %>
 			|
 		<% } %>
 	<% } %>
