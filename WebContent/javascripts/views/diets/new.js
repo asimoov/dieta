@@ -22,13 +22,13 @@ define([
 			var my = this;
 			for(var i in Type) {
 				var diets = this.model.get('patient').diets;
-				
+
 				var meals = new Meals(diets.length === 0 ? {} : diets[0].meals);	
 				_.forEach(Period.periods[i], function(hour) {
 		  			var meal = meals.byHourAndType(hour, i)[0];
 		  			var mealView;
 		  			if(meal !== undefined && meal.length !== 0) {
-		  				mealView = new MealView({model: meal});
+		  				mealView = new MealView({model: new Meal(meal.toJSON())});
 		  				$("#selectable-" + i, this.el).append(mealView.render());
 		  			} else {
 		  				mealView = new MealView({model: new Meal({"dish": {"period": hour, "nature": {"description": "+", "type": i}}})});
@@ -41,6 +41,8 @@ define([
 				this.options.natures.forEach(function(nature) {
 					$('#tabs-' + i + ' #nature').append(NatureView.initialize({model: nature, collection: my.collection}));
 				});
+				
+				my.collection = new Backbone.Collection();
 			}
 			
 			$(".selectable", this.el).selectable();
