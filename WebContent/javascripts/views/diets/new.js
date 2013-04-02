@@ -8,10 +8,11 @@ define([
   'models/period',
   'models/type',
   'collections/meals', 
+  'views/diets/_food',
   'views/diets/_meal',
   'views/diets/_nature',
   'text!../../templates/diets/new.html'
-], function($, UI, _, Backbone, Meal, Patient, Period, Type, Meals, MealView, NatureView, home) {
+], function($, UI, _, Backbone, Meal, Patient, Period, Type, Meals, FoodView, MealView, NatureView, home) {
 	var NewView = Backbone.View.extend({
 		el: 'section#center',
 		collection: new Meals(),
@@ -36,9 +37,13 @@ define([
 	  			});
 
 				this.options.natures.forEach(function(nature) {
-					$('#tabs-' + i + ' #nature').append(NatureView.initialize({model: nature, collection: my.collection}));
+					$('#tabs-' + i + ' #natures').append(NatureView.initialize({model: nature, collection: my.collection}));
 				});
 
+				this.options.foods.forEach(function(food) {
+					$('#tabs-' + i + ' #foods').append(FoodView.initialize({model: food, collection: my.collection}));
+				});
+				
 				my.collection = new Backbone.Collection();
 			}
 			
