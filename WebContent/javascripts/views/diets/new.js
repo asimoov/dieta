@@ -26,15 +26,12 @@ define([
 				var meals = new Meals(diets.length === 0 ? {} : diets[0].meals);	
 				_.forEach(Period.periods[i], function(hour) {
 		  			var meal = meals.byHourAndType(hour, i)[0];
-		  			var mealView;
-		  			if(meal !== undefined && meal.length !== 0) {
-		  				mealView = new MealView({model: new Meal(meal.toJSON())});
-		  				$("#selectable-" + i, this.el).append(mealView.render());
-		  			} else {
-		  				mealView = new MealView({model: new Meal({"dish": {"period": hour, "nature": {"description": "+", "type": i}}})});
-		  				$("#selectable-" + i, this.el).append(mealView.render());
+		  			if(meal === undefined || meal.length === 0) {
+		  				meal = new Meal({"dish": {"period": hour, "nature": {"description": "+", "type": i}}});
 		  			}
 
+		  			var mealView = new MealView({model: new Meal(meal.toJSON())});
+		  			$("#selectable-" + i, this.el).append(mealView.render());
 		  			my.collection.push(mealView);
 	  			});
 
