@@ -1,6 +1,6 @@
 require([ 
 	'jquery' 
-], function($) {
+], function($) {	
 	$.ajaxSetup({
 		cache: false,
         beforeSend: function(xhr) {

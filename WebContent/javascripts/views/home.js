@@ -16,7 +16,7 @@ define([
 			ev.preventDefault();
 			ev.stopPropagation();
 			
-			Backbone.history.navigate('search?q=' + $("#q").val(), true); 
+			Backbone.history.navigate('search/' + $("#q").val(), true); 
 			return false;
 		}
 	});
