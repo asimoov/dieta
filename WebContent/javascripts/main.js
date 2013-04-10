@@ -27,11 +27,11 @@ require.config({
 
 require([
   // Load our app module and pass it to our definition function
+  'modernizr',
   'config',
   'application',
-  'views/noComplatible',
-  'modernizr'
-  ], function(Config, Application, noComplatible) {
+  'views/noComplatible'
+  ], function(M, Config, Application, noComplatible) {
 	if (Modernizr.input.required && (Modernizr.flexbox || Modernizr.flexboxlegacy)) {
 		Application.initialize();
 	} else {

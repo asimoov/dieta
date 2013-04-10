@@ -8,14 +8,19 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
+	<beans:bean id="ep403" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint"/>
+
 	<!-- HTTP security configurations -->
-    <http auto-config="true" use-expressions="true" access-denied-page="/403.html">
-    	<form-login login-processing-url="/resources/j_spring_security_check" login-page="/login" authentication-failure-url="/login?login_error=t"/>
-        <logout logout-url="/resources/j_spring_security_logout"/>
+    <http use-expressions="true" entry-point-ref="ep403">
+    	<form-login />
+        <logout />
 
 		<intercept-url pattern="/" access="permitAll" />
-        <intercept-url pattern="/wards*" access="isAuthenticated()" />
-        <intercept-url pattern="/interments*" access="isAuthenticated()" />
+		<intercept-url pattern="/user" access="isAuthenticated()" />
+        <intercept-url pattern="/wards" access="isAuthenticated()" />
+        <intercept-url pattern="/wards/*" access="isAuthenticated()" />
+        <intercept-url pattern="/interments" access="isAuthenticated()" />
+        <intercept-url pattern="/interments/*" access="isAuthenticated()" />
         <!-- Configure these elements to secure URIs in your application -->
     </http>
 
