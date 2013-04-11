@@ -20,6 +20,7 @@ define([
 			// Do a POST to /session and send the serialized form creds
 			var that = this;
 			$.post('j_spring_security_check', creds).success(function(data) {
+				that.clear().set(that.defaults);
 				that.getAuth(function() {
 					$("#dialog-form").dialog("close");
 

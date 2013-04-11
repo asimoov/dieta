@@ -3,7 +3,7 @@
 <a href="#search/<%= q %>/interments/<%= interment.id %>">
 	<%= patient.get('name') %> (<%= ward.get('description') %>)
 </a>
-<a href="#search/<%= q %>/interments/<%= interment.id %>/diets/new">
+<a href="#interments/<%= interment.id %>/diets/new">
 	+
 </a>
 <% if(selected !== undefined && selected.id === interment.id) { %>
