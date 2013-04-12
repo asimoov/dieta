@@ -3,7 +3,7 @@ define([
   'underscore', 
   'backbone', 
   'views/search/_interment',
-  'text!../../templates/search/_interments.html'
+  'text!templates/search/_interments.html'
 ], function($, _, Backbone, IntermentView, home) {
 	var IntermentsView = Backbone.View.extend({
 		el : 'section#center',

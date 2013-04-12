@@ -2,8 +2,9 @@ define([
   'jquery', 
   'underscore', 
   'backbone', 
-  'text!../templates/index.html'
-], function($, _, Backbone, home) {
+  'keymaster',
+  'text!templates/index.html'
+], function($, _, Backbone, Keymaster, home) {
 	var HomeView = Backbone.View.extend({
 		el : $('body'),
 		events: {
@@ -11,6 +12,9 @@ define([
 		},
 		render : function() {
 			this.el.innerHTML = home;
+			
+		    key('shift+q', function(){ window.location.href = "/dieta/j_spring_security_logout"; });
+		    key('shift+a', function(){ Backbone.history.navigate('', true);  });
 		},
 		search: function(ev) {
 			ev.preventDefault();

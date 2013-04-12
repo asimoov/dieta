@@ -8,7 +8,7 @@ define([
   'models/ward', 
   'collections/diets',
   'collections/meals',
-  'text!../../templates/interments/_interment.html'
+  'text!templates/interments/_interment.html'
 ], function($, _, Backbone, Dish, Nature, Patient, Ward, Diets, Meals, home) {
 	var IntermentView = Backbone.View.extend({
 		tagName:  "li",

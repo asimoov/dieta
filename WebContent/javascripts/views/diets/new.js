@@ -11,7 +11,7 @@ define([
   'views/diets/_food',
   'views/diets/_meal',
   'views/diets/_nature',
-  'text!../../templates/diets/new.html'
+  'text!templates/diets/new.html'
 ], function($, UI, _, Backbone, Meal, Patient, Period, Type, Meals, FoodView, MealView, NatureView, home) {
 	var NewView = Backbone.View.extend({
 		el: 'section#center',

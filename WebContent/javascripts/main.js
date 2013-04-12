@@ -5,9 +5,12 @@ require.config({
     underscore: 'vendor/underscore',
     backbone: 'vendor/backbone',
     fetchCache: 'vendor/backbone.fetch-cache',
-    modernizr: 'vendor/modernizr.custom.20355',
+    modernizr: 'vendor/modernizr',
+    knockout: 'vendor/knockout',
+    knockback: 'vendor/knockback',
+    keymaster: 'vendor/keymaster',
     templates: '../templates',
-    "jquery-ui": 'vendor/jquery-ui-1.10.2.custom'
+    "jquery-ui": 'vendor/jquery-ui'
   },
 
   shim: {

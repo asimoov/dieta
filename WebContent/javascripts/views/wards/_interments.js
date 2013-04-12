@@ -5,7 +5,7 @@ define([
   'models/patient', 
   'collections/interments', 
   'views/wards/_interment', 
-  'text!../../templates/wards/_interments.html'
+  'text!templates/wards/_interments.html'
 ], function($, _, Backbone, Patient, Interments, IntermentView, home) {
 	var IntermentsView = Backbone.View.extend({
 		el : 'section#center',

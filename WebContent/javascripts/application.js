@@ -9,10 +9,11 @@ define([
   'routers/interments',
   'routers/search',
   'routers/wards',
+  'routers/user',
   'views/home',
   'views/wards/_wards',
-], function($, _, Backbone, Session, Wards, AppRouter, DietsRouter, IntermentsRouter, SearchRouter, WardsRouter, HomeView, WardsView) {
-  var initialize = function() {  
+], function($, _, Backbone, Session, Wards, AppRouter, DietsRouter, IntermentsRouter, SearchRouter, WardsRouter, UserRouter, HomeView, WardsView) {
+  var initialize = function() {
 	Session.getAuth(function() {
 		HomeView.initialize();
 		
@@ -29,9 +30,9 @@ define([
 	    SearchRouter.initialize();
 	    IntermentsRouter.initialize();
 	    WardsRouter.initialize();
-	    
-		Backbone.history.start();
+	    Backbone.history.start();
 	});
+	
   };
 
   return {

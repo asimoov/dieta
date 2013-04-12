@@ -4,7 +4,7 @@ define([
   'underscore', 
   'backbone', 
   'models/nature', 
-  'text!../../templates/diets/nature.html', 
+  'text!templates/diets/nature.html', 
 ], function($, UI, _, Backbone, Nature, home) {
 	return Backbone.View.extend({
 		tagName: 'li',

@@ -4,7 +4,7 @@ define([
   'backbone', 
   'jquery-ui',
   'models/session',
-  'text!../templates/login.html'
+  'text!templates/login.html'
 ], function($, _, Backbone, Ui, Session, home) {
 	var LoginView = Backbone.View.extend({
 		el: 'body',

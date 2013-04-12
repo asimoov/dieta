@@ -4,7 +4,7 @@ define([
   'backbone', 
   'models/ward', 
   'views/wards/_ward', 
-  'text!../../templates/wards/_wards.html'
+  'text!templates/wards/_wards.html'
 ], function($, _, Backbone, Ward, WardView, home) {
 	var WardsView = Backbone.View.extend({
 		el: 'aside',
