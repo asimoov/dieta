@@ -36,7 +36,6 @@ public class IntermentController {
 	@Get("/interments")
 	public List<Interment> index(String q) {
 		if (q != null) {
-			System.out.println(q);
 			return repository.findByQuery(q);
 		}
 		

@@ -14,14 +14,6 @@ define([
 		render: function() {
 			if(!$("#dialog-form").length) {
 				$(this.el).append(home);
-				$("#dialog-form").dialog({
-					open: function(event, ui) { $('.ui-dialog-titlebar-close').hide(); },
-					closeOnEscape: false,
-					autoOpen: true,
-					height: 300,
-					width: 350,
-					modal: true
-				});
 			}
 		},
 		submit: function(ev) {

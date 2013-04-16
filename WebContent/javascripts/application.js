@@ -32,7 +32,6 @@ define([
 	    WardsRouter.initialize();
 	    Backbone.history.start();
 	});
-	
   };
 
   return {

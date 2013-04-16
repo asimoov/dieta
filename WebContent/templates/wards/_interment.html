@@ -1,12 +1,21 @@
-<% var patient = new Patient(interment.get('patient')) %>
-<a href="#wards/<%= ward.id %>/interments/<%= interment.id %>">
-	<%= patient.get('name') %> (<%= ward.get('description') %>)
-</a>
-<a href="#interments/<%= interment.id %>/diets/new">
-	+
-</a>
+<div class="avatar blue">
+	<i class="icon-ok icon-2x"></i>
+</div>
+<div class="info">
+	<% var patient = new Patient(interment.get('patient')) %>
+	<span class="name">
+		<a href="#wards/<%= ward.id %>/interments/<%= interment.id %>">
+			<strong class="indent"><%= patient.get('name') %> (<%= ward.get('description') %>)</strong>
+		</a>
+	</span>
+	<span class="time">
+		<a href="#interments/<%= interment.id %>/diets/new">
+			<span class="label label-blue">Add</span>
+		</a>
+	</span>
+</div>
 <% if(selected !== undefined && selected.id === interment.id) { %>
-	<div>
+	<div class="content">
 		<% var diets = new Diets(selected.get('patient').diets) %>
 		<% for(var i in diets.models) { %>
 			<% var diet = diets.models[i] %>

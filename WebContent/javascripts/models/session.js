@@ -22,8 +22,6 @@ define([
 			$.post('j_spring_security_check', creds).success(function(data) {
 				that.clear().set(that.defaults);
 				that.getAuth(function() {
-					$("#dialog-form").dialog("close");
-
 					if (!$("section#contem").length) {
 						window.location.href = "/dieta";
 					}

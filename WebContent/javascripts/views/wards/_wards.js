@@ -7,7 +7,7 @@ define([
   'text!templates/wards/_wards.html'
 ], function($, _, Backbone, Ward, WardView, home) {
 	var WardsView = Backbone.View.extend({
-		el: 'aside',
+		el: '.primary-sidebar',
 		render: function() {
 			this.el.innerHTML = home;
 			for(var i in this.collection.models) {

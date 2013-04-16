@@ -12,6 +12,7 @@ define([
 ], function($, _, Backbone, Dish, Nature, Patient, Ward, Diets, Meals, home) {
 	var IntermentView = Backbone.View.extend({
 		tagName:  "li",
+		className: "arrow-box-left gray",
 		render : function() {
 			return $(this.el).html(_.template(home, {"interment": this.model, "selected": this.options.selected, "Dish": Dish, "Nature": Nature, "Patient": Patient, "Ward": Ward, "Diets": Diets, "Meals": Meals}));
 		}

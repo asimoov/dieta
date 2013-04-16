@@ -6,11 +6,10 @@
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <title>Dieta &amp; Nutrição</title>
 
-        <link rel="stylesheet" href="stylesheets/reset.css" />
-        <link rel="stylesheet" href="stylesheets/jquery-ui-1.10.2.custom.css" />
+        <link rel="stylesheet" href="stylesheets/bootstrap-admin.css" />
         <link rel="stylesheet" href="stylesheets/application.css" />
 	</head>
-	<body>
+	<body class="container-fluid">
 		<script data-main="javascripts/main" src="javascripts/vendor/require.js"></script>
 	</body>
 </html>

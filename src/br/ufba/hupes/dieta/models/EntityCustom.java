@@ -29,6 +29,7 @@ public class EntityCustom {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
+		
 		final EntityCustom other = (EntityCustom) obj;
 		if (id != other.id && (id == null || !id.equals(other.id))) {
 			return false;
