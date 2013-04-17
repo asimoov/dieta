@@ -35,11 +35,13 @@ define([
 
 			$("#natureTab a:first").tab("show");
 			this.options.natures.forEach(function(nature) {
-				$('#solido').append(NatureView.initialize({model: nature, collection: this.collection}));
+				var type = nature.typeFormated();
+				$('#nature'+type).append(NatureView.initialize({model: nature, collection: this.collection}));
 			});
 
 			this.options.foods.forEach(function(food) {
-				$('#foods').append(FoodView.initialize({model: food, collection: this.collection}));
+				var type = food.typeFormated();
+				$('#food' + type).append(FoodView.initialize({model: food, collection: this.collection}));
 			});
 		}
 	});

@@ -13,7 +13,7 @@ define([
 			"click":	"select" 
 		},
 		render: function() {
-			return $(this.el).text(this.model.get('description') + " (" + this.model.typeFormated() + ")");
+			return $(this.el).text(this.model.get('description'));
 		},
 		select: function() {
 			var my = this;
