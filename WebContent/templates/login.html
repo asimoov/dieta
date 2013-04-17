@@ -1,11 +1,23 @@
 <div id="dialog-form" class="container">
-	<form name='f' action='#' method='POST' class="form-signin" >
-	  <h2 class="form-signin-heading">Please sign in</h2>
-	  <fieldset>
-	  	<input id="login" name="j_username" type="text" class="input-block-level" placeholder="Login" autofocus="autofocus" required="required" pattern= ".{3,25}" />
-	  	<input id="password" name="j_password" type="password" value="" class="input-block-level" placeholder="Senha" required="required" pattern= ".{3,25}" />
-	  	
-	    <input id="submit" type="submit" class="btn btn-large btn-primary"/>
-	  </fieldset>
-	</form>
+	<div class="span4 offset4">
+		<div class="padded">
+			<div class="login box" style="margin-top: 80px;">
+				<div class="box-header">
+					<span class="title">Login</span>
+				</div>
+	
+		        <div class="box-content padded">
+					<form name='f' action='#' method='POST' class="form-signin" >
+					  <h2 class="form-signin-heading">Please sign in</h2>
+					  <fieldset>
+					  	<input id="login" name="j_username" type="text" class="input-block-level" placeholder="Login" autofocus="autofocus" required="required" pattern= ".{3,25}" />
+					  	<input id="password" name="j_password" type="password" value="" class="input-block-level" placeholder="Senha" required="required" pattern= ".{3,25}" />
+					  	
+					    <input id="submit" type="submit" class="btn btn-blue btn-block"/>
+					  </fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

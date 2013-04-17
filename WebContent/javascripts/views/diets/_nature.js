@@ -1,20 +1,19 @@
 define([
-  'jquery', 
-  'jquery-ui',
+  'jquery',
   'underscore', 
   'backbone', 
   'models/patient',
   'models/period',
   'models/type',
   'collections/meals', 
-], function($, UI, _, Backbone) {
+], function($, _, Backbone) {
 	var NatureView = Backbone.View.extend({
-		tagName: 'span',
+		tagName: 'li',
 		events: {
 			"click":	"select" 
 		},
 		render: function() {
-			return $(this.el).text(this.model.get('description'));
+			return $(this.el).text(this.model.get('description') + " (" + this.model.typeFormated() + ")");
 		},
 		select: function() {
 			var my = this;

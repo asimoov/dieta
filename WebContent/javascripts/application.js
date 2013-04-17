@@ -9,14 +9,13 @@ define([
   'routers/interments',
   'routers/search',
   'routers/wards',
-  'routers/user',
   'views/home',
   'views/wards/_wards',
-], function($, _, Backbone, Session, Wards, AppRouter, DietsRouter, IntermentsRouter, SearchRouter, WardsRouter, UserRouter, HomeView, WardsView) {
+], function($, _, Backbone, Session, Wards, AppRouter, DietsRouter, IntermentsRouter, SearchRouter, WardsRouter, HomeView, WardsView) {
   var initialize = function() {
 	Session.getAuth(function() {
 		HomeView.initialize();
-		
+
 		var wards = new Wards();
 	    wards.fetch({
 	    	cache: true,

@@ -2,6 +2,11 @@ define([
   'jquery',
   'underscore',
   'backbone',
-], function($, _, Backbone) {
-  return Backbone.Model.extend({});
+  'models/type',
+], function($, _, Backbone, Type) {
+  return Backbone.Model.extend({
+	  typeFormated: function() {
+		  return Type[this.get('type')];
+	  }
+  });
 });

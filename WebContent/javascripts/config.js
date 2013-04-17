@@ -1,7 +1,7 @@
 require([ 
 	'jquery',
-	'views/login'
-], function($, Login) {
+	'routers/user'
+], function($, UserRouter) {
 	$(document).ajaxStart(function() {
 		$('#loading').show();
 	});
@@ -21,7 +21,7 @@ require([
 		if (xhr.status) {
 			message = statusErrorMap[xhr.status];
 			if (xhr.status === 403) {
-				Login.render();
+				UserRouter.signin();
 			} else if (!message) {
 				message = "Unknow Error \n.";
 			}

@@ -16,16 +16,12 @@ define([
 				};
 			});
 		},
-		login: function(creds) {
+		login: function(creds, callback) {
 			// Do a POST to /session and send the serialized form creds
 			var that = this;
 			$.post('j_spring_security_check', creds).success(function(data) {
 				that.clear().set(that.defaults);
-				that.getAuth(function() {
-					if (!$("section#contem").length) {
-						window.location.href = "/dieta";
-					}
-				});
+				that.getAuth(callback);
 			});
 		},
 		logout: function() {

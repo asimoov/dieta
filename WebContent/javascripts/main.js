@@ -6,11 +6,9 @@ require.config({
     backbone: 'vendor/backbone',
     fetchCache: 'vendor/backbone.fetch-cache',
     modernizr: 'vendor/modernizr',
-    knockout: 'vendor/knockout',
-    knockback: 'vendor/knockback',
+    bootstrap: 'vendor/bootstrap',
     keymaster: 'vendor/keymaster',
-    templates: '../templates',
-    "jquery-ui": 'vendor/jquery-ui'
+    templates: '../templates'
   },
 
   shim: {
@@ -21,9 +19,8 @@ require.config({
       deps: ["underscore", "jquery"],
       exports: "Backbone"
     },
-    "jquery-ui": {
-        exports: "$",
-        deps: ['jquery']
+    bootstrap: {
+      deps: ["jquery"]
     }
   }
 });

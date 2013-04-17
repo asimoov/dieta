@@ -1,25 +1,92 @@
-<div>
-	<% var patient = new Patient(model.get('patient')) %>
-	Paciente: <%= patient.get('name') %> (<%= patient.get('handbook') %>) <br />
-	Leito: <%= model.get('bed') %>
-
-	<div id="tabs">
-	  <ul>
-	  	<% for(var i in Type) { %>
-	  		<% var type = Type[i] %>
-	    	<li><a href="#tabs-<%= i %>"><%= type %></a></li>
-	    <% } %>
-	  </ul>
-
-	  <% for(var i in Type) { %>
-		  <div id="tabs-<%= i %>">
-		  	<ui id="selectable-<%= i %>" class="selectable">
-		  	</ui>
-		  	<aside>
-				<div id="natures"></div>
-				<div id="foods"></div>
-			</aside>
-		  </div>
-	  <% } %>
+<div class="container-fluid padded">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="box">
+				<div class="box-header">
+	        		<span class="title">Nova Visita</span>
+	     		 </div>
+				<div class="box-content">
+					<% var patient = new Patient(model.get('patient')) %>
+					<form class="form-horizontal fill-up">
+						<div class="padded">
+							<div class="control-group">
+								<label class="control-label">Paciente</label>
+								<div class="controls">
+									<input type="text" disabled="disabled" value="<%= patient.get('name') %> (<%= patient.get('handbook') %>)"/>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Leito</label>
+								<div class="controls">
+									<input type="text" disabled="disabled" value="<%= model.get('bed') %>"/>
+								</div>
+							</div>
+	
+							<div class="control-group">
+								<label class="control-label">Peso</label>
+								<div class="controls">
+									<input type="text" required="required"/>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Altura</label>
+								<div class="controls">
+									<input type="text" required="required"/>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>			
+		</div>
 	</div>
-<div>
+	<div class="row-fluid">
+		<div class="span9">
+			<div class="box">
+				<div class="box-header">
+	        		<span class="title">Nova Dieta</span>
+	     		</div>
+	     		<div class="box-content">
+				  <div class="nav-menu">
+				  	<ui id="diets" class="nav nav-list"></ui>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="span3">
+			<div class="box">
+				<div class="box-header">
+	        		<span class="title">Natureza</span>
+	        		<ul id="natureTab" class="nav nav-tabs nav-tabs-right">
+			          <li class="active">
+			          	<a href="#solido" data-toggle="tab">S</a>
+			          </li>
+			          <li>
+			          	<a href="#liquido" data-toggle="tab">L</a>
+			          </li>
+			          <li>
+			          	<a href="#enteral" data-toggle="tab">E</a>
+			          </li>
+			      </ul>
+	     		</div>
+	     		<div class="box-content padded">
+				  <div class="nav-menu tab-content scrollable" style="height: 150px; overflow-y: auto">
+				  	<ul id="solido" class="nav nav-list tab-pane active"></ul>
+				  	<ul id="liquido" class="tab-pane"></ul>
+				  	<ul id="enteral" class="tab-pane"></ul>
+				  </div>
+				</div>
+			</div>
+			<div class="box">
+				<div class="box-header">
+	        		<span class="title">Alimentos</span>
+	     		</div>
+	     		<div class="box-content scrollable" style="height: 200px;overflow-y: auto;">
+				  <div class="nav-menu">
+				  	<ul id="foods" class="nav nav-list"></ul>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

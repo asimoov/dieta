@@ -1,11 +1,10 @@
 define([
-  'jquery', 
-  'jquery-ui',
+  'jquery',
   'underscore', 
   'backbone', 
   'models/nature', 
   'text!templates/diets/nature.html', 
-], function($, UI, _, Backbone, Nature, home) {
+], function($, _, Backbone, Nature, home) {
 	return Backbone.View.extend({
 		tagName: 'li',
 		className: 'ui-widget-content', 
