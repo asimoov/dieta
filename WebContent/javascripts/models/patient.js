@@ -2,7 +2,8 @@ define([
   'jquery',
   'underscore',
   'backbone',
-], function($, _, Backbone) {
+  'models/level_of_assistance'
+], function($, _, Backbone, LevelOfAssistance) {
   return Backbone.Model.extend({
 	  age: function() {
 		  var today = new Date();
@@ -23,7 +24,7 @@ define([
     	  var date = new Date(last.createdAt);
     	  var now = new Date();
     	  var diff = Math.round((now - date)/1000/60/60/24);
-    	  return (diff !== 0 && diff % 8 === 0);
+    	  return (diff !== 0 && diff % LevelOfAssistance.byDay(last.levelOfAssistance) === 0);
       }
   });
 });
