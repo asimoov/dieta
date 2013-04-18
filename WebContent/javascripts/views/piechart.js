@@ -14,13 +14,10 @@ define([
 			$(this.el).append(home);
 			
 			var totals = this.collection.totals();
-			var ok = totals["ok"] === undefined ? 0.002 : totals["ok"];
-			var nulo = totals["nulo"] === undefined ? 0.002 : totals["nulo"];
-			var assistance = totals["assistance"] === undefined ? 0.002 : totals["assistance"];
-
 			var r = Raphael("piechart");
-            r.piechart(100, 180, 80, [ok, assistance, nulo],{
-            	colors: ["#aa433a", "#a37f11", "#8cc079"]
+            r.piechart(100, 180, 80, _.flatten(totals), {
+            	colors: ["#aa433a", "#a37f11", "#8cc079"],
+            	stroke: "#fff"
             });
 		}
 	});
