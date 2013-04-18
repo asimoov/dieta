@@ -18,6 +18,8 @@
 			<c:forEach items="${interment.patient.diets}" var="diet" varStatus="p" >
 			{
 				"id": "${diet.id}",
+				"levelOfAssistance": "${diet.levelOfAssistance}",
+				"createdAt": "${diet.createdAt}",
 				"meals":[
 					<c:forEach items="${diet.meals}" var="meal" varStatus="j" >
 					{

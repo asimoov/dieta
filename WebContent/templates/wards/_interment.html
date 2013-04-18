@@ -1,8 +1,14 @@
-<div class="avatar yellow">
-	<i class="icon-exclamation-sign icon-2x"></i>
-</div>
+<% var patient = new Patient(interment.get('patient')) %>
+<% if(patient.get('diets') !== undefined && patient.get('diets').length > 0) { %>
+	<div class="avatar green">
+		<i class="icon-ok icon-2x"></i>
+	</div>
+<% } else { %>
+	<div class="avatar red">
+		<i class="icon-warning-sign icon-2x"></i>
+	</div>
+<% } %>
 <div class="info">
-	<% var patient = new Patient(interment.get('patient')) %>
 	<span class="name">
 		<a href="#wards/<%= ward.id %>/interments/<%= interment.id %>">
 			<strong class="indent"><%= patient.get('name') %> (<%= ward.get('description') %>)</strong>

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.OneToMany;
 
+import static ch.lambdaj.Lambda.*;
+
 @javax.persistence.Entity
 public class Patient extends Entity {
 
@@ -121,4 +123,7 @@ public class Patient extends Entity {
 		this.interments = interments;
 	}
 
+	public Diet getLastDiet() {
+		return selectMax(getDiets(), on(Diet.class).getCreatedAt());
+	}
 }

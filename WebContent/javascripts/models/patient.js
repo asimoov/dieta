@@ -13,6 +13,17 @@ define([
              age--;
           }
           return age;
+      },
+      isNeedAssistance: function() {
+    	  var diets = this.get("diets");
+    	  var last = _.max(diets, function(diet) {
+    		  return new Date(diet.createdAt);
+    	  });
+
+    	  var date = new Date(last.createdAt);
+    	  var now = new Date();
+    	  var diff = Math.round((now - date)/1000/60/60/24);
+    	  return (diff !== 0 && diff % 8 === 0);
       }
   });
 });

@@ -1,5 +1,6 @@
 package br.ufba.hupes.dieta.models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,6 +18,14 @@ public class Diet extends Entity {
 	@OneToMany(mappedBy = "diet", cascade = CascadeType.REMOVE)
 	private List<Meal> meals;
 	
+	private Integer levelOfAssistance;
+	
+	private Date createdAt;
+	
+	public Diet() {
+		this.createdAt = new Date();
+	}
+
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
@@ -39,5 +48,21 @@ public class Diet extends Entity {
 
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
+	}
+
+	public Integer getLevelOfAssistance() {
+		return levelOfAssistance;
+	}
+
+	public void setLevelOfAssistance(Integer levelOfAssistance) {
+		this.levelOfAssistance = levelOfAssistance;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 }
