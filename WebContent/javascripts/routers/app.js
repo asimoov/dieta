@@ -9,7 +9,8 @@ define([
   'views/home',
   'views/wards/_wards',
   'views/interments/_interments',
-], function($, _, Backbone, fetchCache, Period, Wards, Interments, HomeView, WardsView, IntermentsView) {
+  'views/piechart',
+], function($, _, Backbone, fetchCache, Period, Wards, Interments, HomeView, WardsView, IntermentsView, Piechart) {
   var AppRouter = Backbone.Router.extend({
       routes: {
         // Default
@@ -23,6 +24,7 @@ define([
         	cache: true,
         	success: function() {
         		IntermentsView.initialize({collection : interments});
+        		Piechart.initialize({collection : interments});
         	}
         });
       },

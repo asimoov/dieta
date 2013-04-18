@@ -8,6 +8,9 @@ require.config({
     modernizr: 'vendor/modernizr',
     bootstrap: 'vendor/bootstrap',
     keymaster: 'vendor/keymaster',
+    raphael: 'vendor/raphael',
+    graphael: 'vendor/g.raphael',
+    gpie: 'vendor/g.pie',
     templates: '../templates'
   },
 
@@ -21,6 +24,12 @@ require.config({
     },
     bootstrap: {
       deps: ["jquery"]
+    },
+    graphael: {
+    	deps: ["raphael"]
+    },
+    gpie: {
+      deps: ["graphael"]
     }
   }
 });

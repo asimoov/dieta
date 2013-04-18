@@ -1,11 +1,15 @@
 <% var patient = new Patient(interment.get('patient')) %>
-<% if(patient.get('diets') !== undefined && patient.get('diets').length > 0) { %>
-	<div class="avatar green">
-		<i class="icon-ok icon-2x"></i>
-	</div>
-<% } else { %>
+<% if(patient.get('diets') === undefined || patient.get('diets').length === 0) { %>
 	<div class="avatar red">
 		<i class="icon-warning-sign icon-2x"></i>
+	</div>
+<% } else if(patient.isNeedAssistance()) { %>
+	<div class="avatar yellow">
+		<i class="icon-exclamation-sign icon-2x"></i>
+	</div>
+<% } else { %>
+	<div class="avatar green">
+		<i class="icon-ok icon-2x"></i>
 	</div>
 <% } %>
 <div class="info">

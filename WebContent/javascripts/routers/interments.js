@@ -10,7 +10,8 @@ define([
   'views/home',
   'views/interments/_interments',
   'views/wards/_wards',
-], function($, _, Backbone, fetchCache, Interment, Ward, Interments, Wards, HomeView, IntermentsView, WardsView) {
+  'views/piechart'
+], function($, _, Backbone, fetchCache, Interment, Ward, Interments, Wards, HomeView, IntermentsView, WardsView, Piechart) {
   var IntermentsRouter = Backbone.Router.extend({
       routes: {
         'interments/:interment_id':     "details",
@@ -21,6 +22,7 @@ define([
   		var options = {data: {"_format": "json" }, cache: true};
   		$.when(interments.fetch(options), interment.fetch(options)).then(function() {
   			IntermentsView.initialize({collection: interments, selected: interment});
+  			Piechart.initialize({collection : interments});
   		});
       }
     });

@@ -5,11 +5,13 @@ define([
   'fetchCache',
   'models/interment', 
   'models/ward',
+  'collections/interments',
   'collections/wards',
   'views/home',
   'views/wards/_wards',
   'views/wards/_interments',
-], function($, _, Backbone, fetchCache, Interment, Ward, Wards, HomeView, WardsView, IntermentsView) {
+  'views/piechart'
+], function($, _, Backbone, fetchCache, Interment, Ward, Interments, Wards, HomeView, WardsView, IntermentsView, Piechart) {
   var WardsRouter = Backbone.Router.extend({
       routes: {
         'wards/:ward_id/interments':               "interments",
@@ -22,6 +24,7 @@ define([
 			cache: true,
 			success: function() {
 				IntermentsView.initialize({model : ward});
+				Piechart.initialize({collection : new Interments(ward.get('interments'))});
 			}
 		});
       },
@@ -31,6 +34,7 @@ define([
   		$.when(ward.fetch({data: {"_format": "json" }, cache: true}), interment.fetch({data: {"_format": "json" }, cache: true}))
   			.then(function() {
   				IntermentsView.initialize({model : ward, interment: interment});
+  				Piechart.initialize({collection : new Interments(ward.get('interments'))});
   		});
       }
     });
