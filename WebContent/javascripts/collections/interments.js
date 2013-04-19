@@ -15,13 +15,13 @@ define([
   			
   			if(diets !== undefined && diets.length > 0) {
   				if(patient.isNeedAssistance()) {
-  					return "assistance";
+  					return "Falta Assistance";
   				} else {
-  					return "ok";
+  					return "Ok";
   				}
   			}
   			
-  			return "nulo";
+  			return "Nulo";
   		});
   	}
   });
