@@ -5,3 +5,35 @@
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;
 }
+
+.action-nav-normal .action-nav-button.selected a > i {
+	font-size: 32px;
+	color: white;
+}
+
+.action-nav-normal .action-nav-button.selected a {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	background: #964747;
+	background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+	background-size: 100%;
+	background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#b35d5d),color-stop(100%,#964747));
+	background-image: -webkit-linear-gradient(top,#b35d5d,#964747);
+	background-image: -moz-linear-gradient(top,#b35d5d,#964747);
+	background-image: -o-linear-gradient(top,#b35d5d,#964747);
+	background-image: linear-gradient(top,#b35d5d,#964747);
+	-webkit-box-shadow: 0 1px 0 #f7f7f7,inset 0 1px 1px #ab5050;
+	-moz-box-shadow: 0 1px 0 #f7f7f7,inset 0 1px 1px #ab5050;
+	box-shadow: 0 1px 0 #f7f7f7,inset 0 1px 1px #ab5050;
+	border: 1px solid #d5d5d5;
+	padding: 10px 0;
+	display: block;
+	font-weight: 700;
+	color: white;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}

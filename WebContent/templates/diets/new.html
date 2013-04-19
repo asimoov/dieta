@@ -25,13 +25,25 @@
 							<div class="control-group">
 								<label class="control-label">Peso</label>
 								<div class="controls">
-									<input type="text" required="required"/>
+									<input type="number" required="required"/>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Altura</label>
 								<div class="controls">
-									<input type="text" required="required"/>
+									<input type="number" required="required"/>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Nivel de Assistencia</label>
+								<div class="controls">
+									<select name="colors">
+										<option value="1">1 - Leve</option>
+										<option value="2">2 - Moderado</option>
+										<option value="3">3 - Normal</option>
+										<option value="4">4 - Grave</option>
+										<option value="5">5 - Muito Grave</option>
+									</select>
 								</div>
 							</div>
 						</div>
@@ -42,14 +54,92 @@
 	</div>
 	<div class="row-fluid">
 		<div class="span9">
-			<div class="box">
-				<div class="box-header">
-	        		<span class="title">Nova Dieta</span>
-	     		</div>
-	     		<div class="box-content">
-				  <div class="nav-menu">
-				  	<ui id="diets" class="nav nav-list"></ui>
-				  </div>
+			<div class="row-fluid">
+				<div class="action-nav-normal">
+					<div class="span2 action-nav-button">
+						<a title="Horarios">
+						  <i>0H</i>
+						  <span>LIQ COMP S/SAL S/AC (Sol.)</span>
+						  <span>Pao, Aveia</span>
+						</a>
+						<span class="label label-black">
+							<i class="icon-remove"></i>
+						</span>
+					</div>
+					<div class="span2 action-nav-button">
+						<a title="Horarios">
+						  <i>0H</i>
+						  <span>Normal</span>
+						  <span>Pao, Aveia</span>
+						</a>
+						<span class="label label-black">
+							<i class="icon-remove"></i>
+						</span>
+					</div>
+					<div class="span2 action-nav-button selected">
+						<a title="Horarios">
+						  <i>10H</i>
+						  <span>Normal</span>
+						  <span>Pao, Aveia</span>
+						</a>
+						<span class="label label-black">
+							<i class="icon-remove"></i>
+						</span>
+					</div>
+					<div class="span2 action-nav-button">
+						<a title="Horarios">
+						  <i>0H</i>
+						  <span>Normal</span>
+						  <span>Pao, Aveia</span>
+						</a>
+						<span class="label label-black">
+							<i class="icon-remove"></i>
+						</span>
+					</div>
+					<div class="span2 action-nav-button">
+						<a title="Horarios">
+						  <i>0H</i>
+						  <span>Normal</span>
+						  <span>Pao, Aveia</span>
+						</a>
+						<span class="label label-black">
+							<i class="icon-remove"></i>
+						</span>
+					</div>
+					<div class="span2 action-nav-button">
+						<a title="Horarios">
+						  <i>0H</i>
+						  <span>Normal</span>
+						  <span>Pao, Aveia</span>
+						</a>
+						<span class="label label-black">
+							<i class="icon-remove"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="action-nav-normal">
+					<div class="span2 action-nav-button">
+						<a title="Horarios">
+						  <i>0H</i>
+						  <span>Normal</span>
+						  <span>Pao, Aveia</span>
+						</a>
+						<span class="label label-black">
+							<i class="icon-remove"></i>
+						</span>
+					</div>
+					<div class="span2 action-nav-button">
+						<a title="Horarios">
+						  <i>0H</i>
+						  <span>Normal</span>
+						  <span>Pao, Aveia</span>
+						</a>
+						<span class="label label-black">
+							<i class="icon-remove"></i>
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -59,13 +149,13 @@
 	        		<span class="title">Natureza</span>
 	        		<ul id="natureTab" class="nav nav-tabs nav-tabs-right">
 			          <li class="active">
-			          	<a href="#natureSolído" data-toggle="tab">S</a>
+			          	<a href="#natureSolído" data-toggle="tab">Sol.</a>
 			          </li>
 			          <li>
-			          	<a href="#natureLiquído" data-toggle="tab">L</a>
+			          	<a href="#natureLiquído" data-toggle="tab">Liq.</a>
 			          </li>
 			          <li>
-			          	<a href="#natureEnteral" data-toggle="tab">E</a>
+			          	<a href="#natureEnteral" data-toggle="tab">Ent.</a>
 			          </li>
 			    	</ul>
 	     		</div>
@@ -82,13 +172,13 @@
 	        		<span class="title">Alimentos</span>
 	        		<ul id="natureTab" class="nav nav-tabs nav-tabs-right">
 			          <li class="active">
-			          	<a href="#foodSolído" data-toggle="tab">S</a>
+			          	<a href="#foodSolído" data-toggle="tab">Sol.</a>
 			          </li>
 			          <li>
-			          	<a href="#foodLiquído" data-toggle="tab">L</a>
+			          	<a href="#foodLiquído" data-toggle="tab">Liq.</a>
 			          </li>
 			          <li>
-			          	<a href="#foodEnteral" data-toggle="tab">E</a>
+			          	<a href="#foodEnteral" data-toggle="tab">Ent.</a>
 			          </li>
 			    	</ul>
 	     		</div>
