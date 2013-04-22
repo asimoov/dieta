@@ -1,0 +1,12 @@
+<a title="Horarios">
+  <i><%= model.get('dish').period %>h</i>
+  <span><%= model.get('dish').nature.description %></span>
+  <span>
+	<% _.forEach(model.get('variations'), function(variation) { %>
+		<%= variation.food.description %>,
+	<% }) %>
+  </span>
+</a>
+<span class="label label-black">
+	<i class="icon-remove"></i>
+</span>

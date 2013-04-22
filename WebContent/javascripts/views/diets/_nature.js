@@ -10,15 +10,15 @@ define([
 	var NatureView = Backbone.View.extend({
 		tagName: 'li',
 		events: {
-			"click":	"select" 
+			"click":	"select"
 		},
 		render: function() {
-			return $(this.el).text(this.model.get('description'));
+			return $(this.el).html("<a>" + this.model.get('description') + "</a>");
 		},
 		select: function() {
 			var my = this;
 			var selecteds = this.collection.filter(function(view) {
-				return $(view.get('el')).hasClass('ui-selected');
+				return $(view.get('el')).hasClass('selected');
 			});
 			
 			selecteds.forEach(function(views) {

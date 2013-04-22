@@ -13,16 +13,20 @@ define([
 			"click":	"select" 
 		},
 		render: function() {
-			return $(this.el).text(this.model.get('description'));
+			return $(this.el).html("<a>" + this.model.get('description') + "</a>");
 		},
 		select: function() {
-			var my = this;
+			var that = this;
 			var selecteds = this.collection.filter(function(view) {
-				return $(view.get('el')).hasClass('ui-selected');
+				return $(view.get('el')).hasClass('selected');
 			});
 			
 			selecteds.forEach(function(views) {
-				views.get('model').get('variations').push(my.model.toJSON());
+				var model = views.get('model');
+				var variations = views.get('model').get('variations') || [];
+				variations.push({"food": that.model.toJSON()});
+				model.set({"variations": variations});
+				
 				views.attributes.render();
 			});
 		}

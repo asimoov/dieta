@@ -22,26 +22,26 @@ define([
 			var diets = this.model.get('patient').diets;
 			var meals = new Meals(diets.length === 0 ? {} : diets[0].meals);
 			var that = this;
-			_.forEach(Period.periods, function(hour) {
+			_.forEach(Period.periods, function(hour, index) {
 	  			var meal = meals.byHour(hour)[0];
 	  			if(meal === undefined || meal.length === 0) {
-	  				meal = new Meal({"dish": {"period": hour, "nature": {"description": "+"}}});
+	  				meal = new Meal({"dish": {"period": hour, "nature": {"description": ""}}});
 	  			}
 
 	  			var mealView = new MealView({model: new Meal(meal.toJSON())});
-	  			$("#diets", this.el).append(mealView.render());
+	  			$(".meals-" + Math.round(index%3), this.el).append(mealView.render());
 	  			that.collection.push(mealView);
   			});
 
 			$("#natureTab a:first").tab("show");
 			this.options.natures.forEach(function(nature) {
 				var type = nature.typeFormated();
-				$('#nature'+type).append(NatureView.initialize({model: nature, collection: this.collection}));
+				$('#nature'+type).append(NatureView.initialize({model: nature, collection: that.collection}));
 			});
 
 			this.options.foods.forEach(function(food) {
 				var type = food.typeFormated();
-				$('#food' + type).append(FoodView.initialize({model: food, collection: this.collection}));
+				$('#food' + type).append(FoodView.initialize({model: food, collection: that.collection}));
 			});
 		}
 	});
