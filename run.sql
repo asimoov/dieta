@@ -18,19 +18,24 @@ AS
 	  SMART.PAC;
 
 -- Interment
-CREATE OR REPLACE FORCE VIEW "DIETA"."INTERMENT" (id, input, bed, patient_id, ward_id,
+CREATE OR REPLACE FORCE VIEW "DIETA"."INTERMENT" (id, input, bed, cid, patient_id, ward_id,
   PRIMARY KEY ("ID") DISABLE)
 AS
    SELECT TO_NUMBER(HSP_PAC || HSP_NUM) AS id,
 	    HSP_DTHRE             AS input,
 	    LOC_NOME              AS bed,
+	    CID_NOME              AS cid,
 	    HSP_PAC               AS patient_id,
 	    STR_COD               AS ward_id
-	  FROM SMART.HSP HSP 
+	  FROM SMART.HSP
 	  LEFT JOIN SMART.LOC
             ON(HSP_LOC = LOC_COD)
-	  LEFT JOIN SMART.STR S
+	  LEFT JOIN SMART.STR
           ON(LOC_STR = STR_COD)
+      LEFT JOIN SMART.PDG
+          ON(HSP_PAC       = PDG_PAC AND HSP_NUM = PDG_NUM)
+      LEFT JOIN SMART.CID
+          ON(PDG_CID       = CID_COD)
 	  WHERE HSP_DTHRA is null
           AND HSP_STAT = 'A'
 	  ORDER BY HSP_DTHRE DESC, HSP_PAC;

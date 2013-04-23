@@ -2,11 +2,11 @@ define([
   'jquery',
   'underscore', 
   'backbone', 
-  'models/patient',
+  'jqueryui',
   'models/period',
   'models/type',
   'collections/meals', 
-], function($, _, Backbone) {
+], function($, _, Backbone, jQueryUI, Period, Type) {
 	var NatureView = Backbone.View.extend({
 		tagName: 'li',
 		events: {
@@ -22,8 +22,16 @@ define([
 			});
 			
 			selecteds.forEach(function(views) {
-				views.get('model').get('dish').nature = my.model.toJSON();
-				views.attributes.render();
+				var model = views.get('model');
+				var period = parseInt(model.get('dish').period);
+				var type = parseInt(my.model.get('type'));
+
+				if(_.contains(Period.periodsByType[type], period)) {
+					model.get('dish').nature = my.model.toJSON();
+					views.attributes.render();
+				} else {
+					$(views.attributes.$el).effect( "shake", {}, "fast" );
+				}
 			});
 		}
 	});

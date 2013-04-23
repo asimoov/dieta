@@ -6,6 +6,7 @@
 	 	{
 	 		"id": "${interment.id}",
 	 		"input": "${interment.input}",
+	 		"cid": "${interment.cid}",
 			"bed": "${interment.bed}",
 		 	"patient": {
 				"handbook": "${interment.patient.handbook}",

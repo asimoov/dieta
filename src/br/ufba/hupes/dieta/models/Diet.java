@@ -4,23 +4,33 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @javax.persistence.Entity
 public class Diet extends Entity {
-
-	@ManyToOne(optional = false)
-	private Patient patient;
 	
 	private Integer status;
 
-	@OneToMany(mappedBy = "diet", cascade = CascadeType.REMOVE)
-	private List<Meal> meals;
-	
 	private Integer levelOfAssistance;
 	
+	private Double weight;
+	
+	private Double height;
+	
+	private Boolean companion;
+	
+	@Column(length = 4000)    
+	private String observation;
+	
 	private Date createdAt;
+	
+	@ManyToOne(optional = false)
+	private Patient patient;
+	
+	@OneToMany(mappedBy = "diet", cascade = CascadeType.REMOVE)
+	private List<Meal> meals;
 	
 	public Diet() {
 		this.createdAt = new Date();
@@ -48,6 +58,38 @@ public class Diet extends Entity {
 
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
+	}
+
+	public Double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
+
+	public Double getHeight() {
+		return height;
+	}
+
+	public void setHeight(Double height) {
+		this.height = height;
+	}
+
+	public Boolean getCompanion() {
+		return companion;
+	}
+
+	public void setCompanion(Boolean companion) {
+		this.companion = companion;
+	}
+
+	public String getObservation() {
+		return observation;
+	}
+
+	public void setObservation(String observation) {
+		this.observation = observation;
 	}
 
 	public Integer getLevelOfAssistance() {

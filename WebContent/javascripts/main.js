@@ -4,6 +4,7 @@ require.config({
     jquery: 'vendor/jquery',
     underscore: 'vendor/underscore',
     backbone: 'vendor/backbone',
+    jqueryui: 'vendor/jquery-ui',
     fetchCache: 'vendor/backbone.fetch-cache',
     modernizr: 'vendor/modernizr',
     bootstrap: 'vendor/bootstrap',
@@ -21,6 +22,9 @@ require.config({
     backbone: {
       deps: ["underscore", "jquery"],
       exports: "Backbone"
+    },
+    jqueryui: {
+    	deps: ["jquery"]
     },
     bootstrap: {
       deps: ["jquery"]

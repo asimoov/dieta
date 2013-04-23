@@ -11,6 +11,8 @@ public class Interment extends Entity {
 	private Date input;
 	
 	private String bed;
+	
+	private String cid;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Patient patient;
@@ -48,5 +50,13 @@ public class Interment extends Entity {
 
 	public void setBed(String bed) {
 		this.bed = bed;
+	}
+
+	public String getCid() {
+		return cid;
+	}
+
+	public void setCid(String cid) {
+		this.cid = cid;
 	}
 }

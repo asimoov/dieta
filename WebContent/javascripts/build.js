@@ -5,9 +5,12 @@
         jquery: "vendor/jquery",
         underscore: "vendor/underscore",
         backbone: "vendor/backbone",
-        templates: "../templates",
         fetchCache: "vendor/backbone.fetch-cache",
-        keymaster: "vendor/keymaster"
+        keymaster: "vendor/keymaster",
+        raphael: "vendor/raphael",
+        graphael: "vendor/g.raphael",
+        gpie: "vendor/g.pie",
+        templates: "../templates"
     },
     mainConfigFile: "main.js",
     name: "main",

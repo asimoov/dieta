@@ -15,6 +15,14 @@ define([
 ], function($, _, Backbone, Bootstrap, Meal, Patient, Period, Type, Meals, FoodView, MealView, NatureView, home) {
 	var NewView = Backbone.View.extend({
 		el: 'section#center',
+		events: {
+			"click #cancel":             "cancel",
+			"change #weight":            "weight",
+			"change #height":            "height",
+			"change #companion":         "companion",
+			"change #levelOfAssistance": "levelOfAssistance",
+			"change #observation":       "observation"
+		},
 		collection: new Meals(),
 		render: function() {
 			$(this.el).html(_.template(home, {model: this.model, "foods": this.options.foods, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
@@ -43,6 +51,24 @@ define([
 				var type = food.typeFormated();
 				$('#food' + type).append(FoodView.initialize({model: food, collection: that.collection}));
 			});
+		},
+		cancel: function() {
+			Backbone.history.navigate('', true); 
+		},
+		weight: function(event) {
+			this.model.set({"weight": $(event.target).val()});
+		},
+		height: function() {
+			this.model.set({"height": $(event.target).val()});
+		},
+		companion: function() {
+			this.model.set({"companion": $(event.target).val()});
+		},
+		levelOfAssistance: function() {
+			this.model.set({"levelOfAssistance": $(event.target).val()});
+		},
+		observation: function() {
+			this.model.set({"observation": $(event.target).val()});
 		}
 	});
 

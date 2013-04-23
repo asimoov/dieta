@@ -2,11 +2,11 @@ define([
   'jquery', 
   'underscore', 
   'backbone', 
-  'models/patient',
+  'jqueryui',
   'models/period',
   'models/type',
   'collections/meals', 
-], function($,  _, Backbone) {
+], function($,  _, Backbone, jQueryUI, Period, Type) {
 	var FoodView = Backbone.View.extend({
 		tagName: 'li',
 		events: {
@@ -23,11 +23,18 @@ define([
 			
 			selecteds.forEach(function(views) {
 				var model = views.get('model');
-				var variations = views.get('model').get('variations') || [];
-				variations.push({"food": that.model.toJSON()});
-				model.set({"variations": variations});
+				var period = parseInt(model.get('dish').period);
+				var type = parseInt(that.model.get('type'));
 				
-				views.attributes.render();
+				if(_.contains(Period.periodsByType[type], period)) {
+					var variations = model.get('variations') || [];
+					variations.push({"food": that.model.toJSON()});
+					model.set({"variations": variations});
+					
+					views.attributes.render();
+				} else {
+					$(views.attributes.$el).effect( "shake", {}, "fast" );
+				}
 			});
 		}
 	});

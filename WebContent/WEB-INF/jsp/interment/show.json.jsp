@@ -1,6 +1,7 @@
  {
 	"id": "${interment.id}",
 	"input": "${interment.input}",
+	"cid": "${interment.cid}",
 	"bed": "${interment.bed}",
 	"patient": {
 		"id": "${interment.patient.id}",
