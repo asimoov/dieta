@@ -10,7 +10,7 @@ define([
 	var FoodView = Backbone.View.extend({
 		tagName: 'li',
 		events: {
-			"click":	"select" 
+			"click":	"select"
 		},
 		render: function() {
 			return $(this.el).html("<a>" + this.model.get('description') + "</a>");

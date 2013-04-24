@@ -27,6 +27,7 @@
 </div>
 <% if(selected !== undefined && selected.id === interment.id) { %>
 <div class="content">
+	<% var monthNames = [ "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez" ] %>
 	<% var diets = new Diets(selected.get('patient').diets) %>
 	<% for(var i in diets.models) { %>
 		<% var diet = diets.models[i] %>
@@ -45,9 +46,9 @@
 			<% }) %>
 			|
 		<% } %>
-	<% } %>
-	<div class="news-time">
-    	<span>06</span> jan
+		<div class="news-time">
+    	<span><%= (new Date(diet.get('createdAt'))).getDate() %></span> <%= monthNames[(new Date(diet.get('createdAt'))).getMonth()] %>
 	</div>
+	<% } %>
 </div>
 <% } %>

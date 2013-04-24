@@ -48,8 +48,8 @@
 							</div>
 							<div class="control-group">
 								<label class="control-label">Obs</label>
-								<div class="controls">
-									<textarea id="observation" rows="6" required="required" maxlength="4000"></textarea>
+								<div class="controls chat-message-box">
+									<textarea id="observation" class="wysihtml5-toolbar" rows="5"></textarea>
 								</div>
 							</div>
 						</div>
@@ -111,12 +111,13 @@
 				          </li>
 				    	</ul>
 		     		</div>
-		     		<div class="box-content padded">
+		     		<div id="foods-list" class="box-content padded">
 						<div class="nav-menu tab-content scrollable" style="height: 200px; overflow-y: auto">
 							<ul id="foodSolído" class="nav nav-list tab-pane active"></ul>
 							<ul id="foodLiquído" class="nav nav-list tab-pane"></ul>
 							<ul id="foodEnteral" class="nav nav-list tab-pane"></ul>
 						</div>
+						<input id="value" type="number" >
 					</div>
 				</div>
 			</div>

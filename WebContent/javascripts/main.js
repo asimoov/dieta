@@ -8,6 +8,8 @@ require.config({
     fetchCache: 'vendor/backbone.fetch-cache',
     modernizr: 'vendor/modernizr',
     bootstrap: 'vendor/bootstrap',
+    bWysihtml5: 'vendor/bootstrap-wysihtml5',
+    wysihtml5: 'vendor/wysihtml5',
     keymaster: 'vendor/keymaster',
     raphael: 'vendor/raphael',
     graphael: 'vendor/g.raphael',
@@ -28,6 +30,9 @@ require.config({
     },
     bootstrap: {
       deps: ["jquery"]
+    },
+    bWysihtml5: {
+    	deps: ["bootstrap", "wysihtml5"]
     },
     graphael: {
     	deps: ["raphael"]

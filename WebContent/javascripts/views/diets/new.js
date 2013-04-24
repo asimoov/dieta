@@ -3,6 +3,7 @@ define([
   'underscore', 
   'backbone', 
   'bootstrap', 
+  'bWysihtml5',
   'models/meal',
   'models/patient',
   'models/period',
@@ -12,7 +13,7 @@ define([
   'views/diets/_meal',
   'views/diets/_nature',
   'text!templates/diets/new.html'
-], function($, _, Backbone, Bootstrap, Meal, Patient, Period, Type, Meals, FoodView, MealView, NatureView, home) {
+], function($, _, Backbone, Bootstrap, Wysihtml5, Meal, Patient, Period, Type, Meals, FoodView, MealView, NatureView, home) {
 	var NewView = Backbone.View.extend({
 		el: 'section#center',
 		events: {
@@ -21,7 +22,8 @@ define([
 			"change #height":            "height",
 			"change #companion":         "companion",
 			"change #levelOfAssistance": "levelOfAssistance",
-			"change #observation":       "observation"
+			"change #observation":       "observation",
+			"click #observation":		 "showWYSIWYG"
 		},
 		collection: new Meals(),
 		render: function() {
@@ -58,17 +60,21 @@ define([
 		weight: function(event) {
 			this.model.set({"weight": $(event.target).val()});
 		},
-		height: function() {
+		height: function(event) {
 			this.model.set({"height": $(event.target).val()});
 		},
-		companion: function() {
+		companion: function(event) {
 			this.model.set({"companion": $(event.target).val()});
 		},
-		levelOfAssistance: function() {
+		levelOfAssistance: function(event) {
 			this.model.set({"levelOfAssistance": $(event.target).val()});
 		},
-		observation: function() {
+		observation: function(event) {
 			this.model.set({"observation": $(event.target).val()});
+		},
+		showWYSIWYG: function(event) {
+			$(event.target).height("100px");
+			$(event.target).wysihtml5();
 		}
 	});
 
