@@ -18,7 +18,7 @@ define([
     	  var foods = new Foods();
     	  
     	  var params = {data: {"_format": "json" }, cache: true};
-    	  $.when(interment.fetch(params), natures.fetch({cache: true}), foods.fetch({cache: true})).then(function() {
+    	  $.when(interment.fetch(params), natures.fetch({cache: true}), foods.fetch({expires: 86400, cache: true})).then(function() {
     		  NewView.initialize({model: interment, "natures": natures, "foods": foods});
     	  });
       }

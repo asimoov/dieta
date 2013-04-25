@@ -23,7 +23,11 @@
 					<c:if test="${not empty interment.patient.lastDiet}">
 					{
 						"id": "${interment.patient.lastDiet.id}",
+						"weight": "${interment.patient.lastDiet.weight}",
+						"height": "${interment.patient.lastDiet.height}",
+						"companion": "${interment.patient.lastDiet.companion}",
 						"levelOfAssistance": "${interment.patient.lastDiet.levelOfAssistance}",
+						"observation": "${interment.patient.lastDiet.observation}",
 						"createdAt": "${interment.patient.lastDiet.createdAt}"
 					}
 					</c:if>

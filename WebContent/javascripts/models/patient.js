@@ -15,6 +15,21 @@ define([
           }
           return age;
       },
+      isNeedCompanion: function() {
+    	  var age = this.age();
+    	  if (age >= 60 || age <= 12) {
+    		  return true;
+    	  }
+    	  
+    	  return false;
+      },
+      getLastDiet: function() {
+    	  var diets = this.get('diets');
+    	  
+    	  if (diets !== undefined || diets.length !== 0) {
+    		  return diets[diets.length-1];
+    	  }
+      },
       isNeedAssistance: function() {
     	  var diets = this.get("diets");
     	  var last = _.max(diets, function(diet) {

@@ -4,6 +4,7 @@ define([
   'backbone', 
   'bootstrap', 
   'bWysihtml5',
+  'models/diet',
   'models/meal',
   'models/patient',
   'models/period',
@@ -12,8 +13,9 @@ define([
   'views/diets/_food',
   'views/diets/_meal',
   'views/diets/_nature',
+  'views/diets/_nutrients',
   'text!templates/diets/new.html'
-], function($, _, Backbone, Bootstrap, Wysihtml5, Meal, Patient, Period, Type, Meals, FoodView, MealView, NatureView, home) {
+], function($, _, Backbone, Bootstrap, Wysihtml5, Diet, Meal, Patient, Period, Type, Meals, FoodView, MealView, NatureView, Nutrients, home) {
 	var NewView = Backbone.View.extend({
 		el: 'section#center',
 		events: {
@@ -22,12 +24,11 @@ define([
 			"change #height":            "height",
 			"change #companion":         "companion",
 			"change #levelOfAssistance": "levelOfAssistance",
-			"change #observation":       "observation",
-			"click #observation":		 "showWYSIWYG"
+			"change #observation":       "observation"
 		},
 		collection: new Meals(),
 		render: function() {
-			$(this.el).html(_.template(home, {model: this.model, "foods": this.options.foods, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
+			$(this.el).html(_.template(home, {model: this.model, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
 			
 			var diets = this.model.get('patient').diets;
 			var meals = new Meals(diets.length === 0 ? {} : diets[0].meals);
@@ -53,6 +54,11 @@ define([
 				var type = food.typeFormated();
 				$('#food' + type).append(FoodView.initialize({model: food, collection: that.collection}));
 			});
+			
+			var nutrients = new Nutrients({collection: that.collection});
+			nutrients.render();
+
+			$("#observation").wysihtml5();
 		},
 		cancel: function() {
 			Backbone.history.navigate('', true); 
@@ -71,10 +77,6 @@ define([
 		},
 		observation: function(event) {
 			this.model.set({"observation": $(event.target).val()});
-		},
-		showWYSIWYG: function(event) {
-			$(event.target).height("100px");
-			$(event.target).wysihtml5();
 		}
 	});
 

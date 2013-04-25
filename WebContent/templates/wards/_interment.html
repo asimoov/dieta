@@ -1,5 +1,5 @@
 <% var patient = new Patient(interment.get('patient')) %>
-<% if(patient.get('diets') === undefined || patient.get('diets').length === 0) { %>
+<% if(interment.isNulo()) { %>
 	<div class="avatar red">
 		<i class="icon-warning-sign icon-2x"></i>
 	</div>

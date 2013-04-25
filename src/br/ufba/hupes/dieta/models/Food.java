@@ -18,49 +18,45 @@ public class Food extends Entity {
 	
 	private Double protein;
 	
-	private Double carbohydrate;
-	
 	private Double lipids;
 	
-	private Double sodium;
+	private Double carbohydrate;
+	
+	private Double fibre;
 	
 	private Double calcium;
 	
-	private Double zinc;
+	private Double magnesium;
+	
+	private Double manganese;
 	
 	private Double phosphorus;
 	
 	private Double iron;
 	
-	private Double fibre;
+	private Double sodium;
+	
+	private Double additionOfSodium;
 	
 	private Double potassium;
 	
 	private Double copper;
 	
+	private Double zinc;
+	
 	private Double selenium;
 	
+	private Double retinol;
+	
 	private Double a;
-	
-	private Double c;
-	
-	private Double d;
-	
-	private Double e;
-	
-	private Double k;
-	
-	private Double mg;
-	
-	private Double mn;
 	
 	private Double b1;
 	
 	private Double b2;
 	
-	private Double b3Nia;
+	private Double b3;
 	
-	private Double b5Pant;
+	private Double equivalentB3;
 	
 	private Double b6;
 	
@@ -68,7 +64,29 @@ public class Food extends Entity {
 	
 	private Double folate;
 	
-	private Double b8Bio;
+	private Double d;
+	
+	private Double e;
+	
+	private Double c;
+	
+	private Double cholesterol;
+	
+	private Double satturedFattyAcid;
+	
+	private Double monounsaturatedFattyAcids;
+	
+	private Double polyunsaturatedFattyAcids;
+	
+	private Double linoleic;
+	
+	private Double linolenic;
+	
+	private Double transFattyAcidTotal;
+	
+	private Double sugar;
+	
+	private Double additionSugar;
 	
 	@OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE)
 	public List<Variation> variations;
@@ -93,6 +111,18 @@ public class Food extends Entity {
 		this.type = type;
 	}
 
+	public List<Variation> getVariations() {
+		return variations;
+	}
+
+	public void setVariations(List<Variation> variations) {
+		this.variations = variations;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
 	public Double getCalories() {
 		return calories;
 	}
@@ -109,14 +139,6 @@ public class Food extends Entity {
 		this.protein = protein;
 	}
 
-	public Double getCarbohydrate() {
-		return carbohydrate;
-	}
-
-	public void setCarbohydrate(Double carbohydrate) {
-		this.carbohydrate = carbohydrate;
-	}
-
 	public Double getLipids() {
 		return lipids;
 	}
@@ -125,12 +147,20 @@ public class Food extends Entity {
 		this.lipids = lipids;
 	}
 
-	public Double getSodium() {
-		return sodium;
+	public Double getCarbohydrate() {
+		return carbohydrate;
 	}
 
-	public void setSodium(Double sodium) {
-		this.sodium = sodium;
+	public void setCarbohydrate(Double carbohydrate) {
+		this.carbohydrate = carbohydrate;
+	}
+
+	public Double getFibre() {
+		return fibre;
+	}
+
+	public void setFibre(Double fibre) {
+		this.fibre = fibre;
 	}
 
 	public Double getCalcium() {
@@ -141,12 +171,20 @@ public class Food extends Entity {
 		this.calcium = calcium;
 	}
 
-	public Double getZinc() {
-		return zinc;
+	public Double getMagnesium() {
+		return magnesium;
 	}
 
-	public void setZinc(Double zinc) {
-		this.zinc = zinc;
+	public void setMagnesium(Double magnesium) {
+		this.magnesium = magnesium;
+	}
+
+	public Double getManganese() {
+		return manganese;
+	}
+
+	public void setManganese(Double manganese) {
+		this.manganese = manganese;
 	}
 
 	public Double getPhosphorus() {
@@ -165,12 +203,20 @@ public class Food extends Entity {
 		this.iron = iron;
 	}
 
-	public Double getFibre() {
-		return fibre;
+	public Double getSodium() {
+		return sodium;
 	}
 
-	public void setFibre(Double fibre) {
-		this.fibre = fibre;
+	public void setSodium(Double sodium) {
+		this.sodium = sodium;
+	}
+
+	public Double getAdditionOfSodium() {
+		return additionOfSodium;
+	}
+
+	public void setAdditionOfSodium(Double additionOfSodium) {
+		this.additionOfSodium = additionOfSodium;
 	}
 
 	public Double getPotassium() {
@@ -189,6 +235,14 @@ public class Food extends Entity {
 		this.copper = copper;
 	}
 
+	public Double getZinc() {
+		return zinc;
+	}
+
+	public void setZinc(Double zinc) {
+		this.zinc = zinc;
+	}
+
 	public Double getSelenium() {
 		return selenium;
 	}
@@ -197,60 +251,20 @@ public class Food extends Entity {
 		this.selenium = selenium;
 	}
 
+	public Double getRetinol() {
+		return retinol;
+	}
+
+	public void setRetinol(Double retinol) {
+		this.retinol = retinol;
+	}
+
 	public Double getA() {
 		return a;
 	}
 
 	public void setA(Double a) {
 		this.a = a;
-	}
-
-	public Double getC() {
-		return c;
-	}
-
-	public void setC(Double c) {
-		this.c = c;
-	}
-
-	public Double getD() {
-		return d;
-	}
-
-	public void setD(Double d) {
-		this.d = d;
-	}
-
-	public Double getE() {
-		return e;
-	}
-
-	public void setE(Double e) {
-		this.e = e;
-	}
-
-	public Double getK() {
-		return k;
-	}
-
-	public void setK(Double k) {
-		this.k = k;
-	}
-
-	public Double getMg() {
-		return mg;
-	}
-
-	public void setMg(Double mg) {
-		this.mg = mg;
-	}
-
-	public Double getMn() {
-		return mn;
-	}
-
-	public void setMn(Double mn) {
-		this.mn = mn;
 	}
 
 	public Double getB1() {
@@ -269,20 +283,20 @@ public class Food extends Entity {
 		this.b2 = b2;
 	}
 
-	public Double getB3Nia() {
-		return b3Nia;
+	public Double getB3() {
+		return b3;
 	}
 
-	public void setB3Nia(Double b3Nia) {
-		this.b3Nia = b3Nia;
+	public void setB3(Double b3) {
+		this.b3 = b3;
 	}
 
-	public Double getB5Pant() {
-		return b5Pant;
+	public Double getEquivalentB3() {
+		return equivalentB3;
 	}
 
-	public void setB5Pant(Double b5Pant) {
-		this.b5Pant = b5Pant;
+	public void setEquivalentB3(Double equivalentB3) {
+		this.equivalentB3 = equivalentB3;
 	}
 
 	public Double getB6() {
@@ -309,24 +323,99 @@ public class Food extends Entity {
 		this.folate = folate;
 	}
 
-	public Double getB8Bio() {
-		return b8Bio;
+	public Double getD() {
+		return d;
 	}
 
-	public void setB8Bio(Double b8Bio) {
-		this.b8Bio = b8Bio;
+	public void setD(Double d) {
+		this.d = d;
 	}
 
-	public List<Variation> getVariations() {
-		return variations;
+	public Double getE() {
+		return e;
 	}
 
-	public void setVariations(List<Variation> variations) {
-		this.variations = variations;
+	public void setE(Double e) {
+		this.e = e;
 	}
 
-	public Integer getType() {
-		return type;
+	public Double getC() {
+		return c;
 	}
 
+	public void setC(Double c) {
+		this.c = c;
+	}
+
+	public Double getCholesterol() {
+		return cholesterol;
+	}
+
+	public void setCholesterol(Double cholesterol) {
+		this.cholesterol = cholesterol;
+	}
+
+	public Double getSatturedFattyAcid() {
+		return satturedFattyAcid;
+	}
+
+	public void setSatturedFattyAcid(Double satturedFattyAcid) {
+		this.satturedFattyAcid = satturedFattyAcid;
+	}
+
+	public Double getMonounsaturatedFattyAcids() {
+		return monounsaturatedFattyAcids;
+	}
+
+	public void setMonounsaturatedFattyAcids(Double monounsaturatedFattyAcids) {
+		this.monounsaturatedFattyAcids = monounsaturatedFattyAcids;
+	}
+
+	public Double getPolyunsaturatedFattyAcids() {
+		return polyunsaturatedFattyAcids;
+	}
+
+	public void setPolyunsaturatedFattyAcids(Double polyunsaturatedFattyAcids) {
+		this.polyunsaturatedFattyAcids = polyunsaturatedFattyAcids;
+	}
+
+	public Double getLinoleic() {
+		return linoleic;
+	}
+
+	public void setLinoleic(Double linoleic) {
+		this.linoleic = linoleic;
+	}
+
+	public Double getLinolenic() {
+		return linolenic;
+	}
+
+	public void setLinolenic(Double linolenic) {
+		this.linolenic = linolenic;
+	}
+
+	public Double getTransFattyAcidTotal() {
+		return transFattyAcidTotal;
+	}
+
+	public void setTransFattyAcidTotal(Double transFattyAcidTotal) {
+		this.transFattyAcidTotal = transFattyAcidTotal;
+	}
+
+	public Double getSugar() {
+		return sugar;
+	}
+
+	public void setSugar(Double sugar) {
+		this.sugar = sugar;
+	}
+
+	public Double getAdditionSugar() {
+		return additionSugar;
+	}
+
+	public void setAdditionSugar(Double additionSugar) {
+		this.additionSugar = additionSugar;
+	}
 }

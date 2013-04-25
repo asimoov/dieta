@@ -15,7 +15,7 @@ define([
 		render: function() {
 			return $(this.el).html(_.template(home, {"model": this.model}));
 		},
-		select: function() { 
+		select: function() {
 			$(this.el).toggleClass("selected");
 		},
 		remove: function(ev) {
