@@ -5,8 +5,9 @@ define([
   'jqueryui',
   'models/period',
   'models/type',
-  'collections/meals', 
-], function($,  _, Backbone, jQueryUI, Period, Type) {
+  'models/variation',
+  'collections/variations', 
+], function($,  _, Backbone, jQueryUI, Period, Type, Variation, Variations) {
 	var FoodView = Backbone.View.extend({
 		tagName: 'li',
 		events: {
@@ -21,19 +22,21 @@ define([
 				return $(view.get('el')).hasClass('selected');
 			});
 			
-			selecteds.forEach(function(views) {
-				var model = views.get('model');
+			selecteds.forEach(function(view) {
+				var model = view.get('model');
 				var period = parseInt(model.get('dish').period);
 				var type = parseInt(that.model.get('type'));
 				
 				if(_.contains(Period.periodsByType[type], period)) {
-					var variations = model.get('variations') || [];
-					variations.push({"food": that.model.toJSON()});
+					var variations = model.get('variations');
+					var variation = new Variation({"food": that.model.toJSON()});
+					variations.add(variation);
+
 					model.set({"variations": variations});
-					
-					views.attributes.render();
+					model.trigger("change");
+					that.collection.trigger('add');
 				} else {
-					$(views.attributes.$el).effect( "shake", {}, "fast" );
+					$(view.get('el')).effect( "shake", {}, "fast" );
 				}
 			});
 		}

@@ -2,8 +2,9 @@
   <i><%= model.get('dish').period %>h</i>
   <span><%= model.get('dish').nature.description %></span>
   <span>
-	<% _.forEach(model.get('variations'), function(variation) { %>
-		<%= variation.food.description %>,
+	<% model.get('variations').each(function(variation) { %>
+		<% console.log(variation) %>
+		<%= variation.get('food').get('description') %>,
 	<% }) %>
   </span>
 </a>

@@ -39,7 +39,7 @@ define([
 	  				meal = new Meal({"dish": {"period": hour, "nature": {"description": ""}}});
 	  			}
 
-	  			var mealView = new MealView({model: new Meal(meal.toJSON())});
+	  			var mealView = new MealView({model: meal, collection: that.collection});
 	  			$(".meals-" + Math.round(index%3), this.el).append(mealView.render());
 	  			that.collection.push(mealView);
   			});

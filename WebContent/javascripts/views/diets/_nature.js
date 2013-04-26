@@ -16,21 +16,22 @@ define([
 			return $(this.el).html("<a>" + this.model.get('description') + "</a>");
 		},
 		select: function() {
-			var my = this;
+			var that = this;
 			var selecteds = this.collection.filter(function(view) {
 				return $(view.get('el')).hasClass('selected');
 			});
 			
-			selecteds.forEach(function(views) {
-				var model = views.get('model');
+			selecteds.forEach(function(view) {
+				var model = view.get('model');
 				var period = parseInt(model.get('dish').period);
-				var type = parseInt(my.model.get('type'));
+				var type = parseInt(that.model.get('type'));
 
 				if(_.contains(Period.periodsByType[type], period)) {
-					model.get('dish').nature = my.model.toJSON();
-					views.attributes.render();
+					model.get('dish').nature = that.model.toJSON();
+					model.trigger("change");
+					that.collection.trigger('add');
 				} else {
-					$(views.attributes.$el).effect( "shake", {}, "fast" );
+					$(view.get('el')).effect( "shake", {}, "fast" );
 				}
 			});
 		}
