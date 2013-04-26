@@ -46,6 +46,7 @@
 						<c:forEach items="${meal.variations}" var="variation" varStatus="n" >
 						{
 							"id": "${variation.id}",
+							"quantity": "${variation.quantity}",
 							"food": {
 								"id": "${variation.food.id}",
 								"description": "${variation.food.description}",

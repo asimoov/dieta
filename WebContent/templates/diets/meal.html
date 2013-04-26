@@ -3,8 +3,7 @@
   <span><%= model.get('dish').nature.description %></span>
   <span>
 	<% model.get('variations').each(function(variation) { %>
-		<% console.log(variation) %>
-		<%= variation.get('food').get('description') %>,
+		<%= variation.get('quantity') %> <%= variation.get('food').get('description') %>,
 	<% }) %>
   </span>
 </a>
