@@ -17,8 +17,9 @@ define([
 				var variations = model.get('variations');
 				variations.each(function(variation) {
 					for(var i in nutris) {
+						var quantity = variation.get('quantity');
 						var value = variation.get('food').get(i);
-						nutris[i] += parseFloat(value);
+						nutris[i] += parseFloat(value) * quantity;
 					}
 				});
 			});
