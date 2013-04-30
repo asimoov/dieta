@@ -51,5 +51,4 @@ public class Dish extends Entity {
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
 	}
-
 }

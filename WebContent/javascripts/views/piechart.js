@@ -3,10 +3,8 @@ define([
   'underscore', 
   'backbone',
   'raphael', 
-  'graphael', 
-  'gpie',
   'text!templates/piechart.html'
-], function($, _, Backbone, Raphael, gRaphael, gPie, home) {
+], function($, _, Backbone, Raphael, home) {
 	var PieChartView = Backbone.View.extend({
 		el: '.primary-sidebar',
 		render: function() {

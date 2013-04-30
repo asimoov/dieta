@@ -1,6 +1,6 @@
 <a title="Horarios">
   <i><%= model.get('dish').period %>h</i>
-  <span><%= model.get('dish').nature.description %></span>
+  <span style="font-weight: bold;"><%= model.get('dish').nature.description %></span>
   <span>
 	<% model.get('variations').each(function(variation) { %>
 		<%= variation.get('quantity') %> <%= variation.get('food').get('description') %>,

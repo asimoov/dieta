@@ -58,7 +58,7 @@ define([
 			var nutrients = new Nutrients({collection: that.collection});
 			nutrients.render();
 
-			$("#observation").wysihtml5();
+			//$("#observation").wysihtml5();
 		},
 		cancel: function() {
 			Backbone.history.navigate('', true); 

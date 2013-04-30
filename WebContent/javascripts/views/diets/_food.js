@@ -29,15 +29,16 @@ define([
 				
 				if(_.contains(Period.periodsByType[type], period)) {
 					var variations = model.get('variations');
+					var increment = parseFloat($("#value").val()) || 1;
 					
 					var variation = variations.find(function(variation) {
 						return variation.get('food').id == that.model.id;
 					});
 					if (variation) {
 						var quantity = parseFloat(variation.get("quantity"));
-						variation.set({"quantity": quantity + 1});
+						variation.set({"quantity": quantity + increment});
 					} else {
-						variation = new Variation({"quantity": 1, "food": that.model.toJSON()});
+						variation = new Variation({"quantity": increment, "food": that.model.toJSON()});
 						variations.add(variation);
 					}
 					

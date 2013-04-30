@@ -48,6 +48,8 @@ require([
   'modernizr',
   'config',
   'application',
+  'graphael',
+  'gpie',
   'views/noComplatible'
   ], function(M, Config, Application, noComplatible) {
 	if (Modernizr.input.required && (Modernizr.flexbox || Modernizr.flexboxlegacy)) {

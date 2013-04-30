@@ -20,7 +20,7 @@
 	</span>
 	<span class="time">
 		<a href="#interments/<%= interment.id %>/diets/new">
-			<span class="label label-blue">Add</span>
+			<span class="label label-blue"><i class="icon-plus-sign"></i>Add</span>
 		</a>
 	</span>
 </div>
@@ -38,6 +38,10 @@
 				
 				<% var nature = new Nature(dish.get('nature')) %>
 				(<%= nature.get('description') %>)
+				
+				<% meal.get('variations').each(function(variation) { %>
+					<%= variation.get('food').get('description') %>,
+				<% }) %>
 				|
 			<% } %>
 		<% } %>
