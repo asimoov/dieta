@@ -30,7 +30,7 @@ define([
 		render: function() {
 			$(this.el).html(_.template(home, {model: this.model, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
 			
-			var diets = this.model.get('patient').diets;
+			var diets = this.model.get('patient').get('diets');
 			var meals = new Meals(diets.length === 0 ? {} : diets[0].meals);
 			var that = this;
 			_.forEach(Period.periods, function(hour, index) {
@@ -64,10 +64,26 @@ define([
 			Backbone.history.navigate('', true); 
 		},
 		weight: function(event) {
-			this.model.set({"weight": $(event.target).val()});
+			var weight = parseFloat($("#weight").val());
+			var height = parseFloat($("#height").val());
+	
+			this.model.set({"weight": weight});
+			
+			if(weight != undefined && height != undefined) {
+				var v = (weight / (height * height)).toFixed(2);
+				$('#value-imc').text(v);
+			}
 		},
 		height: function(event) {
-			this.model.set({"height": $(event.target).val()});
+			var weight = parseFloat($("#weight").val());
+			var height = parseFloat($("#height").val());
+			
+			this.model.set({"height": height});
+			
+			if(weight != undefined && height != undefined) {
+				var v = (weight / (height * height)).toFixed(2);
+				$('#value-imc').text(v);
+			}
 		},
 		companion: function(event) {
 			this.model.set({"companion": $(event.target).val()});

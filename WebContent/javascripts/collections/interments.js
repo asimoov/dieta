@@ -10,7 +10,7 @@ define([
   	model: Interment,
   	totals: function() {
   		return this.countBy(function(interment) {
-  			var patient = new Patient(interment.get("patient"));
+  			var patient = interment.get("patient");
   			var diets = interment.get("patient").diets;
   			
   			if(diets !== undefined && diets.length > 0) {

@@ -6,9 +6,12 @@ define([
 ], function($, _, Backbone, Patient) {
   return Backbone.Model.extend({
 	  urlRoot: "interments",
+	  initialize: function() {
+		  this.set({"patient": new Patient(this.get('patient'))});
+	  },
 	  isNulo: function() {
 		  var input = new Date(this.get('input'));
-		  var patient = new Patient(this.get('patient'));
+		  var patient = this.get('patient');
 		  var diets = patient.get('diets');
 		  
 		  if (diets === undefined || diets.length === 0) {
