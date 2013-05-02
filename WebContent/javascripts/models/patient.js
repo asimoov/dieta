@@ -2,9 +2,13 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'models/level_of_assistance'
-], function($, _, Backbone, LevelOfAssistance) {
+  'models/level_of_assistance',
+  'collections/diets',
+], function($, _, Backbone, LevelOfAssistance, Diets) {
   return Backbone.Model.extend({
+	  initialize: function() {
+		  this.set({"diets": new Diets(this.get('diets'))});
+	  },
 	  age: function() {
 		  var today = new Date();
 	      var birthDate = new Date(Date.parse(this.get('bird')));
@@ -27,16 +31,14 @@ define([
     	  var diets = this.get('diets');
     	  
     	  if (diets !== undefined || diets.length !== 0) {
-    		  return diets[diets.length-1];
+    		  return diets.first();
     	  }
       },
       isNeedAssistance: function() {
     	  var diets = this.get("diets");
-    	  var last = _.max(diets, function(diet) {
-    		  return new Date(diet.createdAt);
-    	  });
+    	  var last = diets.first();
 
-    	  var date = new Date(last.createdAt);
+    	  var date = new Date(last.get('createdAt'));
     	  var now = new Date();
     	  var diff = Math.round((now - date)/1000/60/60/24);
     	  return (diff !== 0 && diff % LevelOfAssistance.byDay(last.levelOfAssistance) === 0);

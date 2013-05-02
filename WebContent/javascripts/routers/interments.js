@@ -21,6 +21,7 @@ define([
   		var interment = new Interment({id: intermentId});
   		var options = {data: {"_format": "json" }, cache: true};
   		$.when(interments.fetch(options), interment.fetch(options)).then(function() {
+  			interment.initialize();
   			IntermentsView.initialize({collection: interments, selected: interment});
   			Piechart.initialize({collection : interments});
   		});

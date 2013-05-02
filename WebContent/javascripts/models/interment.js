@@ -2,12 +2,14 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'models/patient'
-], function($, _, Backbone, Patient) {
+  'models/patient',
+  'models/ward'
+], function($, _, Backbone, Patient, Ward) {
   return Backbone.Model.extend({
 	  urlRoot: "interments",
 	  initialize: function() {
 		  this.set({"patient": new Patient(this.get('patient'))});
+		  this.set({"ward": new Ward(this.get('ward'))});
 	  },
 	  isNulo: function() {
 		  var input = new Date(this.get('input'));
@@ -18,7 +20,7 @@ define([
 			  return true;
 		  }
 		  
-		  var createdAt = new Date(diets[diets.length-1].createdAt);
+		  var createdAt = new Date(diets.first().get('createdAt'));
 		  if(input > createdAt) {
 			  return true;
 		  }

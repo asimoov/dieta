@@ -2,6 +2,12 @@ define([
   'jquery',
   'underscore',
   'backbone',
-], function($, _, Backbone) {
-  return Backbone.Model.extend({});
+  'collections/meals'
+], function($, _, Backbone, Meals) {
+  return Backbone.Model.extend({
+	  urlRoot: "diets",
+	  initialize: function() {
+		  this.set({"meals": new Meals(this.get('meals'))});
+	  }
+  });
 });

@@ -1,15 +1,14 @@
-<% var patient = model.get('patient') %>
-<% console.log(model) %>
+<% var patient = interment.get('patient') %>
 <div class="container-fluid padded">
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="box">
 					<div class="box-header">
-		        		<span class="title"><%= patient.get('name') %> (<%= patient.get('handbook') %>), <%= patient.age() %>, <%= patient.get('sex') %>, <%= model.get('cid') %>, <%= model.get('bed') %></span>
+		        		<span class="title"><%= patient.get('name') %> (<%= patient.get('handbook') %>), <%= patient.age() %>, <%= patient.get('sex') %>, <%= interment.get('cid') %>, <%= interment.get('bed') %></span>
 		     		 </div>
 					<div class="box-content">
 						<form class="form-horizontal fill-up">
-							<% var last = new Diet(patient.getLastDiet()) %>
+							<% var last = patient.getLastDiet() || new Diet() %>
 							<div class="row-fluid">
 									<div class="span6">
 										<div class="padded separate-sections">
@@ -154,7 +153,7 @@
 			</div>
 		</div>
 		<div class="form-actions">
-			<button type="submit" class="btn btn-blue">Salvar Alterações</button>
+			<button id="save" type="submit" class="btn btn-blue">Salvar Alterações</button>
 			<button id="cancel" type="button" class="btn btn-default">Cancelar</button>
 	    </div>
 </div>

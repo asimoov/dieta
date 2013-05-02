@@ -19,6 +19,7 @@ define([
         var options2 = {cache: false, expires: -10, data: {"_format": "json"}};
         
 		$.when(interments.fetch(options1), interment.fetch(options2)).then(function() {
+			interment.initialize();
   			IntermentsView.initialize({"q": q, collection: interments, selected: interment});
   		});
       }

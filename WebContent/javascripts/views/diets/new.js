@@ -19,6 +19,7 @@ define([
 	var NewView = Backbone.View.extend({
 		el: 'section#center',
 		events: {
+			"click #save":               "save",
 			"click #cancel":             "cancel",
 			"change #weight":            "weight",
 			"change #height":            "height",
@@ -28,11 +29,17 @@ define([
 		},
 		collection: new Meals(),
 		render: function() {
-			$(this.el).html(_.template(home, {model: this.model, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
-			
-			var diets = this.model.get('patient').get('diets');
-			var meals = new Meals(diets.length === 0 ? {} : diets[0].meals);
+			var interment = this.options.interment;
+			var patient = interment.get('patient');
+			var diets = patient.get('diets');
+			var last = diets.first() || new Diet();
+			var meals = last.get('meals');
 			var that = this;
+			
+			this.model = new Diet(last.toJSON());
+			this.model.set({"patient": patient});
+			
+			$(this.el).html(_.template(home, {"interment": interment, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
 			_.forEach(Period.periods, function(hour, index) {
 	  			var meal = meals.byHour(hour)[0];
 	  			if(meal === undefined || meal.length === 0) {
@@ -57,8 +64,9 @@ define([
 			
 			var nutrients = new Nutrients({collection: that.collection});
 			nutrients.render();
-
-			//$("#observation").wysihtml5();
+		},
+		save: function() {
+			this.model.save();
 		},
 		cancel: function() {
 			Backbone.history.navigate('', true); 

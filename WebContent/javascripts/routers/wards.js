@@ -33,6 +33,7 @@ define([
   		var ward = new Ward({id: wardId});
   		$.when(ward.fetch({data: {"_format": "json" }, cache: true}), interment.fetch({data: {"_format": "json" }, cache: true}))
   			.then(function() {
+  				interment.initialize();
   				IntermentsView.initialize({model : ward, interment: interment});
   				Piechart.initialize({collection : new Interments(ward.get('interments'))});
   		});

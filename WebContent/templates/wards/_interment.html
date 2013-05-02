@@ -26,12 +26,11 @@
 </div>
 <% if(selected !== undefined && selected.id === interment.id) { %>
 	<div class="content">
-		<% var diets = new Diets(selected.get('patient').diets) %>
-		<% for(var i in diets.models) { %>
-			<% var diet = diets.models[i] %>
-			<% var meals = new Meals(diet.get('meals')) %>
-			<% for(var i in meals.models) { %>
-				<% var meal = meals.models[i] %>
+		<% var monthNames = [ "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez" ] %>
+		<% var diets = selected.get('patient').get('diets') %>
+		<% diets.each(function(diet) { %>
+			<% var meals = diet.get('meals') %>
+			<% meals.each(function(meal) { %>
 				<%= meal.get('period') %>
 				<% var dish = new Dish(meal.get('dish')) %>
 				<%= dish.period() %>
@@ -43,7 +42,10 @@
 					<%= variation.get('food').get('description') %>,
 				<% }) %>
 				|
-			<% } %>
-		<% } %>
+			<% }); %>
+			<div class="news-time">
+	    		<span><%= (new Date(diet.get('createdAt'))).getDate() %></span> <%= monthNames[(new Date(diet.get('createdAt'))).getMonth()] %>
+			</div>
+		<% }); %>
 	</div>
 <% } %>
