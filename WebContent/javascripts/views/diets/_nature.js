@@ -7,7 +7,7 @@ define([
   'models/type',
   'collections/meals', 
 ], function($, _, Backbone, jQueryUI, Period, Type) {
-	var NatureView = Backbone.View.extend({
+	return Backbone.View.extend({
 		tagName: 'li',
 		events: {
 			"click":	"select"
@@ -36,13 +36,4 @@ define([
 			});
 		}
 	});
-
-	var initialize = function(options) {
-		var natureView = new NatureView(options);
-		return natureView.render();
-	};
-
-	return {
-		initialize : initialize
-	};
 });

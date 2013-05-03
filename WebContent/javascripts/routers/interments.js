@@ -22,8 +22,10 @@ define([
   		var options = {data: {"_format": "json" }, cache: true};
   		$.when(interments.fetch(options), interment.fetch(options)).then(function() {
   			interment.initialize();
-  			IntermentsView.initialize({collection: interments, selected: interment});
-  			Piechart.initialize({collection : interments});
+  			
+  			var intermentsView = new IntermentsView({el : 'section#center', collection: interments, selected: interment});
+  			intermentsView.render();
+  			//Piechart.initialize({collection : interments});
   		});
       }
     });

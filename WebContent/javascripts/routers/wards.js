@@ -23,8 +23,12 @@ define([
 			data: { "_format": "json" },
 			cache: true,
 			success: function() {
-				IntermentsView.initialize({model : ward});
-				Piechart.initialize({collection : new Interments(ward.get('interments'))});
+				ward.initialize();
+				
+				var intermentsView = new IntermentsView({el : 'section#center', model : ward});
+	  			intermentsView.render();
+
+				//Piechart.initialize({collection : new Interments(ward.get('interments'))});
 			}
 		});
       },
@@ -33,8 +37,11 @@ define([
   		var ward = new Ward({id: wardId});
   		$.when(ward.fetch({data: {"_format": "json" }, cache: true}), interment.fetch({data: {"_format": "json" }, cache: true}))
   			.then(function() {
+  				ward.initialize();
   				interment.initialize();
-  				IntermentsView.initialize({model : ward, interment: interment});
+  				
+  				var intermentsView = new IntermentsView({el : 'section#center', model : ward, interment: interment});
+  				intermentsView.render();
   				Piechart.initialize({collection : new Interments(ward.get('interments'))});
   		});
       }

@@ -10,20 +10,11 @@ define([
   'collections/meals',
   'text!templates/interments/_interment.html'
 ], function($, _, Backbone, Dish, Nature, Patient, Ward, Diets, Meals, home) {
-	var IntermentView = Backbone.View.extend({
+	return Backbone.View.extend({
 		tagName:  "li",
 		className: "arrow-box-left gray",
 		render : function() {
-			return $(this.el).html(_.template(home, {"interment": this.model, "selected": this.options.selected, "Dish": Dish, "Nature": Nature, "Patient": Patient, "Ward": Ward, "Diets": Diets, "Meals": Meals}));
+			return this.$el.html(_.template(home, {"interment": this.model, "selected": this.options.selected, "Dish": Dish, "Nature": Nature, "Patient": Patient, "Ward": Ward, "Diets": Diets, "Meals": Meals}));
 		}
 	});
-
-	var initialize = function(options) {
-		var intermentView = new IntermentView(options);
-		return intermentView.render();
-	};
-
-	return {
-		initialize : initialize
-	};
 });

@@ -5,25 +5,14 @@ define([
   'views/search/_interment',
   'text!templates/search/_interments.html'
 ], function($, _, Backbone, IntermentView, home) {
-	var IntermentsView = Backbone.View.extend({
-		el : 'section#center',
+	return Backbone.View.extend({
 		render : function() {
-			$(this.el).html(home);
+			var that = this;
+			this.$el.html(home);
 			
-			for(var i in this.collection.models) {
-				var interment = this.collection.models[i];
-				
-				$("ul", this.el).append(IntermentView.initialize({"q": this.options.q, model: interment, "selected": this.options.selected}));
-			}
+			this.collection.each(function (interment) {				
+				$("ul", that.$el).append(IntermentView.initialize({"q": that.options.q, model: interment, "selected": that.options.selected}));
+			});
 		}
 	});
-
-	var initialize = function(options) {
-		var intermentsView = new IntermentsView(options);
-		intermentsView.render();
-	};
-
-	return {
-		initialize : initialize
-	};
 });

@@ -20,7 +20,9 @@ define([
         
 		$.when(interments.fetch(options1), interment.fetch(options2)).then(function() {
 			interment.initialize();
-  			IntermentsView.initialize({"q": q, collection: interments, selected: interment});
+
+			var intermentsView = new IntermentsView({el : 'section#center', "q": q, collection: interments, selected: interment});
+			intermentsView.render();
   		});
       }
     });

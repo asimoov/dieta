@@ -8,7 +8,7 @@ define([
   'models/variation',
   'collections/variations', 
 ], function($,  _, Backbone, jQueryUI, Period, Type, Variation, Variations) {
-	var FoodView = Backbone.View.extend({
+	return Backbone.View.extend({
 		tagName: 'li',
 		events: {
 			"click":	"select"
@@ -51,13 +51,4 @@ define([
 			});
 		}
 	});
-
-	var initialize = function(options) {
-		var foodView = new FoodView(options);
-		return foodView.render();
-	};
-
-	return {
-		initialize : initialize
-	};
 });

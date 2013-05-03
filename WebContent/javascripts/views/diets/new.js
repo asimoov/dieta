@@ -10,12 +10,12 @@ define([
   'models/period',
   'models/type',
   'collections/meals', 
-  'views/diets/_food',
+  'views/diets/_foods',
   'views/diets/_meal',
-  'views/diets/_nature',
+  'views/diets/_natures',
   'views/diets/_nutrients',
   'text!templates/diets/new.html'
-], function($, _, Backbone, Bootstrap, Wysihtml5, Diet, Meal, Patient, Period, Type, Meals, FoodView, MealView, NatureView, Nutrients, home) {
+], function($, _, Backbone, Bootstrap, Wysihtml5, Diet, Meal, Patient, Period, Type, Meals, FoodsView, MealView, NaturesView, Nutrients, home) {
 	var NewView = Backbone.View.extend({
 		el: 'section#center',
 		events: {
@@ -51,16 +51,11 @@ define([
 	  			that.collection.push(mealView);
   			});
 
-			$("#natureTab a:first").tab("show");
-			this.options.natures.forEach(function(nature) {
-				var type = nature.typeFormated();
-				$('#nature'+type).append(NatureView.initialize({model: nature, collection: that.collection}));
-			});
+			var naturesView = new NaturesView({el: "#natureTab", collection: this.options.natures, els: that.collection});
+			naturesView.render();
 
-			this.options.foods.forEach(function(food) {
-				var type = food.typeFormated();
-				$('#food' + type).append(FoodView.initialize({model: food, collection: that.collection}));
-			});
+			var foodsView = new FoodsView({collection: this.options.foods, els: that.collection});
+			foodsView.render();
 			
 			var nutrients = new Nutrients({collection: that.collection});
 			nutrients.render();

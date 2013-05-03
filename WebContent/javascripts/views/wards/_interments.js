@@ -7,26 +7,15 @@ define([
   'views/wards/_interment', 
   'text!templates/wards/_interments.html'
 ], function($, _, Backbone, Patient, Interments, IntermentView, home) {
-	var IntermentsView = Backbone.View.extend({
-		el : 'section#center',
+	return Backbone.View.extend({
 		render : function() {
-			$(this.el).html(home);
+			var that = this;
+			this.$el.html(home);
 			
-			var interments = new Interments(this.model.get('interments'));
-			for(var i in interments.models) {
-				var interment = interments.models[i];
-				
-				$("ul", this.el).append(IntermentView.initialize({"model": this.model, "interment": interment, "selected": this.options.interment}));
-			}
+			var interments = this.model.get('interments');
+			interments.each(function(interment){
+				$("ul", that.el).append(IntermentView.initialize({"model": that.model, "interment": interment, "selected": that.options.interment}));
+			});
 		},
 	});
-
-	var initialize = function(options) {
-		var intermentsView = new IntermentsView(options);
-		intermentsView.render();
-	};
-
-	return {
-		initialize : initialize
-	};
 });

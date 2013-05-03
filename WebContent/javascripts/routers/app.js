@@ -23,8 +23,9 @@ define([
         interments.fetch({
         	cache: true,
         	success: function() {
-        		IntermentsView.initialize({collection : interments});
-        		Piechart.initialize({collection : interments});
+        		var intermentsView = new IntermentsView({el : 'section#center', collection: interments});
+        		intermentsView.render();
+        		//Piechart.initialize({collection : interments});
         	}
         });
       },
