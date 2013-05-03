@@ -5,6 +5,7 @@ define([
   'models/level_of_assistance',
   'collections/diets',
 ], function($, _, Backbone, LevelOfAssistance, Diets) {
+	"use strict";
   return Backbone.Model.extend({
 	  initialize: function() {
 		  this.set({"diets": new Diets(this.get('diets'))});

@@ -4,7 +4,9 @@ define([
   'backbone',
   'models/diet'
 ], function($, _, Backbone, Diet) {
-  return Backbone.Collection.extend({
-  	model: Diet
-  });
+	"use strict";
+	
+	return Backbone.Collection.extend({
+		model: Diet
+	});
 });

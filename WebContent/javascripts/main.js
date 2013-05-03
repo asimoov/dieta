@@ -52,6 +52,8 @@ require([
   'gpie',
   'views/noComplatible'
   ], function(M, Config, Application, noComplatible) {
+	"use strict";
+	
 	if (Modernizr.input.required && (Modernizr.flexbox || Modernizr.flexboxlegacy)) {
 		Application.initialize();
 	} else {

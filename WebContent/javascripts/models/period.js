@@ -1,6 +1,7 @@
 define([
   'models/type'
 ], function(Type) {
+	"use strict";
 	var Period = {
 		periodsByType: [[8, 10, 12, 15, 18, 21],
 		          [8, 10, 12, 15, 18, 21],
