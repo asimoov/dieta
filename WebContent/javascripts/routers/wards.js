@@ -9,9 +9,8 @@ define([
   'collections/wards',
   'views/home',
   'views/wards/_wards',
-  'views/wards/_interments',
-  'views/piechart'
-], function($, _, Backbone, fetchCache, Interment, Ward, Interments, Wards, HomeView, WardsView, IntermentsView, Piechart) {
+  'views/wards/_interments'
+], function($, _, Backbone, fetchCache, Interment, Ward, Interments, Wards, HomeView, WardsView, IntermentsView) {
   var WardsRouter = Backbone.Router.extend({
       routes: {
         'wards/:ward_id/interments':               "interments",
@@ -27,8 +26,6 @@ define([
 				
 				var intermentsView = new IntermentsView({el : 'section#center', model : ward});
 	  			intermentsView.render();
-
-				//Piechart.initialize({collection : new Interments(ward.get('interments'))});
 			}
 		});
       },

@@ -2,8 +2,6 @@ define([
   'jquery',
   'underscore', 
   'backbone', 
-  'bootstrap', 
-  'bWysihtml5',
   'models/diet',
   'models/meal',
   'models/patient',
@@ -11,11 +9,11 @@ define([
   'models/type',
   'collections/meals', 
   'views/diets/_foods',
-  'views/diets/_meal',
+  'views/diets/_meals',
   'views/diets/_natures',
   'views/diets/_nutrients',
   'text!templates/diets/new.html'
-], function($, _, Backbone, Bootstrap, Wysihtml5, Diet, Meal, Patient, Period, Type, Meals, FoodsView, MealView, NaturesView, Nutrients, home) {
+], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, FoodsView, MealsView, NaturesView, Nutrients, home) {
 	var NewView = Backbone.View.extend({
 		el: 'section#center',
 		events: {
@@ -39,25 +37,17 @@ define([
 			this.model = new Diet(last.toJSON());
 			this.model.set({"patient": patient});
 			
-			$(this.el).html(_.template(home, {"interment": interment, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
-			_.forEach(Period.periods, function(hour, index) {
-	  			var meal = meals.byHour(hour)[0];
-	  			if(meal === undefined || meal.length === 0) {
-	  				meal = new Meal({"dish": {"period": hour, "nature": {"description": ""}}});
-	  			}
+			this.$el.html(_.template(home, {"interment": interment, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
+			var mealsView = new MealsView({el: "#meals", "meals": meals});
+			mealsView.render();
 
-	  			var mealView = new MealView({model: meal, collection: that.collection});
-	  			$(".meals-" + Math.round(index%3), this.el).append(mealView.render());
-	  			that.collection.push(mealView);
-  			});
-
-			var naturesView = new NaturesView({el: "#natureTab", collection: this.options.natures, els: that.collection});
+			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, els: that.collection});
 			naturesView.render();
 
-			var foodsView = new FoodsView({collection: this.options.foods, els: that.collection});
+			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, els: that.collection});
 			foodsView.render();
 			
-			var nutrients = new Nutrients({collection: that.collection});
+			var nutrients = new Nutrients({el: "#nutrients", collection: that.collection});
 			nutrients.render();
 		},
 		save: function() {

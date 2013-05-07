@@ -21,7 +21,7 @@ public class Diet extends Entity {
 	
 	private Boolean companion;
 	
-	@Column(length = 4000)    
+	@Column(length = 4000)
 	private String observation;
 	
 	private Date createdAt;

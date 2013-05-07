@@ -6,39 +6,28 @@ require.config({
     backbone: 'vendor/backbone',
     jqueryui: 'vendor/jquery-ui',
     fetchCache: 'vendor/backbone.fetch-cache',
+    layoutmanager: 'vendor/backbone.layoutmanager',
     modernizr: 'vendor/modernizr',
-    bootstrap: 'vendor/bootstrap',
-    bWysihtml5: 'vendor/bootstrap-wysihtml5',
-    wysihtml5: 'vendor/wysihtml5',
     keymaster: 'vendor/keymaster',
-    raphael: 'vendor/raphael',
-    graphael: 'vendor/g.raphael',
-    gpie: 'vendor/g.pie',
     templates: '../templates'
   },
 
   shim: {
     underscore: {
-      exports: '_'
+      exports: '_',
+      init: function () {
+          return this._.noConflict();
+      }
     },
     backbone: {
       deps: ["underscore", "jquery"],
-      exports: "Backbone"
+      exports: "Backbone",
+      init: function (module) {
+    	  return this.Backbone.noConflict();
+      }
     },
-    jqueryui: {
-    	deps: ["jquery"]
-    },
-    bootstrap: {
-      deps: ["jquery"]
-    },
-    bWysihtml5: {
-    	deps: ["bootstrap", "wysihtml5"]
-    },
-    graphael: {
-    	deps: ["raphael"]
-    },
-    gpie: {
-      deps: ["graphael"]
+    layoutmanager: {
+    	deps: ["backbone"]
     }
   }
 });
@@ -48,8 +37,6 @@ require([
   'modernizr',
   'config',
   'application',
-  'graphael',
-  'gpie',
   'views/noComplatible'
   ], function(M, Config, Application, noComplatible) {
 	"use strict";
