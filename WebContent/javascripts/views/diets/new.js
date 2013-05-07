@@ -32,7 +32,6 @@ define([
 			var diets = patient.get('diets');
 			var last = diets.first() || new Diet();
 			var meals = last.get('meals');
-			var that = this;
 			
 			this.model = new Diet(last.toJSON());
 			this.model.set({"patient": patient});
@@ -41,13 +40,13 @@ define([
 			var mealsView = new MealsView({el: "#meals", "meals": meals});
 			mealsView.render();
 
-			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, els: that.collection});
+			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, els: mealsView.collection});
 			naturesView.render();
 
-			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, els: that.collection});
+			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, els: mealsView.collection});
 			foodsView.render();
 			
-			var nutrients = new Nutrients({el: "#nutrients", collection: that.collection});
+			var nutrients = new Nutrients({el: "#nutrients", collection: mealsView.collection});
 			nutrients.render();
 		},
 		save: function() {
