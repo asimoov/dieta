@@ -2,9 +2,8 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'fetchCache',
   'routers/interments'
-], function($, _, Backbone, fetchCache, IntermentsRouter) {
+], function($, _, Backbone, IntermentsRouter) {
 	var AppRouter = Backbone.Router.extend({
 		routes: {
 		    // Default

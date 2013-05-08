@@ -1,7 +1,7 @@
 define([
   'jquery', 
   'underscore', 
-  'backbone', 
+  'backbone',  
   'views/diets/_food',
   'text!templates/diets/foods.html'
 ], function($,  _, Backbone, FoodView, home) {

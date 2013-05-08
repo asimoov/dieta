@@ -5,17 +5,17 @@ define([
   'keymaster',
   'text!templates/index.html'
 ], function($, _, Backbone, Keymaster, home) {
-	var HomeView = Backbone.View.extend({
-		el : $('body'),
+	return Backbone.View.extend({
 		events: {
 			"submit #search":	"search"
+		},
+		initialize: function() {
+		    key('shift+q', function(){ window.location.href = "/dieta/j_spring_security_logout"; });
+		    key('shift+a', function(){ Backbone.history.navigate('', true);  });
 		},
 		render : function() {
 			this.$el.empty();
 			this.$el.append(home);
-			
-		    key('shift+q', function(){ window.location.href = "/dieta/j_spring_security_logout"; });
-		    key('shift+a', function(){ Backbone.history.navigate('', true);  });
 		},
 		search: function(ev) {
 			ev.preventDefault();
@@ -25,13 +25,4 @@ define([
 			return false;
 		}
 	});
-
-	var initialize = function() {
-		var homeView = new HomeView();
-		homeView.render();
-	};
-
-	return {
-		initialize : initialize
-	};
 });

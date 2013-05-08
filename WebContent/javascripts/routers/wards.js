@@ -39,7 +39,6 @@ define([
   				
   				var intermentsView = new IntermentsView({el : 'section#center', model : ward, interment: interment});
   				intermentsView.render();
-  				Piechart.initialize({collection : new Interments(ward.get('interments'))});
   		});
       }
     });

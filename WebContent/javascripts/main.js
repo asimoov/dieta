@@ -7,31 +7,25 @@ require.config({
     jqueryui: 'vendor/jquery-ui',
     fetchCache: 'vendor/backbone.fetch-cache',
     tab: 'vendor/bootstrap.tab',
-    layoutmanager: 'vendor/backbone.layoutmanager',
+    handlebars: 'vendor/handlebars',
     modernizr: 'vendor/modernizr',
     keymaster: 'vendor/keymaster',
     templates: '../templates'
   },
-
+  packages: [
+             {"name" : "backbone"}, 
+             {"name" : "jquery"}
+  ],
   shim: {
     underscore: {
-      exports: '_',
-      init: function () {
-          return this._.noConflict();
-      }
+      exports: '_'
     },
     backbone: {
       deps: ["underscore", "jquery"],
-      exports: "Backbone",
-      init: function (module) {
-    	  return this.Backbone.noConflict();
-      }
+      exports: "Backbone"
     },
     tab: {
     	deps: ["jquery"]
-    },
-    layoutmanager: {
-    	deps: ["backbone"]
     }
   }
 });
@@ -41,9 +35,10 @@ require([
   'modernizr',
   'config',
   'application',
+  'fetchCache',
   'tab',
   'views/noComplatible'
-  ], function(M, Config, Application, Tab, noComplatible) {
+  ], function(M, Config, Application, FetchCache, Tab, noComplatible) {
 	"use strict";
 	
 	if (Modernizr.input.required && (Modernizr.flexbox || Modernizr.flexboxlegacy)) {

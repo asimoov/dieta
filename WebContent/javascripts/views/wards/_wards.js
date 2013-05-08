@@ -6,8 +6,7 @@ define([
   'views/wards/_ward', 
   'text!templates/wards/_wards.html'
 ], function($, _, Backbone, Ward, WardView, home) {
-	var WardsView = Backbone.View.extend({
-		el: '.primary-sidebar',
+	return Backbone.View.extend({
 		render: function() {
 			this.$el.empty();
 			this.$el.append(home);
@@ -17,13 +16,4 @@ define([
 			}, this);
 		},
 	});
-
-	var initialize = function(options) {
-		var wardsView = new WardsView(options);
-		wardsView.render();
-	};
-
-	return {
-		initialize : initialize
-	};
 });

@@ -13,17 +13,21 @@ define([
   'views/wards/_wards',
 ], function($, _, Backbone, Session, Wards, AppRouter, DietsRouter, IntermentsRouter, SearchRouter, WardsRouter, HomeView, WardsView) {
   var initialize = function() {
-	Session.getAuth(function() {
-		HomeView.initialize();
+	"use strict";
 
+	Session.getAuth(function() {
+		var homeView = new HomeView({el: 'body'});
+		homeView.render();
+		
 		var wards = new Wards();
 	    wards.fetch({
 	    	cache: true,
 	    	success: function() {
-	    		WardsView.initialize({collection : wards});
+	    		var wardsView = new WardsView({el: '.primary-sidebar', collection: wards});
+	    		wardsView.render();
 	    	}
 	    });
-	    
+
 	    AppRouter.initialize();
 	    DietsRouter.initialize();
 	    SearchRouter.initialize();

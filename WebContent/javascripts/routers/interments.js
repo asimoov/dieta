@@ -33,7 +33,6 @@ define([
   			
   			var intermentsView = new IntermentsView({el : 'section#center', collection: interments, selected: interment});
   			intermentsView.render();
-  			//Piechart.initialize({collection : interments});
   		});
       }
     });

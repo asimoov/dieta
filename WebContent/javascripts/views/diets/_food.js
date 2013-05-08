@@ -1,7 +1,7 @@
 define([
   'jquery', 
   'underscore', 
-  'backbone', 
+  'backbone',
   'jqueryui',
   'models/period',
   'models/type',
