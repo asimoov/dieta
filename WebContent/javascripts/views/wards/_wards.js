@@ -12,7 +12,8 @@ define([
 			this.$el.append(home);
 			
 			this.collection.each(function(ward) {
-				$("ul", this.el).append(WardView.initialize({model: ward}));
+				var wardView = new WardView({model: ward});
+				$("ul", this.el).append(wardView.render());
 			}, this);
 		},
 	});

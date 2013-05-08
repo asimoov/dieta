@@ -10,8 +10,9 @@ define([
 			this.$el.empty();
 			this.$el.append(home);
 			
-			this.collection.each(function (interment) {				
-				$("ul", this.$el).append(IntermentView.initialize({"q": this.options.q, model: interment, "selected": this.options.selected}));
+			this.collection.each(function (interment) {
+				var intermentView = new IntermentView({"q": this.options.q, model: interment, "selected": this.options.selected});
+				$("ul", this.$el).append(intermentView.render());
 			}, this);
 		}
 	});

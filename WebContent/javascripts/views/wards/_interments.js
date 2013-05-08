@@ -14,7 +14,8 @@ define([
 			
 			var interments = this.model.get('interments');
 			interments.each(function(interment){
-				$("ul", this.el).append(IntermentView.initialize({"model": this.model, "interment": interment, "selected": this.options.interment}));
+				var intermentView = new IntermentView({"model": this.model, "interment": interment, "selected": this.options.interment});
+				$("ul", this.$el).append(intermentView.render());
 			}, this);
 		},
 	});
