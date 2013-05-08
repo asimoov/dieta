@@ -9,8 +9,9 @@ define([
 		render: function() {
 			var that = this;
 			
-			this.$el.html(home);
-			//$("a:first", this.$el).tab("show");
+			this.$el.empty();
+			this.$el.append(home);
+			$("a:first", this.$el).tab("show");
 			this.collection.forEach(function(nature) {
 				var type = nature.typeFormated();
 				

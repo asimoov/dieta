@@ -6,6 +6,7 @@ require.config({
     backbone: 'vendor/backbone',
     jqueryui: 'vendor/jquery-ui',
     fetchCache: 'vendor/backbone.fetch-cache',
+    tab: 'vendor/bootstrap.tab',
     layoutmanager: 'vendor/backbone.layoutmanager',
     modernizr: 'vendor/modernizr',
     keymaster: 'vendor/keymaster',
@@ -26,6 +27,9 @@ require.config({
     	  return this.Backbone.noConflict();
       }
     },
+    tab: {
+    	deps: ["jquery"]
+    },
     layoutmanager: {
     	deps: ["backbone"]
     }
@@ -37,8 +41,9 @@ require([
   'modernizr',
   'config',
   'application',
+  'tab',
   'views/noComplatible'
-  ], function(M, Config, Application, noComplatible) {
+  ], function(M, Config, Application, Tab, noComplatible) {
 	"use strict";
 	
 	if (Modernizr.input.required && (Modernizr.flexbox || Modernizr.flexboxlegacy)) {

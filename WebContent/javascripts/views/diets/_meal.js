@@ -17,7 +17,8 @@ define([
 			this.model.on('all', this.render, this);
 		},
 		render: function() {
-			return $(this.el).html(_.template(home, {"model": this.model}));
+			this.$el.empty();
+			return this.$el.append(_.template(home, {"model": this.model}));
 		},
 		select: function() {
 			$(this.el).toggleClass("selected");

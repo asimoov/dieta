@@ -7,12 +7,12 @@ define([
 ], function($, _, Backbone, IntermentView, home) {
 	return Backbone.View.extend({
 		render : function() {
-			var that = this;
-			this.$el.html(home);
+			this.$el.empty();
+			this.$el.append(home);
 			
 			this.collection.each(function (interment) {				
-				$("ul", that.$el).append(IntermentView.initialize({"q": that.options.q, model: interment, "selected": that.options.selected}));
-			});
+				$("ul", this.$el).append(IntermentView.initialize({"q": this.options.q, model: interment, "selected": this.options.selected}));
+			}, this);
 		}
 	});
 });

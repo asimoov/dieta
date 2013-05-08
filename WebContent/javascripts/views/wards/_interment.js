@@ -13,7 +13,8 @@ define([
 		tagName:  "li",
 		className: "arrow-box-left gray",
 		render : function() {
-			return $(this.el).html(_.template(home, {"ward": this.model, "interment": this.options.interment, "selected": this.options.selected, "Dish": Dish, "Nature": Nature, "Patient": Patient, "Diets": Diets, "Meals": Meals}));
+			this.$el.empty();
+			return this.$el.append(_.template(home, {"ward": this.model, "interment": this.options.interment, "selected": this.options.selected, "Dish": Dish, "Nature": Nature, "Patient": Patient, "Diets": Diets, "Meals": Meals}));
 		},
 	});
 

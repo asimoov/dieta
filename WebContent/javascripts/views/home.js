@@ -11,7 +11,8 @@ define([
 			"submit #search":	"search"
 		},
 		render : function() {
-			this.el.innerHTML = home;
+			this.$el.empty();
+			this.$el.append(home);
 			
 		    key('shift+q', function(){ window.location.href = "/dieta/j_spring_security_logout"; });
 		    key('shift+a', function(){ Backbone.history.navigate('', true);  });

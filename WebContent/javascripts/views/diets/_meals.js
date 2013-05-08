@@ -11,7 +11,8 @@ define([
 	return Backbone.View.extend({
 		collection: new Meals(),
 		render: function() {
-			this.$el.html(home);
+			this.$el.empty();
+			this.$el.append(home);
 			
 			_.forEach(Period.periods, function(hour, index) {
 	  			var meal = this.options.meals.byHour(hour)[0];

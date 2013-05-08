@@ -7,7 +7,8 @@ define([
 	var NoComplatibleView = Backbone.View.extend({
 		el : $('body'),
 		render : function() {
-			this.el.innerHTML = home;
+			this.$el.empty();
+			this.$el.append(home);
 		}
 	});
 

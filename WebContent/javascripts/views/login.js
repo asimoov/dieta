@@ -11,7 +11,8 @@ define([
 			"submit #dialog-form form": "submit"
 		},
 		render: function() {
-			$(this.el).html(home);
+			this.$el.empty();
+			this.$el.append(home);
 		},
 		submit: function(ev) {
 			ev.preventDefault();

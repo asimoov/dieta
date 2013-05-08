@@ -14,7 +14,8 @@ define([
 		tagName:  "li",
 		className: "arrow-box-left gray",
 		render : function() {
-			return this.$el.html(_.template(home, {"interment": this.model, "selected": this.options.selected, "Dish": Dish, "Nature": Nature, "Patient": Patient, "Ward": Ward, "Diets": Diets, "Meals": Meals}));
+			this.$el.empty();
+			return this.$el.append(_.template(home, {"interment": this.model, "selected": this.options.selected, "Dish": Dish, "Nature": Nature, "Patient": Patient, "Ward": Ward, "Diets": Diets, "Meals": Meals}));
 		}
 	});
 });

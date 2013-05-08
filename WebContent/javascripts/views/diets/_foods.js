@@ -7,16 +7,16 @@ define([
 ], function($,  _, Backbone, FoodView, home) {
 	return Backbone.View.extend({
 		render: function() {
-			var that = this;
+			this.$el.empty();
+			this.$el.append(home);
 			
-			this.$el.html(home);
-			//$("a:first", this.$el).tab("show");
-			this.collection.forEach(function(food) {
+			$("a:first", this.$el).tab("show");
+			this.collection.each(function(food) {
 				var type = food.typeFormated();
 				
-				var foodView = new FoodView({model: food, collection: that.options.els});
+				var foodView = new FoodView({model: food, collection: this.options.els});
 				$('#food' + type).append(foodView.render());
-			});
+			}, this);
 		}
 	});
 });

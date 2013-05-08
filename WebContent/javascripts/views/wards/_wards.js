@@ -9,12 +9,12 @@ define([
 	var WardsView = Backbone.View.extend({
 		el: '.primary-sidebar',
 		render: function() {
-			this.el.innerHTML = home;
-			for(var i in this.collection.models) {
-				var ward = this.collection.models[i];
-
+			this.$el.empty();
+			this.$el.append(home);
+			
+			this.collection.each(function(ward) {
 				$("ul", this.el).append(WardView.initialize({model: ward}));
-			}
+			}, this);
 		},
 	});
 

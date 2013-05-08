@@ -36,7 +36,8 @@ define([
 			this.model = new Diet(last.toJSON());
 			this.model.set({"patient": patient});
 			
-			this.$el.html(_.template(home, {"interment": interment, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
+			this.$el.empty();
+			this.$el.append(_.template(home, {"interment": interment, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
 			var mealsView = new MealsView({el: "#meals", "meals": meals});
 			mealsView.render();
 

@@ -13,7 +13,8 @@ define([
 			"click":	"select"
 		},
 		render: function() {
-			return $(this.el).html("<a>" + this.model.get('description') + "</a>");
+			this.$el.empty();
+			return this.$el.append("<a>" + this.model.get('description') + "</a>");
 		},
 		select: function() {
 			var that = this;

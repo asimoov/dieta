@@ -8,7 +8,8 @@ define([
 	var WardView =  Backbone.View.extend({
 		tagName:  "li",
 		render : function() {
-			return $(this.el).html(_.template(home, {"ward": this.model}));
+			this.$el.empty();
+			return this.$el.append(_.template(home, {"ward": this.model}));
 		}
 	});
 	

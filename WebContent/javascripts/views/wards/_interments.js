@@ -9,13 +9,13 @@ define([
 ], function($, _, Backbone, Patient, Interments, IntermentView, home) {
 	return Backbone.View.extend({
 		render : function() {
-			var that = this;
-			this.$el.html(home);
+			this.$el.empty();
+			this.$el.append(home);
 			
 			var interments = this.model.get('interments');
 			interments.each(function(interment){
-				$("ul", that.el).append(IntermentView.initialize({"model": that.model, "interment": interment, "selected": that.options.interment}));
-			});
+				$("ul", this.el).append(IntermentView.initialize({"model": this.model, "interment": interment, "selected": this.options.interment}));
+			}, this);
 		},
 	});
 });
