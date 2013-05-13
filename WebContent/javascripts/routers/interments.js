@@ -15,6 +15,9 @@ define([
       routes: {
     	'interments'				: "index",
         'interments/:interment_id'	: "show"
+      },		
+      initialize: function() {
+    	  this.bind('route', this.trackPageview);
       },
       index: function(intermentId) {
     		var interments = new Interments();
@@ -34,6 +37,15 @@ define([
   			var intermentsView = new IntermentsView({el : 'section#center', collection: interments, selected: interment});
   			intermentsView.render();
   		});
+      },		
+      trackPageview: function () {
+	        var url = Backbone.history.getFragment();
+	        //prepend slash
+	        if (!/^\//.test(url) && url != "") {
+	            url = "/" + url;
+	        }
+
+	        _gaq.push(['_trackPageview', url]);
       }
     });
 

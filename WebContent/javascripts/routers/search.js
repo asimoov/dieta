@@ -12,6 +12,9 @@ define([
     	'search/:query':                          "home",
     	'search/:query/interments/:interment_id': "home"
       },
+	  initialize: function() {
+		this.bind('route', this.trackPageview);
+	  },
       home: function(q, intermentId) {
     	var interments = new Interments();
         var interment = new Interment({id: intermentId});
@@ -24,6 +27,15 @@ define([
 			var intermentsView = new IntermentsView({el : 'section#center', "q": q, collection: interments, selected: interment});
 			intermentsView.render();
   		});
+      },
+      trackPageview: function () {
+        var url = Backbone.history.getFragment();
+        //prepend slash
+        if (!/^\//.test(url) && url != "") {
+            url = "/" + url;
+        }
+
+        _gaq.push(['_trackPageview', url]);
       }
     });
 

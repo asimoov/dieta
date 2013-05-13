@@ -12,10 +12,6 @@ require.config({
     keymaster: 'vendor/keymaster',
     templates: '../templates'
   },
-  packages: [
-             {"name" : "backbone"}, 
-             {"name" : "jquery"}
-  ],
   shim: {
     underscore: {
       exports: '_'
@@ -23,6 +19,9 @@ require.config({
     backbone: {
       deps: ["underscore", "jquery"],
       exports: "Backbone"
+    },
+    handlebars: {
+        exports: 'Handlebars'
     },
     tab: {
     	deps: ["jquery"]

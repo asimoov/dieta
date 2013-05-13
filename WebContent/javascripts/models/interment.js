@@ -12,6 +12,12 @@ define([
 			this.set({"patient": new Patient(this.get('patient'))});
 			this.set({"ward": new Ward(this.get('ward'))});
 		},
+		patient: function() {
+			return this.get('patient');
+		},
+		ward: function() {
+			return this.get('ward');
+		},
 		isNulo: function() {
 			var input = new Date(this.get('input'));
 			var patient = this.get('patient');

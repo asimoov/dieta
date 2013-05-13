@@ -10,6 +10,9 @@ define([
 	  initialize: function() {
 		  this.set({"diets": new Diets(this.get('diets'))});
 	  },
+	  name: function() {
+		return this.get('name');  
+	  },
 	  age: function() {
 		  var today = new Date();
 	      var birthDate = new Date(Date.parse(this.get('bird')));

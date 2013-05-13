@@ -9,7 +9,7 @@ define([
 		url: 'foods?_format=json',
 		model: Food,
 		comparator: function(model) {
-		return model.get('description');
+			return model.get('description');
 		}
 	});
 });

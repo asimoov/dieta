@@ -16,6 +16,9 @@ define([
         'wards/:ward_id/interments':               "interments",
         'wards/:ward_id/interments/:interment_id': "details",
       },
+      initialize: function() {
+    	  this.bind('route', this.trackPageview);
+      },
       interments: function(wardId) {
 		var ward = new Ward({id: wardId});
 		ward.fetch({
@@ -40,6 +43,15 @@ define([
   				var intermentsView = new IntermentsView({el : 'section#center', model : ward, interment: interment});
   				intermentsView.render();
   		});
+      },
+      trackPageview: function () {
+	      var url = Backbone.history.getFragment();
+	      //prepend slash
+	      if (!/^\//.test(url) && url != "") {
+	          url = "/" + url;
+	      }
+	
+	      _gaq.push(['_trackPageview', url]);
       }
     });
 
