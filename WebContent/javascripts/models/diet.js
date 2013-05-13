@@ -7,8 +7,8 @@ define([
 	"use strict";
 	return Backbone.Model.extend({
 		urlRoot: "diets",
-		initialize: function() {
-			this.set({"meals": new Meals(this.get('meals'))});
+		meals: function() {
+			return new Meals(this.get('meals'));
 		}
 	});
 });

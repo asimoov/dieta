@@ -25,7 +25,7 @@ define([
 		},
 		remove: function(ev) {
 			this.model.get('dish').nature = (new Nature({description: ''})).toJSON();
-			this.model.set({"variations": new Variations()});
+			this.model.set({"variations": []});
 			this.model.trigger('changer');
 			this.collection.trigger('add');
 		}

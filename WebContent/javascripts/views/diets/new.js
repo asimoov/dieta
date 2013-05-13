@@ -14,8 +14,7 @@ define([
   'views/diets/_nutrients',
   'text!templates/diets/new.html'
 ], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, FoodsView, MealsView, NaturesView, Nutrients, home) {
-	var NewView = Backbone.View.extend({
-		el: 'section#center',
+	return Backbone.View.extend({
 		events: {
 			"click #save":               "save",
 			"click #cancel":             "cancel",
@@ -28,10 +27,10 @@ define([
 		collection: new Meals(),
 		render: function() {
 			var interment = this.options.interment;
-			var patient = interment.get('patient');
-			var diets = patient.get('diets');
+			var patient = interment.patient();
+			var diets = patient.diets();
 			var last = diets.first() || new Diet();
-			var meals = last.get('meals');
+			var meals = last.meals();
 			
 			this.model = new Diet(last.toJSON());
 			this.model.set({"patient": patient});
@@ -88,13 +87,4 @@ define([
 			this.model.set({"observation": $(event.target).val()});
 		}
 	});
-
-	var initialize = function(options) {
-		var newView = new NewView(options);
-		newView.render();
-	};
-
-	return {
-		initialize : initialize
-	};
 });

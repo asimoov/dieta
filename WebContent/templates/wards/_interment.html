@@ -1,4 +1,4 @@
-<% var patient = interment.get('patient') %>
+<% var patient = interment.patient() %>
 <% if(interment.isNulo()) { %>
 	<div class="avatar red">
 		<i class="icon-warning-sign icon-2x"></i>
@@ -27,9 +27,9 @@
 <% if(selected !== undefined && selected.id === interment.id) { %>
 	<div class="content">
 		<% var monthNames = [ "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez" ] %>
-		<% var diets = selected.get('patient').get('diets') %>
+		<% var diets = selected.patient().diets() %>
 		<% diets.each(function(diet) { %>
-			<% var meals = diet.get('meals') %>
+			<% var meals = diet.meals() %>
 			<% meals.each(function(meal) { %>
 				<%= meal.get('period') %>
 				<% var dish = new Dish(meal.get('dish')) %>
@@ -38,8 +38,8 @@
 				<% var nature = new Nature(dish.get('nature')) %>
 				(<%= nature.get('description') %>)
 				
-				<% meal.get('variations').each(function(variation) { %>
-					<%= variation.get('food').get('description') %>,
+				<% meal.variations().each(function(variation) { %>
+					<%= variation.food().get('description') %>,
 				<% }) %>
 				|
 			<% }); %>

@@ -5,9 +5,11 @@ define([
   'models/food'
 ], function($, _, Backbone, Food) {
   return Backbone.Model.extend({
-	  initialize: function() {
-		  this.set({"quantity": parseFloat(this.get('quantity'))});
-		  this.set({"food": new Food(this.get('food'))});
+	  quantity: function(){
+		  return parseFloat(this.get('quantity'));
+	  },
+	  food: function() {
+		  return new Food(this.get('food'));
 	  }
   });
 });

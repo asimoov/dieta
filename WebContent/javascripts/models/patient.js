@@ -7,8 +7,8 @@ define([
 ], function($, _, Backbone, LevelOfAssistance, Diets) {
 	"use strict";
   return Backbone.Model.extend({
-	  initialize: function() {
-		  this.set({"diets": new Diets(this.get('diets'))});
+	  diets: function() {
+		  return new Diets(this.get('diets'));
 	  },
 	  name: function() {
 		return this.get('name');  
@@ -32,14 +32,14 @@ define([
     	  return false;
       },
       getLastDiet: function() {
-    	  var diets = this.get('diets');
+    	  var diets = this.diets();
     	  
     	  if (diets !== undefined || diets.length !== 0) {
     		  return diets.first();
     	  }
       },
       isNeedAssistance: function() {
-    	  var diets = this.get("diets");
+    	  var diets = this.diets();
     	  var last = diets.first();
 
     	  var date = new Date(last.get('createdAt'));

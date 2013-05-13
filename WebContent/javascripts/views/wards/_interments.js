@@ -12,7 +12,7 @@ define([
 			this.$el.empty();
 			this.$el.append(home);
 			
-			var interments = this.model.get('interments');
+			var interments = this.model.interments();
 			interments.each(function(interment){
 				var intermentView = new IntermentView({"model": this.model, "interment": interment, "selected": this.options.interment});
 				$("ul", this.$el).append(intermentView.render());

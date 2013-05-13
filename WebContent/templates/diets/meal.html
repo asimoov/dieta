@@ -2,8 +2,8 @@
   <i><%= model.get('dish').period %>h</i>
   <span style="font-weight: bold;"><%= model.get('dish').nature.description %></span>
   <span>
-	<% model.get('variations').each(function(variation) { %>
-		<%= variation.get('quantity') %> <%= variation.get('food').get('description') %>,
+	<% model.variations().each(function(variation) { %>
+		<%= variation.quantity() %> <%= variation.food().get('description') %>,
 	<% }) %>
   </span>
 </a>

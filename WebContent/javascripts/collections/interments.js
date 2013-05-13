@@ -11,8 +11,8 @@ define([
 		model: Interment,
 		totals: function() {
 			return this.countBy(function(interment) {
-				var patient = interment.get("patient");
-				var diets = interment.get("patient").diets;
+				var patient = interment.patient();
+				var diets = patient.diets;
 		
 				if(diets !== undefined && diets.length > 0) {
 					if(patient.isNeedAssistance()) {

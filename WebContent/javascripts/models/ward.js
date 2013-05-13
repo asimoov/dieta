@@ -5,9 +5,9 @@ define([
 ], function($, _, Backbone) {
   return Backbone.Model.extend({
 	urlRoot: 'wards',
-	initialize: function() {
+	interments: function() {
 		var Interments = require("collections/interments");
-		this.set({"interments": new Interments(this.get('interments'))});
+		return new Interments(this.get('interments'));
 	},
 	description: function() {
 		return this.get('description');

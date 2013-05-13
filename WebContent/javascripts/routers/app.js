@@ -16,7 +16,6 @@ define([
 		},
 		home: function() {
 			this.navigate("interments", {trigger: true, replace: true});
-			
 		},
 		defaultAction: function() {
 			console.log('default action');

@@ -20,7 +20,9 @@ define([
     	  var params = {data: {"_format": "json" }, cache: true};
     	  $.when(interment.fetch(params), natures.fetch({cache: true}), foods.fetch({expires: 86400, cache: true})).then(function() {
     		  interment.initialize();
-    		  NewView.initialize({interment: interment, "natures": natures, "foods": foods});
+
+    		  var newView = new NewView({el: 'section#center', interment: interment, "natures": natures, "foods": foods});
+    		  newView.render();
     	  });
       }
     });
