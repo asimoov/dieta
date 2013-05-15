@@ -52,6 +52,7 @@ define([
 		},
 		save: function() {
 			this.model.id;
+			return false;
 		},
 		cancel: function() {
 			Backbone.history.navigate('', true); 

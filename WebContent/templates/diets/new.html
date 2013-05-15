@@ -51,11 +51,11 @@
 										<div class="controls">
 											<label class="radio" style="<%= patient.isNeedCompanion() ? 'color:red' : '' %>">
 												Sim
-										 	 <input style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="true" <%= last.get('companion') == "true" ? "checked" : "" %> />
+										 	 <input required="required" style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="true" <%= last.get('companion') == "true" ? "checked" : "" %> />
 											</label>
 											<label class="radio">
 											  	Nao
-										 	 <input style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="false" <%= last.get('companion') == "false" ? "checked" : "" %> />
+										 	 <input required="required" style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="false" <%= last.get('companion') == "false" ? "checked" : "" %> />
 											</label>
 										</div>
 									</div>
