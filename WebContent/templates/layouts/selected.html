@@ -1,0 +1,24 @@
+<% if(model !== undefined && model.id === interment.id) { %>
+	<% var monthNames = [ "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez" ] %>
+	<% var diets = model.patient().diets() %>
+	<% diets.each(function(diet) { %>
+		<div class="box-section with-icon">
+			<div class="news-time">
+	    		<%= (new Date(diet.get('createdAt'))).getDate() %> <%= monthNames[(new Date(diet.get('createdAt'))).getMonth()] %>
+			</div>
+			<div class="news-content">
+				<% var meals = diet.meals() %>
+				<% meals.each(function(meal) { %>
+					<% var dish = meal.dish() %>
+					<span class="label label-purple"><%= dish.period() %></span>
+
+					<%= dish.nature().description() %>
+					
+					<% meal.variations().each(function(variation) { %>
+						<%= variation.quantity() > 0 ? "+" : " - " %> <%= variation.quantity() %> <%= variation.food().get('description') %>
+					<% }) %>
+				<% }); %>
+			</div>
+		</div>
+	<% }); %>
+<% } %>

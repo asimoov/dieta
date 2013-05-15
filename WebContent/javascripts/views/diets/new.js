@@ -33,6 +33,7 @@ define([
 			var patient = interment.patient();
 			var diets = patient.diets();
 			var last = diets.first() || new Diet({"patient": patient.toJSON(), "meals": []});
+
 			this.model = new Diet(last.toJSON());
 			this.collection = this.model.meals();
 
