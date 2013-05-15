@@ -1,5 +1,6 @@
 <% var patient = interment.patient() %>
 <div class="container-fluid padded">
+	<form id="new" class="form-horizontal fill-up">
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="box">
@@ -7,66 +8,64 @@
 		        		<span class="title"><%= patient.get('name') %> (<%= patient.get('handbook') %>), <%= patient.age() %>, <%= patient.get('sex') %>, <%= interment.get('cid') %>, <%= interment.get('bed') %></span>
 		     		 </div>
 					<div class="box-content">
-						<form class="form-horizontal fill-up">
-							<% var last = patient.getLastDiet() || new Diet() %>
-							<div class="row-fluid">
-									<div class="span6">
-										<div class="padded separate-sections">
-											<div class="control-group">
-												<label class="control-label">Peso</label>
-												<div class="controls">
-													<input id="weight" type="number" required="required" min="0" max="999" step="0.001" value="<%= last.get('weight') %>" />
-												</div>
-											</div>
-											<div class="control-group">
-												<label class="control-label">Obs.</label>
-												<div class="controls chat-message-box">
-													<textarea id="observation" class="wysihtml5-toolbar" rows="5" ><%= last.observation %></textarea>
-												</div>
-											</div>
+						<% var last = patient.getLastDiet() || new Diet() %>
+						<div class="row-fluid">
+							<div class="span6">
+								<div class="padded separate-sections">
+									<div class="control-group">
+										<label class="control-label">Peso</label>
+										<div class="controls">
+											<input id="weight" type="number" required="required" min="0" max="999" step="0.001" value="<%= last.get('weight') %>" />
 										</div>
 									</div>
-									<div class="span6">
-										<div class="padded separate-sections">
-											<div class="control-group">
-												<label class="control-label" align="left">Altura</label>
-												<div class="controls">
-													<input id="height" type="number" required="required" min="0" max="999" step="0.001" value="<%= last.get('height') %>" />
-												</div>
-											</div>
-											<div class="control-group">
-												<label class="control-label">Nivel de Assistencia</label>
-												<div class="controls">
-													<select id="levelOfAssistance">
-														<option value="1" <%= last.get('levelOfAssistance') == "1" ? "selected" : "" %> >1 - Leve</option>
-														<option value="2" <%= last.get('levelOfAssistance') == "2" ? "selected" : "" %> >2 - Moderado</option>
-														<option value="3" <%= last.get('levelOfAssistance') == "3" ? "selected" : "" %> >3 - Normal</option>
-														<option value="4" <%= last.get('levelOfAssistance') == "4" ? "selected" : "" %> >4 - Grave</option>
-														<option value="5" <%= last.get('levelOfAssistance') == "5" ? "selected" : "" %> >5 - Muito Grave</option>
-													</select>
-												</div>
-											</div>
-											<div class="control-group">
-												<label class="control-label">Acompanhante</label>
-												<div class="controls">
-													<label class="radio" style="<%= patient.isNeedCompanion() ? 'color:red' : '' %>">
-														Sim
-												 	 <input style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="true" <%= last.get('companion') == "true" ? "checked" : "" %> />
-													</label>
-													<label class="radio">
-													  	Nao
-												 	 <input style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="false" <%= last.get('companion') == "false" ? "checked" : "" %> />
-													</label>
-												</div>
-											</div>
+									<div class="control-group">
+										<label class="control-label">Obs.</label>
+										<div class="controls chat-message-box">
+											<textarea id="observation" class="wysihtml5-toolbar" rows="5" ><%= last.observation %></textarea>
 										</div>
 									</div>
 								</div>
-							</form>
+							</div>
+							<div class="span6">
+								<div class="padded separate-sections">
+									<div class="control-group">
+										<label class="control-label" align="left">Altura</label>
+										<div class="controls">
+											<input id="height" type="number" required="required" min="0" max="999" step="0.001" value="<%= last.get('height') %>" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Nivel de Assistencia</label>
+										<div class="controls">
+											<select id="levelOfAssistance">
+												<option value="1" <%= last.get('levelOfAssistance') == "1" ? "selected" : "" %> >1 - Leve</option>
+												<option value="2" <%= last.get('levelOfAssistance') == "2" ? "selected" : "" %> >2 - Moderado</option>
+												<option value="3" <%= last.get('levelOfAssistance') == "3" ? "selected" : "" %> >3 - Normal</option>
+												<option value="4" <%= last.get('levelOfAssistance') == "4" ? "selected" : "" %> >4 - Grave</option>
+												<option value="5" <%= last.get('levelOfAssistance') == "5" ? "selected" : "" %> >5 - Muito Grave</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Acompanhante</label>
+										<div class="controls">
+											<label class="radio" style="<%= patient.isNeedCompanion() ? 'color:red' : '' %>">
+												Sim
+										 	 <input style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="true" <%= last.get('companion') == "true" ? "checked" : "" %> />
+											</label>
+											<label class="radio">
+											  	Nao
+										 	 <input style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="false" <%= last.get('companion') == "false" ? "checked" : "" %> />
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>			
-				</div>
+					</div>
+				</div>			
 			</div>
+		</div>
 		<div class="row-fluid">
 			<div class="span9">
 				<div id="meals">
@@ -82,7 +81,8 @@
 			</div>
 		</div>
 		<div class="form-actions">
-			<button id="save" type="submit" class="btn btn-blue">Salvar Alterações</button>
+			<input id="save" type="submit" class="btn btn-blue" style="width: auto" value="Salvar Alterações" />
 			<button id="cancel" type="button" class="btn btn-default">Cancelar</button>
 	    </div>
+	</form>
 </div>

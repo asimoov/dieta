@@ -16,7 +16,7 @@ define([
 ], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, FoodsView, MealsView, NaturesView, Nutrients, home) {
 	return Backbone.View.extend({
 		events: {
-			"click #save":               "save",
+			"submit #new":               "save",
 			"click #cancel":             "cancel",
 			"change #weight":            "weight",
 			"change #height":            "height",
