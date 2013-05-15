@@ -1,10 +1,13 @@
 <a title="Horarios">
-  <% var dish = model.get('dish') %>
-  <i><%= dish.period %>h</i>
-  <span style="font-weight: bold;"><%= dish.nature ? dish.nature.description : "" %></span>
+  <% var dish = model.dish() %>
+  <i><%= dish.period() %></i>
+  <span style="font-weight: bold;">
+  	<% console.log(dish.nature()); %>
+  	<%= dish.nature().description() %>
+  </span>
   <span>
 	<% model.variations().each(function(variation) { %>
-		<%= variation.quantity() %> <%= variation.food().get('description') %>,
+		<%= variation.quantity() %> <%= variation.food().description() %>,
 	<% }) %>
   </span>
 </a>
