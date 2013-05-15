@@ -14,7 +14,7 @@ define([
 			this.collection.each(function(food) {
 				var type = food.typeFormated();
 				
-				var foodView = new FoodView({model: food, collection: this.options.els});
+				var foodView = new FoodView({model: food, view: this.options.view});
 				$('#food' + type).append(foodView.render());
 			}, this);
 		}

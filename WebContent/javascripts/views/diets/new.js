@@ -24,33 +24,34 @@ define([
 			"change #levelOfAssistance": "levelOfAssistance",
 			"change #observation":       "observation"
 		},
-		collection: new Meals(),
+		template: _.template(home),
+		serialize: function() {
+			return {"interment": this.options.interment, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals};
+		},
 		render: function() {
 			var interment = this.options.interment;
 			var patient = interment.patient();
 			var diets = patient.diets();
-			var last = diets.first() || new Diet();
-			var meals = last.meals();
-			
+			var last = diets.first() || new Diet({"patient": patient.toJSON(), "meals": []});
 			this.model = new Diet(last.toJSON());
-			this.model.set({"patient": patient});
-			
+			this.collection = this.model.meals();
+
 			this.$el.empty();
-			this.$el.append(_.template(home, {"interment": interment, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals}));
-			var mealsView = new MealsView({el: "#meals", "meals": meals});
+			this.$el.append(this.template(this.serialize()));
+			var mealsView = new MealsView({el: "#meals", "collection": this.collection});
 			mealsView.render();
 
-			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, els: mealsView.collection});
+			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, view: mealsView});
 			naturesView.render();
 
-			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, els: mealsView.collection});
+			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, view: mealsView});
 			foodsView.render();
 			
-			var nutrients = new Nutrients({el: "#nutrients", collection: mealsView.collection});
+			var nutrients = new Nutrients({el: "#nutrients", collection: this.collection});
 			nutrients.render();
 		},
 		save: function() {
-			this.model.save();
+			this.model.id;
 		},
 		cancel: function() {
 			Backbone.history.navigate('', true); 

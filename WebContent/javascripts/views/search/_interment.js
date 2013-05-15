@@ -15,9 +15,13 @@ define([
 	return Backbone.View.extend({
 		tagName:  "li",
 		className: "arrow-box-left gray",
+		template: _.template(home),
+		serialize: function() {
+			return {"q": this.options.q, "interment": this.model, "selected": this.options.selected, "Dish": Dish, "Nature": Nature, "Patient": Patient, "Ward": Ward, "Diets": Diets, "Meals": Meals};
+		},
 		render : function() {
 			this.$el.empty();
-			return this.$el.append(_.template(home, {"q": this.options.q, "interment": this.model, "selected": this.options.selected, "Dish": Dish, "Nature": Nature, "Patient": Patient, "Period": Period, "Type": Type, "Ward": Ward, "Diets": Diets, "Meals": Meals}));
+			return this.$el.append(this.template(this.serialize()));
 		}
 	});
 });

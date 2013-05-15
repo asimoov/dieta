@@ -13,28 +13,23 @@ define([
 			"click":	"select"
 		},
 		render: function() {
-			this.$el.empty();
 			return this.$el.append("<a>" + this.model.get('description') + "</a>");
 		},
 		select: function() {
-			var that = this;
-			var selecteds = this.collection.filter(function(view) {
-				return $(view.get('el')).hasClass('selected');
-			});
+			var selecteds = this.options.view.selecteds();
 			
 			selecteds.forEach(function(view) {
-				var model = view.get('model');
+				var model = view.model;
 				var period = parseInt(model.get('dish').period);
-				var type = parseInt(that.model.get('type'));
+				var type = parseInt(this.model.get('type'));
 
 				if(_.contains(Period.periodsByType[type], period)) {
-					model.get('dish').nature = that.model.toJSON();
+					model.get('dish').nature = this.model.toJSON();
 					model.trigger("change");
-					that.collection.trigger('add');
 				} else {
-					$(view.get('el')).effect( "shake", {}, "fast" );
+					view.$el.effect( "shake", {}, "fast" );
 				}
-			});
+			}, this);
 		}
 	});
 });
