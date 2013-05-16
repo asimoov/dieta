@@ -23,7 +23,7 @@ define([
     		var interments = new Interments();
     		var options = {data: {"_format": "json"}, cache: true};
     		$.when(interments.fetch(options)).then(function() {
-    			var intermentsView = new IntermentsView({el : 'section#center', collection: interments});
+    			var intermentsView = new IntermentsView({el : 'section#center', collection: interments, root: '#interments'});
     			intermentsView.render();
     		});
       },
@@ -34,7 +34,7 @@ define([
   		$.when(interments.fetch(options), interment.fetch(options)).then(function() {
   			interment.initialize();
   			
-  			var intermentsView = new IntermentsView({el : 'section#center', collection: interments, selected: interment});
+  			var intermentsView = new IntermentsView({el : 'section#center', collection: interments, selected: interment, root: '#interments'});
   			intermentsView.render();
   		});
       },		

@@ -13,9 +13,10 @@
 	</div>
 <% } %>
 <div class="info">
-	<% var ward = interment.ward() %>
+	<% console.log(root) %>
+	<% var ward = ward !== undefined ? ward : interment.ward() %>
 	<span class="name">
-		<a href="#interments/<%= interment.id %>">
+		<a href="<%= root %>/<%= interment.id %>">
 			<strong class="indent"><%= patient.get('name') %> (<%= ward.get('description') %>)</strong>
 		</a>
 	</span>
