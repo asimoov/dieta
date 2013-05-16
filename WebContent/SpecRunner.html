@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>Jasmine Spec Runner</title>
+		
+		<link rel="stylesheet" type="text/css" href="stylesheets/jasmine.css">
+	</head>
+	<body>
+		<script type="text/javascript" src="javascripts/vendor/jasmine.js"></script>
+		<script type="text/javascript" src="javascripts/vendor/jasmine-html.js"></script>
+		
+		<!-- include source files here... -->
+		<script data-main="javascripts/spec-main" src="javascripts/vendor/require.js"></script>
+		<script>
+			require({paths: {'spec': '../spec'}}, [
+				"spec/SpecHelper",
+				"spec/PlayerSpec"
+			], function() {
+				jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+				jasmine.getEnv().execute();
+			});
+		 </script>
+	</body>
+</html>

@@ -20,7 +20,7 @@
   // Setup
   var modelFetch = Backbone.Model.prototype.fetch,
       collectionFetch = Backbone.Collection.prototype.fetch,
-      supportLocalStorage = typeof window.localStorage !== 'undefined';
+      supportLocalStorage = typeof window.sessionStorage !== 'undefined';
 
   Backbone.fetchCache = (Backbone.fetchCache || {});
   Backbone.fetchCache._cache = (Backbone.fetchCache._cache || {});
