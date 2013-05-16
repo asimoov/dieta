@@ -10,8 +10,8 @@ define([
 			"submit #search":	"search"
 		},
 		initialize: function() {
-		    key('shift+q', function(){ window.location.href = "/dieta/j_spring_security_logout"; });
-		    key('shift+a', function(){ Backbone.history.navigate('', true);  });
+			key('shift+q', function(){ window.location.href = "/dieta/j_spring_security_logout"; });
+			key('shift+a', function(){ Backbone.history.navigate('', true);  });
 		},
 		render : function() {
 			this.$el.empty();

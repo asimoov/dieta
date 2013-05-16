@@ -20,20 +20,17 @@ define([
 		homeView.render();
 		
 		var wards = new Wards();
-	    wards.fetch({
-	    	cache: true,
-	    	success: function() {
-	    		var wardsView = new WardsView({el: '.primary-sidebar', collection: wards});
-	    		wardsView.render();
-	    	}
-	    });
+		$.when(wards.fetch({cache: true})).then(function() {
+			var wardsView = new WardsView({el: '.primary-sidebar', collection: wards});
+			wardsView.render();
+		});
 
-	    AppRouter.initialize();
-	    DietsRouter.initialize();
-	    SearchRouter.initialize();
-	    IntermentsRouter.initialize();
-	    WardsRouter.initialize();
-	    Backbone.history.start();
+		AppRouter.initialize();
+		DietsRouter.initialize();
+		SearchRouter.initialize();
+		IntermentsRouter.initialize();
+		WardsRouter.initialize();
+		Backbone.history.start();
 	});
   };
 

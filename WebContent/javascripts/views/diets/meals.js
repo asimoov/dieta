@@ -19,14 +19,14 @@ define([
 					return dish !== undefined && dish.period == hour;
 				});
 
-	  			if(meal === undefined || meal.length === 0) {
-	  				meal = new Meal({"dish": {"period": hour}});
-	  				this.collection.push(meal);
-	  			}
-
-	  			var mealView = new MealView({model: meal, collection: this.collection});
-	  			this.views.push(mealView);
-	  			$(".meals-" + Math.round(index%3), this.$el).append(mealView.render());
+				if(meal === undefined || meal.length === 0) {
+					meal = new Meal({"dish": {"period": hour}});
+					this.collection.push(meal);
+				}
+				
+				var mealView = new MealView({model: meal, collection: this.collection});
+				this.views.push(mealView);
+				$(".meals-" + Math.round(index%3), this.$el).append(mealView.render());
 			}, this);
 		},
 		selecteds: function() {

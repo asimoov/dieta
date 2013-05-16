@@ -21,8 +21,8 @@ define([
 			
 			selecteds.forEach(function(view) {
 				var model = view.model;
-				var period = parseInt(model.get('dish').period);
-				var type = parseInt(this.model.get('type'));
+				var period = parseInt(model.get('dish').period, 10);
+				var type = parseInt(this.model.get('type'), 10);
 				
 				if(_.contains(Period.periodsByType[type], period)) {
 					var variations = model.variations();

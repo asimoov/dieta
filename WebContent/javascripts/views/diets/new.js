@@ -52,7 +52,6 @@ define([
 			nutrients.render();
 		},
 		save: function() {
-			this.model.id;
 			return false;
 		},
 		cancel: function() {
@@ -64,7 +63,7 @@ define([
 	
 			this.model.set({"weight": weight});
 			
-			if(weight != undefined && height != undefined) {
+			if(weight !== undefined && height !== undefined) {
 				var v = (weight / (height * height)).toFixed(2);
 				$('#value-imc').text(v);
 			}
@@ -75,7 +74,7 @@ define([
 			
 			this.model.set({"height": height});
 			
-			if(weight != undefined && height != undefined) {
+			if(weight !== undefined && height !== undefined) {
 				var v = (weight / (height * height)).toFixed(2);
 				$('#value-imc').text(v);
 			}
