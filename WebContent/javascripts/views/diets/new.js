@@ -8,10 +8,10 @@ define([
   'models/period',
   'models/type',
   'collections/meals', 
-  'views/diets/_foods',
-  'views/diets/_meals',
-  'views/diets/_natures',
-  'views/diets/_nutrients',
+  'views/diets/foods',
+  'views/diets/meals',
+  'views/diets/natures',
+  'views/diets/nutrients',
   'text!templates/diets/new.html'
 ], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, FoodsView, MealsView, NaturesView, Nutrients, home) {
 	return Backbone.View.extend({

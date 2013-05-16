@@ -8,8 +8,8 @@ define([
   'collections/interments',
   'collections/wards',
   'views/home',
-  'views/interments/_interments',
-  'views/wards/_wards'
+  'views/interments/interments',
+  'views/wards/wards'
 ], function($, _, Backbone, fetchCache, Interment, Ward, Interments, Wards, HomeView, IntermentsView, WardsView) {
   var IntermentsRouter = Backbone.Router.extend({
       routes: {

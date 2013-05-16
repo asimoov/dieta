@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore', 
   'backbone', 
-  'views/diets/_nature',
+  'views/diets/nature',
   'text!templates/diets/natures.html'
 ], function($, _, Backbone, NatureView, home) {
 	return Backbone.View.extend({

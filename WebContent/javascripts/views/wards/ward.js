@@ -3,7 +3,7 @@ define([
   'underscore', 
   'backbone', 
   'models/ward',
-  'text!templates/wards/_ward.html'
+  'text!templates/wards/ward.html'
 ], function($, _, Backbone, Ward, home) {
 	return  Backbone.View.extend({
 		tagName:  "li",

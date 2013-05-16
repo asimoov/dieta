@@ -4,8 +4,8 @@ define([
   'backbone', 
   'models/patient', 
   'collections/interments', 
-  'views/wards/_interment', 
-  'text!templates/wards/_interments.html'
+  'views/wards/interment', 
+  'text!templates/wards/interments.html'
 ], function($, _, Backbone, Patient, Interments, IntermentView, home) {
 	return Backbone.View.extend({
 		render : function() {

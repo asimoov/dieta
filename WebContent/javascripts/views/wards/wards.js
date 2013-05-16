@@ -3,8 +3,8 @@ define([
   'underscore', 
   'backbone', 
   'models/ward', 
-  'views/wards/_ward', 
-  'text!templates/wards/_wards.html'
+  'views/wards/ward', 
+  'text!templates/wards/wards.html'
 ], function($, _, Backbone, Ward, WardView, home) {
 	return Backbone.View.extend({
 		render: function() {

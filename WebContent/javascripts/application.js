@@ -10,7 +10,7 @@ define([
   'routers/search',
   'routers/wards',
   'views/home',
-  'views/wards/_wards',
+  'views/wards/wards',
 ], function($, _, Backbone, Session, Wards, AppRouter, DietsRouter, IntermentsRouter, SearchRouter, WardsRouter, HomeView, WardsView) {
   var initialize = function() {
 	"use strict";

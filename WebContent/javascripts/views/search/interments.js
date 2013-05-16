@@ -2,8 +2,8 @@ define([
   'jquery', 
   'underscore', 
   'backbone', 
-  'views/search/_interment',
-  'text!templates/search/_interments.html'
+  'views/search/interment',
+  'text!templates/search/interments.html'
 ], function($, _, Backbone, IntermentView, home) {
 	return Backbone.View.extend({
 		render : function() {

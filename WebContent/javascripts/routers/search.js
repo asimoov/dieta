@@ -5,7 +5,7 @@ define([
   'fetchCache',
   'models/interment',
   'collections/interments',
-  'views/search/_interments',
+  'views/search/interments',
 ], function($, _, Backbone, fetchCache, Interment, Interments, IntermentsView) {
   var SearchRouter = Backbone.Router.extend({
       routes: {

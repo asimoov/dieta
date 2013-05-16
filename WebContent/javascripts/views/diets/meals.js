@@ -5,7 +5,7 @@ define([
   'models/meal',
   'models/period',
   'collections/meals',
-  'views/diets/_meal',
+  'views/diets/meal',
   'text!templates/diets/meals.html'
 ], function($, _, Backbone, Meal, Period, Meals, MealView, home) {
 	return Backbone.View.extend({
