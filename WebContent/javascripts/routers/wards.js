@@ -31,7 +31,7 @@ define([
 			var ward = new Ward({id: wardId});
 			
 			var params = {data: {"_format": "json" }, cache: true};
-			$.when(ward.fetch(), interment.fetch(params)).then($.proxy(function() {
+			$.when(ward.fetch(params), interment.fetch(params)).then($.proxy(function() {
 				this.clear();
 				this.intermentsView = new IntermentsView({el : 'section#center', ward: ward, collection: ward.interments(), selected: interment, root: "#wards/" + ward.id + "/interments"});
 				this.intermentsView.render();
