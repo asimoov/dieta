@@ -17,11 +17,18 @@ define([
 			var natures = new Natures();
 			var foods = new Foods();
 
-			var params = {data: {"_format": "json" }, cache: true};
-			$.when(interment.fetch(params), natures.fetch({cache: true}), foods.fetch({expires: 86400, cache: true})).then(function() {
-				var newView = new NewView({el: 'section#center', interment: interment, "natures": natures, "foods": foods});
-				newView.render();
-			});
+			var params = {data: {"_format": "json"}, cache: true};
+			$.when(interment.fetch(params), natures.fetch({expires: 86400, cache: true}), foods.fetch({expires: 86400, cache: true})).then($.proxy(function() {
+				this.clear();
+				this.newView = new NewView({el: 'section#center', interment: interment, "natures": natures, "foods": foods});
+				this.newView.render();
+			}, this));
+		},
+		clear: function() {
+			if (this.newView) {
+				this.newView.$el.unbind();
+				this.newView.$el.empty();
+			}
 		}
 	});
 });

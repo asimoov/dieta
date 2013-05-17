@@ -14,6 +14,7 @@ define([
 			"click":	"select"
 		},
 		render: function() {
+			this.$el.empty();
 			return this.$el.append("<a>" + this.model.get('description') + "</a>");
 		},
 		select: function() {

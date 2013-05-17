@@ -2,9 +2,10 @@ define([
   'jquery',
   'underscore',
   'backbone',
+  'models/diet',
   'models/level_of_assistance',
   'collections/diets',
-], function($, _, Backbone, LevelOfAssistance, Diets) {
+], function($, _, Backbone, Diet, LevelOfAssistance, Diets) {
 	"use strict";
 	return Backbone.Model.extend({
 		diets: function() {
@@ -40,7 +41,7 @@ define([
 		},
 		isNeedAssistance: function() {
 			var diets = this.diets();
-			var last = diets.first();
+			var last = diets.first() || new Diet();
 			
 			var date = new Date(last.get('createdAt'));
 			var now = new Date();

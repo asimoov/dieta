@@ -10,17 +10,10 @@ define([
 			return new Nature(this.get('nature'));
 		},
 		period: function() {
-			if (this.get('period') == "12") {
-				return "Almoço";
-			} else if (this.get('period') == "8") {
-				return "Desjejum";
-			} else if (this.get('period') == "10") {
-				return "Colação";
-			} else if (this.get('period') == "15") {
-				return "Lanche";
-			}
-  
-			return this.get('period') + "h";
+			var periods = {"12": "Almoço", "8": "Desjejum", "10": "Colação", "15": "Colação"};
+			var period = periods[this.get('period')] || this.get('period') + "h";
+			
+			return period;
 		}
 	});
 });

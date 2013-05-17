@@ -14,12 +14,11 @@ define([
 		ward: function() {
 			return new Ward(this.get('ward'));
 		},
-		isNulo: function() {
+		isCurrent: function() {
 			var input = new Date(this.get('input'));
-			var patient = this.patient();
-			var diets = patient.diets();
+			var diets = this.patient().diets();
 			
-			if (diets === undefined || diets.length === 0) {
+			if (diets.length === 0) {
 				return true;
 			}
 

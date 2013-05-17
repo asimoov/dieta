@@ -28,7 +28,7 @@ define([
 			var ward = new Ward({id: wardId});
 			$.when(ward.fetch({data: {"_format": "json" }, cache: true}), interment.fetch({data: {"_format": "json" }, cache: true}))
 			.then(function() {
-				var intermentsView = new IntermentsView({el : 'section#center', ward: ward, collection: ward.interments(), selected: interment, root: "#wards/" + ward.id + "/interments/" + intermentId});
+				var intermentsView = new IntermentsView({el : 'section#center', ward: ward, collection: ward.interments(), selected: interment, root: "#wards/" + ward.id + "/interments"});
 				intermentsView.render();
 			});
 		}

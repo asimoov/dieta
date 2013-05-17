@@ -29,6 +29,8 @@ define([
 			return {"interment": this.options.interment, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals};
 		},
 		render: function() {
+			this.$el.empty();
+			
 			var interment = this.options.interment;
 			var patient = interment.patient();
 			var diets = patient.diets();
@@ -37,7 +39,6 @@ define([
 			this.model = new Diet(last.toJSON());
 			this.collection = this.model.meals();
 
-			this.$el.empty();
 			this.$el.append(this.template(this.serialize()));
 			var mealsView = new MealsView({el: "#meals", "collection": this.collection});
 			mealsView.render();

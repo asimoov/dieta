@@ -23,8 +23,12 @@ define([
 			this.$el.empty();
 			this.$el.append(this.template(this.serialize()));
 			
-			var selectedView = new SelectedView({el: this.$el, model: this.options.selected, "interment": this.model});
-			return selectedView.render();
+			if (this.options.selected !== undefined && this.model.id === this.options.selected.id) {
+				var selectedView = new SelectedView({el: this.$el, model: this.options.selected});
+				selectedView.render();
+			}
+			
+			return this.$el;
 		}
 	});
 });

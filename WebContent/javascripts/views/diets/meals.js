@@ -11,6 +11,7 @@ define([
 	return Backbone.View.extend({
 		views: [],
 		render: function() {
+			this.$el.empty();
 			this.$el.append(home);
 
 			_.forEach(Period.periods, function(hour, index) {
