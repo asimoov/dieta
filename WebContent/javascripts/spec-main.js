@@ -6,6 +6,7 @@ require.config({
 	jqueryui: 'vendor/jquery-ui',
 	fetchCache: 'vendor/backbone.fetch-cache',
 	tab: 'vendor/bootstrap.tab',
+	sinon: 'vendor/sinon',
 	handlebars: 'vendor/handlebars',
 	modernizr: 'vendor/modernizr',
 	keymaster: 'vendor/keymaster',

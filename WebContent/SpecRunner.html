@@ -14,8 +14,7 @@
 		<script data-main="javascripts/spec-main" src="javascripts/vendor/require.js"></script>
 		<script>
 			require({paths: {'spec': '../spec'}}, [
-				"spec/SpecHelper",
-				"spec/PlayerSpec"
+				"spec/diet_spec"
 			], function() {
 				jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
 				jasmine.getEnv().execute();
