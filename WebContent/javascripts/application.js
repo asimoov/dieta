@@ -2,6 +2,7 @@ define([
   'jquery', 
   'underscore', 
   'backbone',
+  'analytics', 
   'models/session',
   'collections/wards',
   'routers/app',
@@ -11,7 +12,7 @@ define([
   'routers/wards',
   'views/home',
   'views/wards/wards',
-], function($, _, Backbone, Session, Wards, AppRouter, DietsRouter, IntermentsRouter, SearchRouter, WardsRouter, HomeView, WardsView) {
+], function($, _, Backbone, Analytics, Session, Wards, AppRouter, DietsRouter, IntermentsRouter, SearchRouter, WardsRouter, HomeView, WardsView) {
   var initialize = function() {
 	"use strict";
 
@@ -25,11 +26,13 @@ define([
 			wardsView.render();
 		});
 
-		AppRouter.initialize();
-		DietsRouter.initialize();
-		SearchRouter.initialize();
-		IntermentsRouter.initialize();
-		WardsRouter.initialize();
+		var routes = [AppRouter, DietsRouter, SearchRouter, IntermentsRouter, WardsRouter];
+		_.forEach(routes, function(Route) {
+			var route = new Route();
+			route.on('route', function() {
+				Analytics.trigger('track');
+			});
+		});
 		Backbone.history.start();
 	});
   };

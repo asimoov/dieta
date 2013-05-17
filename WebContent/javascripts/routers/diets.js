@@ -8,7 +8,7 @@ define([
   'collections/natures', 
   'views/diets/new',
 ], function($, _, Backbone, fetchCache, Interment, Foods, Natures, NewView) {
-	var DietsRouter = Backbone.Router.extend({
+	return Backbone.Router.extend({
 		routes: {
 			'interments/:interment_id/diets/new': "new"
 		},
@@ -24,12 +24,4 @@ define([
 			});
 		}
 	});
-
-	var initialize = function() {
-		new DietsRouter();
-	};
-
-	return {
-		initialize: initialize
-	};
 });

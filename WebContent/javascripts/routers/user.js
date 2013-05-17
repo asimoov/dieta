@@ -9,20 +9,8 @@ define([
 		routes: {
 			'sign-in': "signin",
 		},
-		initialize: function() {
-			this.bind('route', this.trackPageview);
-		},
 		signin: function() {
 			Login.render();
-		},
-		trackPageview: function () {
-			var url = Backbone.history.getFragment();
-			//prepend slash
-			if (!/^\//.test(url) && url !== "") {
-				url = "/" + url;
-			}
-	
-			_gaq.push(['_trackPageview', url]);
 		}
 	});
 	

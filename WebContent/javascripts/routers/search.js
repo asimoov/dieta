@@ -7,9 +7,9 @@ define([
   'collections/interments',
   'views/interments/interments',
 ], function($, _, Backbone, fetchCache, Interment, Interments, IntermentsView) {
-	var SearchRouter = Backbone.Router.extend({
+	return Backbone.Router.extend({
 		routes: {
-			'search/:query':               "home",
+			'search/:query'                         : "home",
 			'search/:query/interments/:interment_id': "show"
 		},
 		initialize: function() {
@@ -34,23 +34,6 @@ define([
 				var intermentsView = new IntermentsView({el : 'section#center', "q": q, collection: interments, selected: interment, root: "#search/" + q + "/interments/" + intermentId});
 				intermentsView.render();
 			});
-		},
-		trackPageview: function () {
-			var url = Backbone.history.getFragment();
-			//prepend slash
-			if (!/^\//.test(url) && url !== "") {
-			url = "/" + url;
 		}
-
-			_gaq.push(['_trackPageview', url]);
-	}
 	});
-
-	var initialize = function() {
-		new SearchRouter();
-	};
-
-	return {
-		initialize: initialize
-	};
 });
