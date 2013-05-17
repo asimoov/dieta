@@ -1,10 +1,8 @@
 define([
-  'jquery',
-  'underscore',
   'backbone',
   'models/dish',
   'collections/variations'
-], function($, _, Backbone, Dish, Variations) {
+], function(Backbone, Dish, Variations) {
 	"use strict";
 	return Backbone.Model.extend({
 		dish: function() {

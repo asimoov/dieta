@@ -1,9 +1,7 @@
 define([
-  'jquery',
-  'underscore',
   'backbone',
   'models/type',
-], function($, _, Backbone, Type) {
+], function(Backbone, Type) {
 	"use strict";
 	return Backbone.Model.extend({
 		description: function(){

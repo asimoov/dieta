@@ -1,9 +1,7 @@
 define([
-  'jquery',
-  'underscore',
   'backbone',
   'models/food'
-], function($, _, Backbone, Food) {
+], function(Backbone, Food) {
 	return Backbone.Model.extend({
 		quantity: function(){
 			return parseFloat(this.get('quantity'));

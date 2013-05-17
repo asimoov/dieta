@@ -1,9 +1,7 @@
 define([
-  'jquery',
-  'underscore',
   'backbone',
   'models/nature'
-], function($, _, Backbone, Nature) {
+], function(Backbone, Nature) {
 	"use strict";
 	return Backbone.Model.extend({
 		nature: function() {

@@ -1,19 +1,9 @@
-define([
-  'jquery',
-  'underscore',
-  'backbone'
-], function($, _, Backbone) {
+define(function() {
 	return {
 		byDay: function(level) {
-			if(level == 1 || level == 2) {
-				return 8;
-			} else if(level == 3) {
-				return 3;
-			} else if(level == 4) {
-				return 2;
-			} else if(level == 5) {
-				return 1;
-			}
+			var levels = {1: 8, 2: 8, 3: 3, 4: 2, 5: 1};
+
+			return levels[level];
 		}
 	};
 });

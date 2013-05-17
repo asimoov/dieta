@@ -1,9 +1,7 @@
 define([
-  'jquery',
-  'underscore',
   'backbone',
   'routers/interments'
-], function($, _, Backbone, IntermentsRouter) {
+], function(Backbone, IntermentsRouter) {
 	return Backbone.Router.extend({
 		routes: {
 			// Default

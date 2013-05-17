@@ -1,9 +1,7 @@
 define([
-  'jquery',
-  'underscore',
   'backbone',
   'collections/meals'
-], function($, _, Backbone, Meals) {
+], function(Backbone, Meals) {
 	"use strict";
 	return Backbone.Model.extend({
 		urlRoot: "diets",

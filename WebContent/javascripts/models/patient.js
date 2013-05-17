@@ -19,6 +19,7 @@ define([
 			var birthDate = new Date(Date.parse(this.get('bird')));
 			var age = today.getFullYear() - birthDate.getFullYear();
 			var m = today.getMonth() - birthDate.getMonth();
+			
 			if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
 				age--;
 			}
@@ -40,8 +41,7 @@ define([
 			}
 		},
 		isNeedAssistance: function() {
-			var diets = this.diets();
-			var last = diets.first() || new Diet();
+			var last = this.getLastDiet();
 			
 			var date = new Date(last.get('createdAt'));
 			var now = new Date();

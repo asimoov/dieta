@@ -1,10 +1,8 @@
 define([
-  'jquery',
-  'underscore',
   'backbone',
   'models/patient',
   'models/ward'
-], function($, _, Backbone, Patient, Ward) {
+], function(Backbone, Patient, Ward) {
 	"use strict";
 	return Backbone.Model.extend({
 		urlRoot: "interments",

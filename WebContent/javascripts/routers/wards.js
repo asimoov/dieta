@@ -18,19 +18,29 @@ define([
 		},
 		interments: function(wardId) {
 			var ward = new Ward({id: wardId});
-			$.when(ward.fetch({data: { "_format": "json" },cache: true})).then(function() {
-				var intermentsView = new IntermentsView({el : 'section#center', ward: ward, collection: ward.interments(), root: "#wards/" + ward.id + "/interments"});
-				intermentsView.render();
-			});
+			
+			var params = {data: { "_format": "json" },cache: true};
+			$.when(ward.fetch(params)).then($.proxy(function() {
+				this.clear();
+				this.intermentsView = new IntermentsView({el : 'section#center', ward: ward, collection: ward.interments(), root: "#wards/" + ward.id + "/interments"});
+				this.intermentsView.render();
+			}, this));
 		},
 		details: function(wardId, intermentId) {
 			var interment = new Interment({id: intermentId});
 			var ward = new Ward({id: wardId});
-			$.when(ward.fetch({data: {"_format": "json" }, cache: true}), interment.fetch({data: {"_format": "json" }, cache: true}))
-			.then(function() {
-				var intermentsView = new IntermentsView({el : 'section#center', ward: ward, collection: ward.interments(), selected: interment, root: "#wards/" + ward.id + "/interments"});
-				intermentsView.render();
-			});
+			
+			var params = {data: {"_format": "json" }, cache: true};
+			$.when(ward.fetch(), interment.fetch(params)).then($.proxy(function() {
+				this.clear();
+				this.intermentsView = new IntermentsView({el : 'section#center', ward: ward, collection: ward.interments(), selected: interment, root: "#wards/" + ward.id + "/interments"});
+				this.intermentsView.render();
+			},this));
+		},
+		clear: function() {
+			if (this.intermentsView) {
+				this.intermentsView.$el.unbind().empty();
+			}
 		}
 	});
 });
