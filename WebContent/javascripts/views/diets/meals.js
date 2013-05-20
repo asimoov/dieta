@@ -37,8 +37,8 @@ define([
 			this.$el.unbind().empty();
 		},
 		selecteds: function() {
-			return this.views.filter(function(view) {
-				return view.$el.hasClass('selected');
+			return this.subviews.filter(function(subview) {
+				return subview.$el.hasClass('selected');
 			});
 		}
 	});

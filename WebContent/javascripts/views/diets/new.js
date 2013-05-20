@@ -58,10 +58,10 @@ define([
 			this.subviews.push(nutrients);
 		},
 		close: function() {
-			this.$el.unbind().empty();
 			_.forEach(this.subviews, function(subview){
 				subview.close();
 			});
+			this.$el.unbind().empty();
 		},
 		save: function() {
 			return false;

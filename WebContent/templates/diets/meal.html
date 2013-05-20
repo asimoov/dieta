@@ -1,7 +1,7 @@
 <a title="Horarios">
   <% var dish = model.dish() %>
   <i><%= dish.period() %></i>
-  <span style="font-weight: bold;">
+  <span style="font-weight: bold;text-overflow: ellipsis;overflow: hidden;">
   	<%= dish.nature().description() %>
   </span>
   <span>

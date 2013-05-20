@@ -25,7 +25,7 @@ define([
 		},
 		clear: function() {
 			if (this.newView) {
-				this.newView.$el.unbind().empty();
+				this.newView.close();
 			}
 		}
 	});

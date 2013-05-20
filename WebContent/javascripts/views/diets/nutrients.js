@@ -27,6 +27,9 @@ define([
 			for(var i in nutris) {
 				$('tbody', this.$el).append("<tr><td>"+i+"</td><td><b>"+nutris[i].toFixed(2)+"</b></td></tr>");
 			}
+		},
+		close: function() {
+			this.$el.unbind().empty();
 		}
 	});
 });
