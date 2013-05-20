@@ -39,7 +39,7 @@ define([
 		},
 		clear: function() {
 			if (this.intermentsView) {
-				this.intermentsView.$el.unbind().empty();
+				this.intermentsView.close();
 			}
 		}
 	});

@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<title>Jasmine Spec Runner</title>
-		
+	
 		<link rel="stylesheet" type="text/css" href="stylesheets/jasmine.css">
 	</head>
 	<body>
@@ -14,7 +14,9 @@
 		<script data-main="javascripts/spec-main" src="javascripts/vendor/require.js"></script>
 		<script>
 			require({paths: {'spec': '../spec'}}, [
-				"spec/diet_spec"
+				"spec/collections/diets_spec",
+				"spec/models/diet_spec",
+				"spec/models/dish_spec"
 			], function() {
 				jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
 				jasmine.getEnv().execute();

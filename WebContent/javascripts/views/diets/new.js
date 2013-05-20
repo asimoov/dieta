@@ -24,6 +24,7 @@ define([
 			"change #levelOfAssistance": "levelOfAssistance",
 			"change #observation":       "observation"
 		},
+		subviews: [],
 		template: _.template(home),
 		serialize: function() {
 			return {"interment": this.options.interment, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals};
@@ -42,15 +43,25 @@ define([
 			this.$el.append(this.template(this.serialize()));
 			var mealsView = new MealsView({el: "#meals", "collection": this.collection});
 			mealsView.render();
-
+			this.subviews.push(mealsView);
+			
 			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, view: mealsView});
 			naturesView.render();
-
+			this.subviews.push(naturesView);
+			
 			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, view: mealsView});
 			foodsView.render();
+			this.subviews.push(foodsView);
 			
 			var nutrients = new Nutrients({el: "#nutrients", collection: this.collection});
 			nutrients.render();
+			this.subviews.push(nutrients);
+		},
+		close: function() {
+			this.$el.unbind().empty();
+			_.forEach(this.subviews, function(subview){
+				subview.close();
+			});
 		},
 		save: function() {
 			return false;

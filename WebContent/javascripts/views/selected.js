@@ -11,6 +11,9 @@ define([
 		},
 		render: function() {
 			return this.$el.append(this.template(this.serialize()));
+		},
+		close: function() {
+			this.$el.unbind().empty();
 		}
 	});
 });

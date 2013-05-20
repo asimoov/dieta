@@ -25,6 +25,9 @@ define([
 			this.$el.empty();
 			return this.$el.append(this.template(this.serialize()));
 		},
+		close: function() {
+			this.$el.unbind().empty();
+		},
 		select: function() {
 			$(this.el).toggleClass("selected");
 		},

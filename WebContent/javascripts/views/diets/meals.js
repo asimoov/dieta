@@ -9,7 +9,7 @@ define([
   'text!templates/diets/meals.html'
 ], function($, _, Backbone, Meal, Period, Meals, MealView, home) {
 	return Backbone.View.extend({
-		views: [],
+		subviews: [],
 		render: function() {
 			this.$el.empty();
 			this.$el.append(home);
@@ -26,9 +26,15 @@ define([
 				}
 				
 				var mealView = new MealView({model: meal, collection: this.collection});
-				this.views.push(mealView);
+				this.subviews.push(mealView);
 				$(".meals-" + Math.round(index%3), this.$el).append(mealView.render());
 			}, this);
+		},
+		close: function() {
+			_.forEach(this.subviews, function(subview){
+				subview.close();
+			});
+			this.$el.unbind().empty();
 		},
 		selecteds: function() {
 			return this.views.filter(function(view) {

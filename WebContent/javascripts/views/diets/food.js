@@ -17,6 +17,9 @@ define([
 			this.$el.empty();
 			return this.$el.append("<a>" + this.model.get('description') + "</a>");
 		},
+		close: function() {
+			this.$el.unbind().empty();
+		},
 		select: function() {
 			var selecteds = this.options.view.selecteds();
 			

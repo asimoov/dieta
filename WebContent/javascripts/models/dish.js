@@ -8,10 +8,14 @@ define([
 			return new Nature(this.get('nature'));
 		},
 		period: function() {
-			var periods = {"12": "Almoço", "8": "Desjejum", "10": "Colação", "15": "Colação"};
-			var period = periods[this.get('period')] || this.get('period') + "h";
-			
-			return period;
+			var period = parseInt(this.get('period'), 10);
+
+			if(period <= 23 && period >= 0) {
+				var periods = {12: "Almoço", 8: "Desjejum", 10: "Colação", 15: "Colação"};
+				period = periods[period] || period + "h";
+				
+				return period;
+			}
 		}
 	});
 });

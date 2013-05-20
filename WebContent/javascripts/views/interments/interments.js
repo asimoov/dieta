@@ -6,6 +6,7 @@ define([
   'text!templates/interments/interments.html'
 ], function($, _, Backbone, IntermentView, home) {
 	return Backbone.View.extend({
+		subviews: [], 
 		render: function() {
 			this.$el.empty();
 			this.$el.append(home);
@@ -13,7 +14,14 @@ define([
 			this.collection.each(function(interment) {
 				var intermentView = new IntermentView({model: interment, ward: this.options.ward, "selected": this.options.selected, root: this.options.root});
 				$("ul", this.$el).append(intermentView.render());
+				this.subviews.push(intermentView);
 			}, this);
+		},
+		close: function() {
+			_.forEach(this.subviews, function(subview){
+				subview.close();
+			});
+			this.$el.unbind().empty();
 		}
 	});
 });

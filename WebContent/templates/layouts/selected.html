@@ -11,7 +11,7 @@
 				<% var dish = meal.dish() %>
 				<span class="label label-purple"><%= dish.period() %></span>
 
-				<%= dish.nature().description() %>
+				<strong><%= dish.nature().description() %></strong>
 				
 				<% meal.variations().each(function(variation) { %>
 					<%= variation.quantity() > 0 ? "+" : " - " %> <%= variation.quantity() %> <%= variation.food().get('description') %>

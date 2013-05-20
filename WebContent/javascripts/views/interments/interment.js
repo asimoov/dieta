@@ -24,11 +24,17 @@ define([
 			this.$el.append(this.template(this.serialize()));
 			
 			if (this.options.selected !== undefined && this.model.id === this.options.selected.id) {
-				var selectedView = new SelectedView({el: this.$el, model: this.options.selected});
-				selectedView.render();
+				this.selectedView = new SelectedView({el: this.$el, model: this.options.selected});
+				this.selectedView.render();
 			}
 			
 			return this.$el;
+		},
+		close: function() {
+			this.$el.unbind().empty();
+			if(this.selectedView) {
+				this.selectedView.close();
+			}
 		}
 	});
 });
