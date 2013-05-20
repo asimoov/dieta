@@ -16,6 +16,9 @@ define([
 				
 				return period;
 			}
+		},
+		validate: function() {
+			return this.nature().validate() && this.period() !== undefined;
 		}
 	});
 });

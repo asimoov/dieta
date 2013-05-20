@@ -21,7 +21,7 @@ define([
 			_.forEach(this.subviews, function(subview){
 				subview.close();
 			});
-			this.$el.unbind().empty();
+			this.$el.empty().unbind();
 		}
 	});
 });

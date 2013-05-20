@@ -9,6 +9,9 @@ define([
 		},
 		typeFormated: function() {
 			return Type[this.get('type')];
+		},
+		validate: function() {
+			return this.get('description') !== undefined && this.get('type') !== undefined;
 		}
 	});
 });

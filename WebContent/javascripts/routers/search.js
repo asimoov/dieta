@@ -2,11 +2,11 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'fetchCache',
+  'viewmanager',
   'models/interment',
   'collections/interments',
   'views/interments/interments',
-], function($, _, Backbone, fetchCache, Interment, Interments, IntermentsView) {
+], function($, _, Backbone, ViewManager, Interment, Interments, IntermentsView) {
 	return Backbone.Router.extend({
 		routes: {
 			'search/:query'                         : "home",
@@ -20,9 +20,7 @@ define([
 			var options = {cache: false, expires: -10, data: {"q": q, "_format": "json"}};
 	
 			$.when(interments.fetch(options)).then($.proxy(function() {
-				this.clear();
-				this.intermentsView = new IntermentsView({el : 'section#center', "q": q, collection: interments, root: '#search/' + q + "/interments"});
-				this.intermentsView.render();
+				ViewManager.render('section#center', new IntermentsView({"q": q, collection: interments, root: '#search/' + q + "/interments"}));
 			},this));
 		},
 		show: function(q, intermentId) {
@@ -32,15 +30,8 @@ define([
 			var options2 = {cache: false, expires: -10, data: {"_format": "json"}};
 
 			$.when(interments.fetch(options1), interment.fetch(options2)).then($.proxy(function() {
-				this.clear();
-				this.intermentsView = new IntermentsView({el : 'section#center', "q": q, collection: interments, selected: interment, root: "#search/" + q + "/interments/" + intermentId});
-				this.intermentsView.render();
+				ViewManager.render('section#center', new IntermentsView({"q": q, collection: interments, selected: interment, root: "#search/" + q + "/interments/" + intermentId}));
 			}, this));
-		},
-		clear: function() {
-			if (this.intermentsView) {
-				this.intermentsView.close();
-			}
 		}
 	});
 });

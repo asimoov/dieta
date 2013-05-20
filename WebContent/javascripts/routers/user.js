@@ -1,8 +1,7 @@
 define([
   'backbone',
-  'fetchCache',
   'views/login'
-], function(Backbone, fetchCache, Login) {
+], function(Backbone, Login) {
 	var UserRouter = Backbone.Router.extend({
 		routes: {
 			'sign-in': "signin",

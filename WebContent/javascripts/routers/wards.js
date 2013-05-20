@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'fetchCache',
+  'viewmanager',
   'models/interment', 
   'models/ward',
   'collections/interments',
@@ -10,7 +10,7 @@ define([
   'views/home',
   'views/wards/wards',
   'views/interments/interments'
-], function($, _, Backbone, fetchCache, Interment, Ward, Interments, Wards, HomeView, WardsView, IntermentsView) {
+], function($, _, Backbone, ViewManager, Interment, Ward, Interments, Wards, HomeView, WardsView, IntermentsView) {
 	return Backbone.Router.extend({
 		routes: {
 			'wards/:ward_id/interments'              : "interments",
@@ -21,9 +21,7 @@ define([
 			
 			var params = {data: { "_format": "json" },cache: true};
 			$.when(ward.fetch(params)).then($.proxy(function() {
-				this.clear();
-				this.intermentsView = new IntermentsView({el : 'section#center', ward: ward, collection: ward.interments(), root: "#wards/" + ward.id + "/interments"});
-				this.intermentsView.render();
+				ViewManager.render('section#center', new IntermentsView({ward: ward, collection: ward.interments(), root: "#wards/" + ward.id + "/interments"}));
 			}, this));
 		},
 		details: function(wardId, intermentId) {
@@ -32,15 +30,8 @@ define([
 			
 			var params = {data: {"_format": "json" }, cache: true};
 			$.when(ward.fetch(params), interment.fetch(params)).then($.proxy(function() {
-				this.clear();
-				this.intermentsView = new IntermentsView({el : 'section#center', ward: ward, collection: ward.interments(), selected: interment, root: "#wards/" + ward.id + "/interments"});
-				this.intermentsView.render();
+				ViewManager.render('section#center', new IntermentsView({ward: ward, collection: ward.interments(), selected: interment, root: "#wards/" + ward.id + "/interments"}));
 			},this));
-		},
-		clear: function() {
-			if (this.intermentsView) {
-				this.intermentsView.close();
-			}
 		}
 	});
 });

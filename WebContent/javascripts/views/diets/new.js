@@ -30,8 +30,6 @@ define([
 			return {"interment": this.options.interment, "foods": this.options.foods, "Diet": Diet, "Patient": Patient, "Period": Period, "Type": Type, "Meals": Meals};
 		},
 		render: function() {
-			this.$el.empty();
-			
 			var interment = this.options.interment;
 			var patient = interment.patient();
 			var diets = patient.diets();
@@ -39,7 +37,7 @@ define([
 
 			this.model = new Diet(last.toJSON());
 			this.collection = this.model.meals();
-
+			
 			this.$el.append(this.template(this.serialize()));
 			var mealsView = new MealsView({el: "#meals", "collection": this.collection});
 			mealsView.render();
@@ -61,9 +59,17 @@ define([
 			_.forEach(this.subviews, function(subview){
 				subview.close();
 			});
-			this.$el.unbind().empty();
+			this.$el.empty();
 		},
-		save: function() {
+		save: function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			   
+			var meals = new Meals(this.collection.filter(function(meal) {
+				return meal.isValid();
+			}));
+			
+			this.model.set({id: undefined, meals: meals.toJSON()});
 			return false;
 		},
 		cancel: function() {

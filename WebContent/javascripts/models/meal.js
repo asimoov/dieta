@@ -10,6 +10,9 @@ define([
 		},
 		variations: function() {
 			return new Variations(this.get("variations"));
+		},
+		validate: function() {
+			return this.dish().isValid() || this.variations().lenght > 0;
 		}
 	});
 });
