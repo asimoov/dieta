@@ -2,9 +2,6 @@ package br.ufba.hupes.dieta.controllers;
 
 import java.util.List;
 
-import br.ufba.hupes.dieta.models.Diet;
-import br.ufba.hupes.dieta.repositories.DietRepository;
-import br.ufba.hupes.dieta.repositories.PatientRepository;		
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -12,6 +9,11 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.ufba.hupes.dieta.models.Diet;
+import br.ufba.hupes.dieta.models.Meal;
+import br.ufba.hupes.dieta.models.Variation;
+import br.ufba.hupes.dieta.repositories.DietRepository;
+import br.ufba.hupes.dieta.repositories.PatientRepository;
 
 @Resource
 public class DietController {
@@ -37,6 +39,15 @@ public class DietController {
 	
 	@Post("/diets")
 	public void create(Diet diet) {
+		for(Meal meal : diet.getMeals()) {
+			meal.setDiet(diet);
+			if(meal.getVariations() != null) {
+				for(Variation variation: meal.getVariations()) {
+					variation.setMeal(meal);
+				}
+			}
+		}
+
 		validator.validate(diet);
 		validator.onErrorUsePageOf(this).newDiet();
 		repository.create(diet);

@@ -9,17 +9,17 @@ import javax.persistence.OneToMany;
 @javax.persistence.Entity
 public class Meal extends Entity {
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true, cascade = CascadeType.ALL)
 	private Dish dish;
-	
-	@ManyToOne(optional = false)
+
+	@ManyToOne(optional = true)
 	private Diet diet;
-	
+
 	private Integer status;
 
-	@OneToMany(mappedBy = "meal", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "meal", cascade = CascadeType.ALL)
 	private List<Variation> variations;
-	
+
 	public void setDish(Dish dish) {
 		this.dish = dish;
 	}

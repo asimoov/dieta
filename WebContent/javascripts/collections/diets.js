@@ -7,6 +7,9 @@ define([
 	"use strict";
 	
 	return Backbone.Collection.extend({
-		model: Diet
+		model: Diet,
+		comparator: function(model) {
+			return -(new Date(model.get('createdAt'))).getTime();
+		}
 	});
 });

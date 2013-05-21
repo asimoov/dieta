@@ -12,8 +12,9 @@ define([
   'views/diets/meals',
   'views/diets/natures',
   'views/diets/nutrients',
-  'text!templates/diets/new.html'
-], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, FoodsView, MealsView, NaturesView, Nutrients, home) {
+  'text!templates/diets/new.html',
+  'text!templates/diets/submit.params'
+], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, FoodsView, MealsView, NaturesView, Nutrients, home, submit) {
 	return Backbone.View.extend({
 		events: {
 			"submit #new":               "save",
@@ -33,9 +34,10 @@ define([
 			var interment = this.options.interment;
 			var patient = interment.patient();
 			var diets = patient.diets();
-			var last = diets.first() || new Diet({"patient": patient.toJSON(), "meals": []});
+			var last = diets.first() || new Diet();
 
 			this.model = new Diet(last.toJSON());
+			this.model.set({"patient": patient.toJSON()});
 			this.collection = this.model.meals();
 			
 			this.$el.append(this.template(this.serialize()));
@@ -70,6 +72,10 @@ define([
 			}));
 			
 			this.model.set({id: undefined, meals: meals.toJSON()});
+			$.ajax({url: 'diets', type: 'POST', data: JSON.parse(_.template(submit, {model: this.model}))}, function(result) {
+				console.log(result);
+			});
+			
 			return false;
 		},
 		cancel: function() {

@@ -2,7 +2,6 @@ package br.ufba.hupes.dieta.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -10,16 +9,16 @@ import javax.persistence.OneToMany;
 public class Dish extends Entity {
 
 	private Integer period;
-	
-	@ManyToOne(optional = false)
+
+	@ManyToOne
 	private Nature nature;
-	
-	@ManyToOne(optional = false)
+
+	@ManyToOne
 	private Menu menu;
 
-	@OneToMany(mappedBy = "dish", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "dish")
 	private List<Meal> meals;
-	
+
 	public void setPeriod(Integer period) {
 		this.period = period;
 	}

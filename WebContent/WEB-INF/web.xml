@@ -10,7 +10,7 @@
 	</session-config>
 	<context-param>
 		<param-name>br.com.caelum.vraptor.packages</param-name>
-		<param-value>br.com.caelum.vraptor.util.jpa</param-value>
+		<param-value>br.com.caelum.vraptor.util.jpa,br.com.caelum.vraptor.restfulie</param-value>
 	</context-param>
 	<context-param>
 		<param-name>br.com.caelum.vraptor.encoding</param-name>

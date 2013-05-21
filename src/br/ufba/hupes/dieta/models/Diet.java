@@ -29,7 +29,7 @@ public class Diet extends Entity {
 	@ManyToOne(optional = false)
 	private Patient patient;
 	
-	@OneToMany(mappedBy = "diet", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "diet", cascade = CascadeType.ALL)
 	private List<Meal> meals;
 	
 	public Diet() {

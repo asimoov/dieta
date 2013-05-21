@@ -1,11 +1,13 @@
 package br.ufba.hupes.dieta.models;
 
+import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @javax.persistence.Entity
 public class Variation extends Entity {
 
+	@Column(nullable = false)
 	private Double quantity;
 	
 	@ManyToOne(optional = false)
