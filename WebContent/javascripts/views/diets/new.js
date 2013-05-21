@@ -72,8 +72,9 @@ define([
 			}));
 			
 			this.model.set({id: undefined, meals: meals.toJSON()});
-			$.ajax({url: 'diets', type: 'POST', data: JSON.parse(_.template(submit, {model: this.model}))}, function(result) {
-				console.log(result);
+			$.ajax({url: 'diets', type: 'POST', data: JSON.parse(_.template(submit, {model: this.model}))}).done(function(result) {
+				localStorage.clear();
+				window.location.href = '/dieta';
 			});
 			
 			return false;
