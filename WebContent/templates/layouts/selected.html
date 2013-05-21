@@ -17,6 +17,9 @@
 					<%= variation.quantity() > 0 ? "+" : " - " %> <%= variation.quantity() %> <%= variation.food().get('description') %>
 				<% }) %>
 			<% }); %>
+			<% if(meals.length === 0) { %>
+				<strong>Não há refeição.</strong>
+			<% } %>
 		</div>
 	</div>
 <% }); %>

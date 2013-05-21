@@ -39,11 +39,13 @@ public class DietController {
 	
 	@Post("/diets")
 	public void create(Diet diet) {
-		for(Meal meal : diet.getMeals()) {
-			meal.setDiet(diet);
-			if(meal.getVariations() != null) {
-				for(Variation variation: meal.getVariations()) {
-					variation.setMeal(meal);
+		if(diet.getMeals() != null) {
+			for(Meal meal : diet.getMeals()) {
+				meal.setDiet(diet);
+				if(meal.getVariations() != null) {
+					for(Variation variation: meal.getVariations()) {
+						variation.setMeal(meal);
+					}
 				}
 			}
 		}
