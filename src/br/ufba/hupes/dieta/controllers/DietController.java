@@ -14,6 +14,7 @@ import br.ufba.hupes.dieta.models.Meal;
 import br.ufba.hupes.dieta.models.Variation;
 import br.ufba.hupes.dieta.repositories.DietRepository;
 import br.ufba.hupes.dieta.repositories.FoodRepository;
+import br.ufba.hupes.dieta.repositories.NatureRepository;
 import br.ufba.hupes.dieta.repositories.PatientRepository;
 
 @Resource
@@ -22,15 +23,17 @@ public class DietController {
 	private final Result result;
 	private final DietRepository repository;
 	private final PatientRepository patientRepository;
+	private final NatureRepository natureRepository;
 	private final FoodRepository foodRepository;
 	
 	private final Validator validator;
 
 	public DietController(Result result, DietRepository repository,
-			PatientRepository patientRepository, FoodRepository foodRepository, Validator validator) {
+			PatientRepository patientRepository, NatureRepository natureRepository, FoodRepository foodRepository, Validator validator) {
 		this.result = result;
 		this.repository = repository;
 		this.patientRepository = patientRepository;
+		this.natureRepository = natureRepository;
 		this.foodRepository = foodRepository;
 		this.validator = validator;
 	}
@@ -45,6 +48,10 @@ public class DietController {
 		if (diet.getMeals() != null) {
 			for (Meal meal : diet.getMeals()) {
 				meal.setDiet(diet);
+				if(meal.getNature() != null) {
+					meal.setNature(natureRepository.find(meal.getNature().getId()));
+				}
+				
 				if (meal.getVariations() != null) {
 					for (Variation variation : meal.getVariations()) {
 						variation.setMeal(meal);
