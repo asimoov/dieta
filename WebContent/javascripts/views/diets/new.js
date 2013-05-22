@@ -8,13 +8,14 @@ define([
   'models/period',
   'models/type',
   'collections/meals', 
+  'views/alert',
   'views/diets/foods',
   'views/diets/meals',
   'views/diets/natures',
   'views/diets/nutrients',
   'text!templates/diets/new.html',
   'text!templates/diets/submit.params'
-], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, FoodsView, MealsView, NaturesView, Nutrients, home, submit) {
+], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, Alert, FoodsView, MealsView, NaturesView, Nutrients, home, submit) {
 	return Backbone.View.extend({
 		events: {
 			"submit #new":               "save",
@@ -66,15 +67,22 @@ define([
 		save: function(event) {
 			event.preventDefault();
 			event.stopPropagation();
-			   
+			$('#save').attr("disabled", "disabled");
+			$('#cancel').attr("disabled", "disabled");
+			
 			var meals = new Meals(this.collection.filter(function(meal) {
 				return meal.isValid();
 			}));
-			
+
 			this.model.set({id: undefined, meals: meals.toJSON()});
-			$.ajax({url: 'diets', type: 'POST', data: JSON.parse(_.template(submit, {model: this.model}))}).done(function(result) {
-				localStorage.clear();
-				window.location.href = '/dieta';
+			$.ajax({url: 'diets', type: 'POST', data: JSON.parse(_.template(submit, {model: this.model}))})
+			.done($.proxy(function(result) {
+				Backbone.fetchCache.clearItem(this.options.interment.url());
+				Backbone.history.navigate('', true);
+				Alert.success("Add com sucesso");
+			}, this)).fail(function() {
+				$('#save').removeAttr("disabled");
+				$('#cancel').removeAttr("disabled");
 			});
 			
 			return false;

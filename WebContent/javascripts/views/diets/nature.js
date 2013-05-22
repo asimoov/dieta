@@ -2,11 +2,10 @@ define([
   'jquery',
   'underscore', 
   'backbone', 
-  'jqueryui',
   'models/period',
   'models/type',
   'collections/meals', 
-], function($, _, Backbone, jQueryUI, Period, Type) {
+], function($, _, Backbone, Period, Type) {
 	return Backbone.View.extend({
 		tagName: 'li',
 		events: {

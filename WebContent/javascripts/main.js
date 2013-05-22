@@ -4,7 +4,8 @@ require.config({
 	jquery: 'vendor/jquery',
 	underscore: 'vendor/underscore',
 	backbone: 'vendor/backbone',
-	jqueryui: 'vendor/jquery-ui',
+	"jquery-ui": 'vendor/jquery-ui',
+	"jquery-gritter": 'vendor/jquery.gritter',
 	fetchCache: 'vendor/backbone.fetch-cache',
 	tab: 'vendor/bootstrap.tab',
 	handlebars: 'vendor/handlebars',
@@ -25,6 +26,12 @@ require.config({
 	},
 	tab: {
 		deps: ["jquery"]
+	},
+	"jquery-ui": {
+		deps: ["jquery"]
+	},
+	"jquery-gritter": {
+		deps: ["jquery"]
 	}
   }
 });
@@ -36,8 +43,10 @@ require([
   'application',
   'fetchCache',
   'tab',
+  "jquery-gritter",
+  "jquery-ui",
   'views/noComplatible'
-  ], function(M, Config, Application, FetchCache, Tab, noComplatible) {
+  ], function(M, Config, Application, FetchCache, Tab, Gritter, UI, noComplatible) {
 	"use strict";
 	
 	if (Modernizr.input.required && (Modernizr.flexbox || Modernizr.flexboxlegacy)) {

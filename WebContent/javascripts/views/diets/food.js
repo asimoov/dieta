@@ -2,12 +2,11 @@ define([
   'jquery', 
   'underscore', 
   'backbone',
-  'jqueryui',
   'models/period',
   'models/type',
   'models/variation',
   'collections/variations', 
-], function($,  _, Backbone, jQueryUI, Period, Type, Variation, Variations) {
+], function($,  _, Backbone, Period, Type, Variation, Variations) {
 	return Backbone.View.extend({
 		tagName: 'li',
 		events: {
