@@ -3,6 +3,7 @@ package br.ufba.hupes.dieta.models;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 
 @javax.persistence.Entity
 public class Variation extends Entity {
@@ -18,6 +19,9 @@ public class Variation extends Entity {
 	@JoinColumn(unique = true)
 	private Meal meal;
 
+	@Version
+	private Long version;
+	
 	public Double getQuantity() {
 		return quantity;
 	}
@@ -40,6 +44,14 @@ public class Variation extends Entity {
 
 	public Meal getMeal() {
 		return meal;
+	}
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
 	}
 
 }

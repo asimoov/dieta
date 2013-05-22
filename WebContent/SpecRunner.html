@@ -15,8 +15,7 @@
 		<script>
 			require({paths: {'spec': '../spec'}}, [
 				"spec/collections/diets_spec",
-				"spec/models/diet_spec",
-				"spec/models/dish_spec"
+				"spec/models/diet_spec"
 			], function() {
 				jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
 				jasmine.getEnv().execute();

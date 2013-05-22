@@ -17,7 +17,7 @@ public class Entity {
 	public Long getId() {
 		return id;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {

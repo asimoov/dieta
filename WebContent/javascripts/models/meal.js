@@ -1,18 +1,30 @@
 define([
   'backbone',
-  'models/dish',
+  'models/nature',
   'collections/variations'
-], function(Backbone, Dish, Variations) {
+], function(Backbone, Nature, Variations) {
 	"use strict";
 	return Backbone.Model.extend({
-		dish: function() {
-			return new Dish(this.get("dish"));
+		period: function() {
+			var period = parseInt(this.get('period'), 10);
+
+			if(period <= 23 && period >= 0) {
+				var periods = {12: "Almoço", 8: "Desjejum", 10: "Colação", 15: "Lanche"};
+				period = periods[period] || period + "h";
+				
+				return period;
+			}
+		},
+		nature: function() {
+			return new Nature(this.get("nature"));
 		},
 		variations: function() {
 			return new Variations(this.get("variations"));
 		},
 		validate: function() {
-			return this.dish().isValid() || this.variations().lenght > 0;
+			if(!this.nature().isValid() || this.variations().length === 0) {
+				return "meal invalido";
+			}
 		}
 	});
 });

@@ -29,18 +29,11 @@
 					<c:forEach items="${diet.meals}" var="meal" varStatus="j" >
 					{
 						"id": "${meal.id}",
-						"dish": {
-							"id": "${meal.dish.id}",
-							"period": "${meal.dish.period}",
-							"nature": {
-								"id": "${meal.dish.nature.id}",
-								"description": "${meal.dish.nature.description}",
-								"type": "${meal.dish.nature.type}"
-							},
-							"menu": {
-								"id": "${meal.dish.menu.id}",
-								"week": "${meal.dish.menu.week}"
-							}
+						"period": "${meal.period}",
+						"nature": {
+							"id": "${meal.nature.id}",
+							"description": "${meal.nature.description}",
+							"type": "${meal.nature.type}"
 						},
 						"variations": [
 						<c:forEach items="${meal.variations}" var="variation" varStatus="n" >

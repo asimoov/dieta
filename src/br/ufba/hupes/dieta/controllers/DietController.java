@@ -13,6 +13,7 @@ import br.ufba.hupes.dieta.models.Diet;
 import br.ufba.hupes.dieta.models.Meal;
 import br.ufba.hupes.dieta.models.Variation;
 import br.ufba.hupes.dieta.repositories.DietRepository;
+import br.ufba.hupes.dieta.repositories.FoodRepository;
 import br.ufba.hupes.dieta.repositories.PatientRepository;
 
 @Resource
@@ -20,31 +21,34 @@ public class DietController {
 
 	private final Result result;
 	private final DietRepository repository;
-	private final PatientRepository patientRepository;		
+	private final PatientRepository patientRepository;
+	private final FoodRepository foodRepository;
 	
 	private final Validator validator;
-	
-	public DietController(Result result, DietRepository repository, 
-	PatientRepository patientRepository,	Validator validator) {
+
+	public DietController(Result result, DietRepository repository,
+			PatientRepository patientRepository, FoodRepository foodRepository, Validator validator) {
 		this.result = result;
 		this.repository = repository;
-		this.patientRepository = patientRepository;	
+		this.patientRepository = patientRepository;
+		this.foodRepository = foodRepository;
 		this.validator = validator;
 	}
-	
+
 	@Get("/diets")
 	public List<Diet> index() {
 		return repository.findAll();
 	}
-	
+
 	@Post("/diets")
 	public void create(Diet diet) {
-		if(diet.getMeals() != null) {
-			for(Meal meal : diet.getMeals()) {
+		if (diet.getMeals() != null) {
+			for (Meal meal : diet.getMeals()) {
 				meal.setDiet(diet);
-				if(meal.getVariations() != null) {
-					for(Variation variation: meal.getVariations()) {
+				if (meal.getVariations() != null) {
+					for (Variation variation : meal.getVariations()) {
 						variation.setMeal(meal);
+						variation.setFood(foodRepository.find(variation.getFood().getId()));
 					}
 				}
 			}
@@ -55,13 +59,13 @@ public class DietController {
 		repository.create(diet);
 		result.redirectTo(this).index();
 	}
-	
+
 	@Get("/diets/new")
 	public Diet newDiet() {
-		result.include("patientList", patientRepository.findAll());		
+		result.include("patientList", patientRepository.findAll());
 		return new Diet();
 	}
-	
+
 	@Put("/diets")
 	public void update(Diet diet) {
 		validator.validate(diet);
@@ -69,11 +73,11 @@ public class DietController {
 		repository.update(diet);
 		result.redirectTo(this).index();
 	}
-	
+
 	@Get("/diets/{diet.id}/edit")
 	public Diet edit(Diet diet) {
-		result.include("patientList", patientRepository.findAll());		
-		
+		result.include("patientList", patientRepository.findAll());
+
 		return repository.find(diet.getId());
 	}
 
@@ -85,6 +89,6 @@ public class DietController {
 	@Delete("/diets/{diet.id}")
 	public void destroy(Diet diet) {
 		repository.destroy(repository.find(diet.getId()));
-		result.redirectTo(this).index();  
+		result.redirectTo(this).index();
 	}
 }

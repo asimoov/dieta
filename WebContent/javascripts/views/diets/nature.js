@@ -23,11 +23,11 @@ define([
 			
 			selecteds.forEach(function(view) {
 				var model = view.model;
-				var period = parseInt(model.get('dish').period, 10);
+				var period = parseInt(model.period, 10);
 				var type = parseInt(this.model.get('type'), 10);
 
 				if(_.contains(Period.periodsByType[type], period)) {
-					model.get('dish').nature = this.model.toJSON();
+					model.set({'nature': this.model.toJSON()});
 					model.trigger("change");
 				} else {
 					view.$el.effect( "shake", {}, "fast" );

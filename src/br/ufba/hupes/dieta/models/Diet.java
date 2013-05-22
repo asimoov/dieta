@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 @javax.persistence.Entity
 public class Diet extends Entity {
@@ -31,6 +32,9 @@ public class Diet extends Entity {
 	
 	@OneToMany(mappedBy = "diet", cascade = CascadeType.ALL)
 	private List<Meal> meals;
+	
+	@Version
+	private Long version;
 	
 	public Diet() {
 		this.createdAt = new Date();
@@ -106,5 +110,13 @@ public class Diet extends Entity {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
 	}
 }

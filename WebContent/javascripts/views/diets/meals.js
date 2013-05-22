@@ -16,12 +16,11 @@ define([
 
 			_.forEach(Period.periods, function(hour, index) {
 				var meal = this.collection.find(function(meal) {
-					var dish = meal.get('dish');
-					return dish !== undefined && dish.period == hour;
+					return meal.period == hour;
 				});
 
 				if(meal === undefined || meal.length === 0) {
-					meal = new Meal({"dish": {"period": hour}});
+					meal = new Meal({"period": hour});
 					this.collection.push(meal);
 				}
 				

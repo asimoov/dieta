@@ -8,10 +8,9 @@
 		<div class="news-content">
 			<% var meals = diet.meals() %>
 			<% meals.each(function(meal) { %>
-				<% var dish = meal.dish() %>
-				<span class="label label-purple"><%= dish.period() %></span>
+				<span class="label label-purple"><%= meal.period() %></span>
 
-				<strong><%= dish.nature().description() %></strong>
+				<strong><%= meal.nature().description() %></strong>
 				
 				<% meal.variations().each(function(variation) { %>
 					<%= variation.quantity() > 0 ? "+" : " - " %> <%= variation.quantity() %> <%= variation.food().get('description') %>

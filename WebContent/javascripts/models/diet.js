@@ -9,6 +9,9 @@ define([
 		meals: function() {
 			return new Meals(this.get('meals'));
 		},
+		createdAt: function() {
+			return new Date(this.get('createdAt'));
+		},
 		patient: function() {
 			var Patient = require('models/patient');
 			return new Patient(this.get('patient'));

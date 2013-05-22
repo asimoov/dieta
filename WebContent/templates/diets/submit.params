@@ -5,8 +5,10 @@
 , "diet.companion":"<%= model.companion() %>"
 , "diet.patient.id":"<%= model.patient().id %>"
 <% model.meals().each(function(meal, i) {  %>
-	, "diet.meals[<%= i %>].dish.period":"<%= meal.dish().get("period")  %>"
-	, "diet.meals[<%= i %>].dish.nature.id":"<%= meal.dish().nature().id  %>"
+	, "diet.meals[<%= i %>].period":"<%= meal.get("period")  %>"
+	<% if (!meal.nature().isNew()) { %> 
+		, "diet.meals[<%= i %>].nature.id":"<%= meal.nature().id  %>"
+	<% } %>
 	<% meal.variations().each(function(variation, j) {  %>
 		, "diet.meals[<%= i %>].variations[<%= j %>].quantity":"<%= variation.quantity()  %>"
 		, "diet.meals[<%= i %>].variations[<%= j %>].food.id":"<%= variation.food().id  %>"

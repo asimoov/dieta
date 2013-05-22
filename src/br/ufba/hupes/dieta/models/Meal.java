@@ -5,27 +5,33 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 @javax.persistence.Entity
 public class Meal extends Entity {
 
-	@ManyToOne(optional = true, cascade = CascadeType.ALL)
-	private Dish dish;
+	@ManyToOne
+	private Nature nature;
 
 	@ManyToOne(optional = true)
 	private Diet diet;
 
 	private Integer status;
 
+	private Integer period;
+	
 	@OneToMany(mappedBy = "meal", cascade = CascadeType.ALL)
 	private List<Variation> variations;
 
-	public void setDish(Dish dish) {
-		this.dish = dish;
+	@Version
+	private Long version;
+
+	public Nature getNature() {
+		return nature;
 	}
 
-	public Dish getDish() {
-		return dish;
+	public void setNature(Nature nature) {
+		this.nature = nature;
 	}
 
 	public void setDiet(Diet diet) {
@@ -44,12 +50,28 @@ public class Meal extends Entity {
 		return status;
 	}
 
+	public Integer getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(Integer period) {
+		this.period = period;
+	}
+
 	public List<Variation> getVariations() {
 		return variations;
 	}
 
 	public void setVariations(List<Variation> variations) {
 		this.variations = variations;
+	}
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
 	}
 
 }

@@ -3,7 +3,6 @@ define([
   'underscore', 
   'backbone', 
   'handlebars',
-  'models/dish',
   'models/nature',
   'models/patient',
   'models/ward',
@@ -11,13 +10,13 @@ define([
   'collections/meals',
   'views/selected',
   'text!templates/interments/interment.html'
-], function($, _, Backbone, Handlebars, Dish, Nature, Patient, Ward, Diets, Meals, SelectedView, home) {
+], function($, _, Backbone, Handlebars, Nature, Patient, Ward, Diets, Meals, SelectedView, home) {
 	return Backbone.View.extend({
 		tagName:  "li",
 		className: "arrow-box-left gray",
 		template: _.template(home),
 		serialize: function() {
-			return {"interment": this.model, ward: this.options.ward, root: this.options.root, "Dish": Dish, "Nature": Nature, "Patient": Patient, "Ward": Ward, "Diets": Diets, "Meals": Meals};
+			return {"interment": this.model, ward: this.options.ward, root: this.options.root, "Nature": Nature, "Patient": Patient, "Ward": Ward, "Diets": Diets, "Meals": Meals};
 		},
 		render : function() {
 			this.$el.empty();

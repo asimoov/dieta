@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 @javax.persistence.Entity
 public class Nature extends Entity {
@@ -13,7 +14,10 @@ public class Nature extends Entity {
 	private Integer type;
 
 	@OneToMany(mappedBy = "nature", cascade = CascadeType.REMOVE)
-	private List<Dish> dishs;
+	private List<Meal> meals;
+	
+	@Version
+	private Long version;
 	
 	public void setDescription(String description) {
 		this.description = description;
@@ -23,12 +27,12 @@ public class Nature extends Entity {
 		return description;
 	}
 
-	public List<Dish> getDishs() {
-		return dishs;
+	public List<Meal> getMeals() {
+		return meals;
 	}
 
-	public void setDishs(List<Dish> dishs) {
-		this.dishs = dishs;
+	public void setMeals(List<Meal> meals) {
+		this.meals = meals;
 	}
 
 	public Integer getType() {
@@ -37,6 +41,14 @@ public class Nature extends Entity {
 
 	public void setType(Integer type) {
 		this.type = type;
+	}
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
 	}
 
 }

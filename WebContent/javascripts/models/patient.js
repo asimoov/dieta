@@ -33,20 +33,13 @@ define([
 
 			return false;
 		},
-		getLastDiet: function() {
-			var diets = this.diets();
-
-			if (diets !== undefined || diets.length !== 0) {
-				return diets.first();
-			}
-		},
 		isNeedAssistance: function() {
-			var last = this.getLastDiet();
+			var last = this.diets().last();
 			
-			var date = new Date(last.get('createdAt'));
+			var date = last.createdAt();
 			var now = new Date();
 			var diff = Math.round((now - date)/1000/60/60/24);
-			return (diff !== 0 && diff % LevelOfAssistance.byDay(last.levelOfAssistance) === 0);
+			return (diff !== 0 && diff % LevelOfAssistance.byDay(last.levelOfAssistance()) === 0);
 		}
 	});
 });

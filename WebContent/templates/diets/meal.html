@@ -1,8 +1,7 @@
 <a title="Horarios">
-  <% var dish = model.dish() %>
-  <i><%= dish.period() %></i>
+  <i><%= model.period() %></i>
   <span style="font-weight: bold;text-overflow: ellipsis;overflow: hidden;">
-  	<%= dish.nature().description() %>
+  	<%= model.nature().description() %>
   </span>
   <span>
 	<% model.variations().each(function(variation) { %>

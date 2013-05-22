@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 @javax.persistence.Entity
 public class Food extends Entity {
@@ -91,6 +92,9 @@ public class Food extends Entity {
 	@OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE)
 	public List<Variation> variations;
 
+	@Version
+	private Long version;
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -417,5 +421,13 @@ public class Food extends Entity {
 
 	public void setAdditionSugar(Double additionSugar) {
 		this.additionSugar = additionSugar;
+	}
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
 	}
 }

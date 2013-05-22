@@ -8,7 +8,7 @@
 		        		<span class="title"><%= patient.get('name') %> (<%= patient.get('handbook') %>), <%= patient.age() %>, <%= patient.get('sex') %>, <%= interment.get('cid') %>, <%= interment.get('bed') %></span>
 		     		 </div>
 					<div class="box-content">
-						<% var last = patient.getLastDiet() || new Diet() %>
+						<% var last = patient.diets().last() || new Diet() %>
 						<div class="row-fluid">
 							<div class="span6">
 								<div class="padded separate-sections">

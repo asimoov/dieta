@@ -14,13 +14,13 @@ define([
 		},
 		isCurrent: function() {
 			var input = new Date(this.get('input'));
-			var diets = this.patient().diets();
+			var diet = this.patient().diets().last();
 			
-			if (diets.length === 0) {
+			if (diet === undefined) {
 				return true;
 			}
 
-			var createdAt = new Date(diets.first().get('createdAt'));
+			var createdAt = diet.createdAt();
 			if(input > createdAt) {
 				return true;
 			}
