@@ -8,13 +8,8 @@ define([
 	"use strict";
 	return Backbone.Collection.extend({
 		model: Meal,
-		byHour: function(hour) {
-			return  this.filter(function(meal) {
-				return meal.period == hour;
-			});
-		},
 		comparator: function(model) {
-			return Period.periods.indexOf(parseInt(model.period));
+			return Period.periods.indexOf(parseInt(model.get('period')));
 		}
 	});
 });
