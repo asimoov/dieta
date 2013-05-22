@@ -23,20 +23,18 @@ require([
 			if (xhr.status === 403) {
 				UserRouter.signin();
 			} else if (!message) {
-				message = "Unknow Error \n.";
+				$.gritter.add({title: 'Houston, We Have a Problem',text: 'Unknow Error.', sticky: true, time: '' });
 			}
 		} else if (xhr.status === 0) {
-			message = "Not connected. Please verify network is connected.";
+			$.gritter.add({title: 'Houston, We Have a Problem',text: 'Not connected. Please verify network is connected.', sticky: true, time: '' });
 		} else if (exception === 'parsererror') {
-			message = "Error.\nParsing JSON Request failed.";
+			$.gritter.add({title: 'Houston, We Have a Problem',text: 'Error.\nParsing JSON Request failed.', sticky: true, time: '' });
 		} else if (exception === 'timeout') {
-			message = "Request Time out.";
+			$.gritter.add({title: 'Houston, We Have a Problem',text: 'Request Time out.', sticky: true, time: '' });
 		} else if (exception === 'abort') {
-			message = "Request was aborted by the server";
+			$.gritter.add({title: 'Houston, We Have a Problem',text: 'Request was aborted by the server', sticky: true, time: '' });
 		} else {
-			message = "Unknow Error \n.";
+			$.gritter.add({title: 'Houston, We Have a Problem',text: 'Unknow Error.', sticky: true, time: '' });
 		}
-		$(".log").css("display", "inline");
-		$(".log").html(message);
 	});
 });

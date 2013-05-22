@@ -21,6 +21,8 @@
         <intercept-url pattern="/wards/*" access="isAuthenticated()" />
         <intercept-url pattern="/interments" access="isAuthenticated()" />
         <intercept-url pattern="/interments/*" access="isAuthenticated()" />
+        <intercept-url pattern="/diets" access="isAuthenticated()" />
+        <intercept-url pattern="/diets/*" access="isAuthenticated()" />
         <!-- Configure these elements to secure URIs in your application -->
     </http>
 
