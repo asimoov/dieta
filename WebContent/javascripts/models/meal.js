@@ -22,7 +22,7 @@ define([
 			return new Variations(this.get("variations"));
 		},
 		validate: function() {
-			if(!this.nature().isValid() || this.variations().length === 0) {
+			if(!this.nature().isValid() && this.variations().length === 0) {
 				return "meal invalido";
 			}
 		}

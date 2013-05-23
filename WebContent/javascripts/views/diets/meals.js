@@ -15,11 +15,8 @@ define([
 			this.$el.append(home);
 
 			_.forEach(Period.periods, function(hour, index) {
-				var meal = this.collection.find(function(meal) {
-					return meal.period == hour;
-				});
-
-				if(meal === undefined || meal.length === 0) {
+				var meal = this.collection.byHour(hour);
+				if(meal === undefined) {
 					meal = new Meal({"period": hour});
 					this.collection.push(meal);
 				}

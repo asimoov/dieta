@@ -75,9 +75,9 @@ define([
 			}));
 
 			this.model.set({id: undefined, meals: meals.toJSON()});
-			$.ajax({url: 'diets', type: 'POST', data: JSON.parse(_.template(submit, {model: this.model}))})
-			.done($.proxy(function(result) {
+			$.ajax({url: 'diets', type: 'POST', data: JSON.parse(_.template(submit, {model: this.model}))}).done($.proxy(function() {
 				Backbone.fetchCache.clearItem(this.options.interment.url());
+				Backbone.fetchCache.clearItem('interments?_format=json');
 				Backbone.history.navigate('', true);
 				Alert.success("Add com sucesso");
 			}, this)).fail(function() {
