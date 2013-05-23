@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 
 @javax.persistence.Entity
+@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_FOOD") 
 public class Food extends Entity {
 
 	private String description;

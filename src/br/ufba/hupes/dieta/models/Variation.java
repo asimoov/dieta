@@ -2,9 +2,11 @@ package br.ufba.hupes.dieta.models;
 
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 
 @javax.persistence.Entity
+@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_VARIATION") 
 public class Variation extends Entity {
 
 	@Column(nullable = false)

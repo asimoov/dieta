@@ -1,13 +1,12 @@
 package br.ufba.hupes.dieta.models;
 
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class EntityCustom {
 	
-	@Id @GeneratedValue
+	@Id
 	private String id;
 	
 	public void setId(String id) {

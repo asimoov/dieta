@@ -7,8 +7,8 @@
 		${nature.description}
 	</p>
 	<p>
-		<b>Tipo:</b>
-		${nature.tipo}
+		<b>Type:</b>
+		${nature.type}
 	</p>
 
 	<a href="${pageContext.request.contextPath}/natures/${nature.id}/edit">Edit</a>

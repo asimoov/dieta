@@ -1,24 +1,38 @@
 package br.ufba.hupes.dieta.models;
 
+import static ch.lambdaj.Lambda.on;
+import static ch.lambdaj.Lambda.selectMax;
+
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import static ch.lambdaj.Lambda.*;
-
 @javax.persistence.Entity
-public class Patient extends Entity {
+public class Patient {
 
+	@Id
+	private Long id;
+	
 	private Long handbook;
+	
 	private String name;
+	
 	private String sex;
+	
 	private String email;
+	
 	private String phone;
+	
 	private Date bird;
+	
 	private String address;
+	
 	private String complement;
+	
 	private String uf;
+	
 	private String cep;
 
 	@OneToMany(mappedBy = "patient")
@@ -26,6 +40,14 @@ public class Patient extends Entity {
 
 	@OneToMany(mappedBy = "patient")
 	public List<Interment> interments;
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getId() {
+		return id;
+	}
 	
 	public void setHandbook(Long handbook) {
 		this.handbook = handbook;

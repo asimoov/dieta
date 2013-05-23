@@ -1,13 +1,14 @@
 package br.ufba.hupes.dieta.models;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class Entity {
 	
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="SEQUENCE")
 	private Long id;
 	
 	public void setId(Long id) {

@@ -3,11 +3,15 @@ package br.ufba.hupes.dieta.models;
 import java.util.Date;
 
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @javax.persistence.Entity
-public class Interment extends Entity {
+public class Interment {
 
+	@Id
+	private Long id;
+	
 	private Date input;
 	
 	private String bed;
@@ -19,7 +23,15 @@ public class Interment extends Entity {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Ward ward;
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 
+	public Long getId() {
+		return id;
+	}
+	
 	public void setInput(Date input) {
 		this.input = input;
 	}

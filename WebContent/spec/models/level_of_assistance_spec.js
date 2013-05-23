@@ -1,4 +1,4 @@
-define(['models/levelOfAssistance'], function(LevelOfAssistance) {
+define(['models/level_of_assistance'], function(LevelOfAssistance) {
 	describe('Model LevelOfAssistance', function() {
 	    it('should be defined', function() {
 	        expect(LevelOfAssistance).toBeDefined();

@@ -8,6 +8,7 @@
   
 	<c:if test="${not empty nature.id}">
 		<input type="hidden" name="nature.id" value="${nature.id}"/>
+		<input type="hidden" name="nature.version" value="${nature.version}"/>
 		<input type="hidden" name="_method" value="put"/>
 	</c:if>
 
@@ -18,9 +19,9 @@
 	</div>
 	
 	<div class="field">
-		Tipo:<br />
+		Type:<br />
 	
-		<input type="text" name="nature.tipo" value="${nature.tipo}"/>
+		<input type="text" name="nature.type" value="${nature.type}"/>
 	</div>
 	
   <div class="actions">
