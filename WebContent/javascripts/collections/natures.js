@@ -9,7 +9,7 @@ define([
 		url: 'natures?_format=json',
 		model: Nature,
 		comparator: function(model) {
-		return model.get('description');
+			return model.get('description');
 		}
 	});
 });

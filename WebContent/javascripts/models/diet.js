@@ -1,6 +1,5 @@
 define([
   'backbone',
-  
   'collections/meals'
 ], function(Backbone, Meals) {
 	"use strict";

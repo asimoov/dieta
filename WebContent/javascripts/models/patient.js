@@ -39,7 +39,7 @@ define([
 			var date = last.createdAt();
 			var now = new Date();
 			var diff = Math.round((now - date)/1000/60/60/24);
-			return (diff !== 0 && diff % LevelOfAssistance.byDay(last.levelOfAssistance()) === 0);
+			return (diff !== 0 && diff % LevelOfAssistance.byLevel(last.levelOfAssistance()) === 0);
 		}
 	});
 });
