@@ -25,7 +25,7 @@ require([
 			} else if (!message) {
 				$.gritter.add({title: 'Houston, We Have a Problem',text: 'Unknow Error.', sticky: true, time: '' });
 			} else {
-				$.gritter.add({title: 'Houston, We Have a Problem',text: message, sticky: true, time: '' });
+				$.gritter.add({title: 'Houston, We Have a Problem',text: message + "\n" + xhr.responseText, sticky: true, time: '' });
 			}
 		} else if (xhr.status === 0) {
 			$.gritter.add({title: 'Houston, We Have a Problem',text: 'Not connected. Please verify network is connected.', sticky: true, time: '' });
