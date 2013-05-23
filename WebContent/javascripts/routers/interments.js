@@ -15,7 +15,7 @@ define([
 		index: function(intermentId) {
 			var interments = new Interments();
 			
-			var params = {data: {"_format": "json"}, cache: true};
+			var params = {cache: true};
 			$.when(interments.fetch(params)).then($.proxy(function() {
 				ViewManager.render('section#center', new IntermentsView({collection: interments, root: '#interments'}));
 			}, this));
