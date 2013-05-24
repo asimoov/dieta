@@ -6,7 +6,7 @@
 , "diet.patient.id":"<%= model.patient().id %>"
 <% model.meals().each(function(meal, i) {  %>
 	, "diet.meals[<%= i %>].period":"<%= meal.get("period")  %>"
-	<% if (!meal.nature().isNew()) { %> 
+	<% if (!meal.nature().isNew() && meal.nature().id !== "") { %> 
 		, "diet.meals[<%= i %>].nature.id":"<%= meal.nature().id  %>"
 	<% } %>
 	<% meal.variations().each(function(variation, j) {  %>

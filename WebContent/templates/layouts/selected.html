@@ -3,9 +3,13 @@
 <% diets.each(function(diet) { %>
 	<div class="box-section with-icon">
 		<div class="news-time">
-    		<%= (new Date(diet.get('createdAt'))).getDate() %> <%= monthNames[(new Date(diet.get('createdAt'))).getMonth()] %>
+    		 <span><%= (new Date(diet.get('createdAt'))).getDate() %></span>
+    		 <%= monthNames[(new Date(diet.get('createdAt'))).getMonth()] %>
 		</div>
 		<div class="news-content">
+			<div class="news-title">
+				Nivel de Assitencia: <%= diet.levelOfAssistance() %>, Peso: <%= diet.weight() %>, Altura: <%= diet.height() %>, Compania: <%= diet.companion() %>, Obs: <%= diet.observation() %>
+			</div>
 			<% var meals = diet.meals() %>
 			<% meals.each(function(meal) { %>
 				<span class="label label-purple"><%= meal.period() %></span>
