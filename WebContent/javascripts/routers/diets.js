@@ -1,7 +1,7 @@
 define([
   'jquery',
   'backbone',
-  'viewmanager',
+  'helpers/viewmanager',
   'models/interment',
   'collections/foods', 
   'collections/natures', 

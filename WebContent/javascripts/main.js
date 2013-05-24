@@ -39,7 +39,7 @@ require.config({
 require([
   // Load our app module and pass it to our definition function
   'modernizr',
-  'config',
+  'helpers/config',
   'application',
   'fetchCache',
   'tab',

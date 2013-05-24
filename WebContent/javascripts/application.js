@@ -2,7 +2,7 @@ define([
   'jquery', 
   'underscore', 
   'backbone',
-  'analytics', 
+  'helpers/analytics', 
   'models/session',
   'collections/wards',
   'routers/app',

@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'viewmanager',
+  'helpers/viewmanager',
   'models/interment',
   'collections/interments',
   'views/interments/interments',
