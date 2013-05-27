@@ -7,8 +7,11 @@ define([
 		description: function(){
 			return this.get('description');
 		},
+		type: function(){
+			return this.get('type');
+		},
 		typeFormated: function() {
-			return Type[this.get('type')];
+			return Type[this.type()];
 		}
 	});
 });

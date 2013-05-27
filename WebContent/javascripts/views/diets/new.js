@@ -42,21 +42,35 @@ define([
 			this.collection = this.model.meals();
 			
 			this.$el.append(this.template(this.serialize()));
+			console.time("meals");
 			var mealsView = new MealsView({el: "#meals", "collection": this.collection});
 			mealsView.render();
 			this.subviews.push(mealsView);
+			console.timeEnd("meals");
 			
-			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, view: mealsView});
-			naturesView.render();
-			this.subviews.push(naturesView);
+			console.time("natures");
+			window.setTimeout($.proxy(function() {
+				var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, view: mealsView});
+				naturesView.render();
+				this.subviews.push(naturesView);
+			}, this), 0);
+			console.timeEnd("natures");
+
+			console.time("foods");
+			window.setTimeout($.proxy(function() {
+				var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, view: mealsView});
+				foodsView.render();
+				this.subviews.push(foodsView);
+			}, this), 0);
+			console.timeEnd("foods");
 			
-			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, view: mealsView});
-			foodsView.render();
-			this.subviews.push(foodsView);
-			
-			var nutrients = new Nutrients({el: "#nutrients", collection: this.collection});
-			nutrients.render();
-			this.subviews.push(nutrients);
+			console.time("nutrients");
+			window.setTimeout($.proxy(function() {
+				var nutrients = new Nutrients({el: "#nutrients", collection: this.collection});
+				nutrients.render();
+				this.subviews.push(nutrients);
+			}, this), 0);
+			console.timeEnd("nutrients");
 		},
 		close: function() {
 			_.forEach(this.subviews, function(subview){

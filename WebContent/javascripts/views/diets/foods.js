@@ -1,10 +1,11 @@
 define([
   'jquery', 
   'underscore', 
-  'backbone',  
+  'backbone', 
+  'models/type',
   'views/diets/food',
   'text!templates/diets/foods.html'
-], function($,  _, Backbone, FoodView, home) {
+], function($,  _, Backbone, Type, FoodView, home) {
 	return Backbone.View.extend({
 		subviews: [],
 		render: function() {

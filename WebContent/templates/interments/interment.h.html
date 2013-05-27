@@ -1,27 +1,22 @@
-{{#with interment}}
-	{{#if isNulo }}
-		<div class="avatar red">
-			<i class="icon-warning-sign icon-2x"></i>
+{{#ifIsNulo interment}}
+	<div class="avatar red">
+		<i class="icon-warning-sign icon-2x"></i>
+	</div>
+{{else}}
+	{{#ifIsNeedAssistance interment}}
+		<div class="avatar yellow">
+			<i class="icon-exclamation-sign icon-2x"></i>
 		</div>
 	{{else}}
-		{{#if patient.isNeedAssistance }}
-			<div class="avatar yellow">
-				<i class="icon-exclamation-sign icon-2x"></i>
-			</div>
-		{{else}}
-			<div class="avatar green">
-				<i class="icon-ok icon-2x"></i>
-			</div>
-		{{/if}}
-	{{/if}}
-{{/with}}
+		<div class="avatar green">
+			<i class="icon-ok icon-2x"></i>
+		</div>
+	{{/ifIsNeedAssistance}}
+{{/ifIsNulo}}
 <div class="info">
 	<span class="name">
 		<a href="#interments/{{ interment.id }}">
-			{{#with interment.patient}}
-				<strong class="indent">
-					({{ ward.description }})</strong>
-			{{/with}}
+			{{name interment}} ({{description}})
 		</a>
 	</span>
 	<span class="time">
