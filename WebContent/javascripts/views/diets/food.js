@@ -13,8 +13,11 @@ define([
 			"click":	"select"
 		},
 		render: function() {
-			this.$el.empty();
-			return this.$el.append("<a>" + this.model.get('description') + "</a>");
+			var link = document.createElement("a");
+			var text = document.createTextNode(this.model.get('description'));
+			
+			link.appendChild(text);
+			return this.$el.append(link);
 		},
 		close: function() {
 			this.$el.unbind().empty();

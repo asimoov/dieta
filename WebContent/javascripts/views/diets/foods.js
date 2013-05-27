@@ -13,13 +13,19 @@ define([
 			this.$el.append(home);
 			
 			$("a:first", this.$el).tab("show");
+			var frags = new Array(document.createDocumentFragment(), document.createDocumentFragment(), document.createDocumentFragment());
 			this.collection.each(function(food) {
-				var type = food.typeFormated();
+				var type = food.type();
 				
 				var foodView = new FoodView({model: food, view: this.options.view});
-				$('#food' + type).append(foodView.render());
+				frags[type].appendChild(foodView.el);
+				foodView.render();
 				this.subviews.push(foodView);
 			}, this);
+
+			$('#foodSolído').append(frags[0]);
+			$('#foodLiquído').append(frags[1]);
+			$('#foodEnteral').append(frags[2]);
 		},
 		close: function() {
 			_.forEach(this.subviews, function(subview){

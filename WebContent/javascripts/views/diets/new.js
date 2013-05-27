@@ -49,27 +49,21 @@ define([
 			console.timeEnd("meals");
 			
 			console.time("natures");
-			window.setTimeout($.proxy(function() {
-				var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, view: mealsView});
-				naturesView.render();
-				this.subviews.push(naturesView);
-			}, this), 0);
+			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, view: mealsView});
+			naturesView.render();
+			this.subviews.push(naturesView);
 			console.timeEnd("natures");
 
 			console.time("foods");
-			window.setTimeout($.proxy(function() {
-				var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, view: mealsView});
-				foodsView.render();
-				this.subviews.push(foodsView);
-			}, this), 0);
+			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, view: mealsView});
+			foodsView.render();
+			this.subviews.push(foodsView);
 			console.timeEnd("foods");
 			
 			console.time("nutrients");
-			window.setTimeout($.proxy(function() {
-				var nutrients = new Nutrients({el: "#nutrients", collection: this.collection});
-				nutrients.render();
-				this.subviews.push(nutrients);
-			}, this), 0);
+			var nutrients = new Nutrients({el: "#nutrients", collection: this.collection});
+			nutrients.render();
+			this.subviews.push(nutrients);
 			console.timeEnd("nutrients");
 		},
 		close: function() {
