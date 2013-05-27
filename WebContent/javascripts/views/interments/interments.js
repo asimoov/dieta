@@ -11,11 +11,18 @@ define([
 			this.$el.empty();
 			this.$el.append(home);
 			
+			console.time("interments");
+			var frag = document.createDocumentFragment();
 			this.collection.each(function(interment) {
 				var intermentView = new IntermentView({model: interment, ward: this.options.ward, "selected": this.options.selected, root: this.options.root});
-				$("ul", this.$el).append(intermentView.render());
+				frag.appendChild(intermentView.el);
+				intermentView.render();
+
 				this.subviews.push(intermentView);
 			}, this);
+			
+			$("ul", this.$el).append(frag);
+			console.timeEnd("interments");
 		},
 		close: function() {
 			_.forEach(this.subviews, function(subview){
