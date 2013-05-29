@@ -5,15 +5,22 @@ define(['jquery', 'backbone', 'jasmine-sinon', 'routers/interments'], function($
 			this.routeSpy = sinon.spy();
 			this.server = sinon.fakeServer.create();
 			this.server.autoRespond = true;
+
 			try {
 				Backbone.history.start();
 			} catch (e) {
+				Backbone.history.loadUrl();
 			}
 			this.router.navigate("elsewhere");
+			$('body').append('<section id="center" style="display:none"></section>');
 		});
 		
-		it("fires the interments route", function() {
-			$('body').append('<section id="center" style="display:none"></section>');
+		afterEach(function() {
+			this.router.navigate('', true);
+			$("section#center").remove();
+		});
+		
+		it("fires the interments index route", function() {
 			this.router.bind("route:index", this.routeSpy);
 
 			this.server.respondWith("GET", "interments?_format=json", [200, {"Content-Type": "application/json"}, '[ { "id": "1", "input": "2013-03-06 16:00:14.0", "cid": "TUBERCULOSE PULMONAR, COM CONFIRMACAO POR EXAME MICROSCÓPIO DA EXPECTORACAO, COM OU SEM CULTURA", "bed": "LEITO 11 CLI HEMATOL", "patient": { "handbook": "", "name": "SINON", "sex": "M", "email": "", "phone": "07199999999", "bird": "2009-10-02 00:00:00.0", "address": "", "complement": "", "uf": "BA", "cep": "", "diets": [ { "id": "100", "weight": "20.0", "height": "0.7", "companion": "true", "levelOfAssistance": "5", "observation": "", "createdAt": "2013-05-24 09:04:37.283" } ] }, "ward": { "description": "1B - UN INT ONCOHEMATO/TMO" } }]']);
@@ -24,7 +31,22 @@ define(['jquery', 'backbone', 'jasmine-sinon', 'routers/interments'], function($
 				expect(this.routeSpy).toHaveBeenCalledOnce();
 				expect(this.routeSpy).toHaveBeenCalledWith();
 				expect($("section#center").html()).toMatch('SINON');
+				expect($("section#center").html()).toMatch('1B - UN INT ONCOHEMATO/TMO');
 			});
 		});
+		
+//		it("fires the interments show route", function() {
+//			this.router.bind("route:show", this.routeSpy);
+//
+//			this.server.respondWith("GET", "interments?_format=json", [200, {"Content-Type": "application/json"}, '[ { "id": "1", "input": "2013-03-06 16:00:14.0", "cid": "TUBERCULOSE PULMONAR, COM CONFIRMACAO POR EXAME MICROSCÓPIO DA EXPECTORACAO, COM OU SEM CULTURA", "bed": "LEITO 11 CLI HEMATOL", "patient": { "handbook": "", "name": "SINON", "sex": "M", "email": "", "phone": "07199999999", "bird": "2009-10-02 00:00:00.0", "address": "", "complement": "", "uf": "BA", "cep": "", "diets": [ { "id": "100", "weight": "20.0", "height": "0.7", "companion": "true", "levelOfAssistance": "5", "observation": "", "createdAt": "2013-05-24 09:04:37.283" } ] }, "ward": { "description": "1B - UN INT ONCOHEMATO/TMO" } }]']);
+//			this.router.navigate("interments/1", true);
+//			
+//			waits(500);
+//			runs(function() {
+//				expect(this.routeSpy).toHaveBeenCalledOnce();
+//				expect(this.routeSpy).toHaveBeenCalledWith();
+//				expect($("section#center").html()).toMatch('SINON');
+//			});
+//		});
 	});
 });

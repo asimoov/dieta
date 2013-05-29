@@ -5,11 +5,10 @@ define([
 	return Backbone.Router.extend({
 		routes: {
 			// Default
-			'':         "home",
-			'/':        "home",
+			'':         "index",
 			'*actions': "defaultAction"
 		},
-		home: function() {
+		index: function() {
 			this.navigate("interments", {trigger: true, replace: true});
 		},
 		defaultAction: function() {
