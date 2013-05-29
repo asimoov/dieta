@@ -3,13 +3,15 @@ require.config({
 	jquery: 'vendor/jquery',
 	underscore: 'vendor/underscore',
 	backbone: 'vendor/backbone',
-	jqueryui: 'vendor/jquery-ui',
+	"jquery-ui": 'vendor/jquery-ui',
+	"jquery-gritter": 'vendor/jquery.gritter',
 	fetchCache: 'vendor/backbone.fetch-cache',
 	tab: 'vendor/bootstrap.tab',
-	sinon: 'vendor/sinon',
 	handlebars: 'vendor/handlebars',
 	modernizr: 'vendor/modernizr',
 	keymaster: 'vendor/keymaster',
+	sinon: 'vendor/sinon',
+	"jasmine-sinon": 'vendor/jasmine-sinon',
 	templates: '../templates'
   },
   shim: {
@@ -25,6 +27,15 @@ require.config({
 	},
 	tab: {
 		deps: ["jquery"]
+	},
+	"jquery-ui": {
+		deps: ["jquery"]
+	},
+	"jquery-gritter": {
+		deps: ["jquery"]
+	},
+	"jasmine-sinon": {
+		deps: ["sinon"]
 	}
   }
 });
