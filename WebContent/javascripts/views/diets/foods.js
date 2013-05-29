@@ -9,7 +9,6 @@ define([
 	return Backbone.View.extend({
 		subviews: [],
 		render: function() {
-			this.$el.empty();
 			this.$el.append(home);
 			
 			$("a:first", this.$el).tab("show");
@@ -18,8 +17,9 @@ define([
 				var type = food.type();
 				
 				var foodView = new FoodView({model: food, view: this.options.view});
-				frags[type].appendChild(foodView.el);
 				foodView.render();
+				frags[type].appendChild(foodView.el);
+				
 				this.subviews.push(foodView);
 			}, this);
 

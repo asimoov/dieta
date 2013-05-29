@@ -15,7 +15,7 @@ define([
   'views/diets/nutrients',
   'text!templates/diets/new.html',
   'text!templates/diets/submit.params'
-], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, Alert, FoodsView, MealsView, NaturesView, Nutrients, home, submit) {
+], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, Alert, FoodsView, MealsView, NaturesView, NutrientsView, home, submit) {
 	return Backbone.View.extend({
 		events: {
 			"submit #new":               "save",
@@ -42,29 +42,50 @@ define([
 			this.collection = this.model.meals();
 			
 			this.$el.append(this.template(this.serialize()));
-			console.time("meals");
-			var mealsView = new MealsView({el: "#meals", "collection": this.collection});
-			mealsView.render();
-			this.subviews.push(mealsView);
-			console.timeEnd("meals");
 			
 			console.time("natures");
-			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, view: mealsView});
-			naturesView.render();
+			var mealsView = this.makeMeals();
+			this.subviews.push(mealsView);
+			console.timeEnd("natures");
+			
+			console.time("natures");
+			var naturesView = this.makeNaturesView(mealsView);
 			this.subviews.push(naturesView);
 			console.timeEnd("natures");
 
 			console.time("foods");
-			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, view: mealsView});
-			foodsView.render();
+			var foodsView = this.makeFoodsView(mealsView);
 			this.subviews.push(foodsView);
 			console.timeEnd("foods");
 			
 			console.time("nutrients");
-			var nutrients = new Nutrients({el: "#nutrients", collection: this.collection});
-			nutrients.render();
-			this.subviews.push(nutrients);
+			var nutrientsView = this.makeNutrientsView();
+			this.subviews.push(nutrientsView);
 			console.timeEnd("nutrients");
+		},
+		makeMeals: function() {
+			var mealsView = new MealsView({el: "#meals", "collection": this.collection});
+			mealsView.render();
+			
+			return mealsView;
+		},
+		makeNaturesView: function(mealsView) {
+			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, view: mealsView});
+			naturesView.render();
+			
+			return naturesView;
+		},
+		makeFoodsView: function(mealsView) {
+			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, view: mealsView});
+			foodsView.render();
+			
+			return foodsView;
+		},
+		makeNutrientsView: function() {
+			var nutrientsView = new NutrientsView({el: "#nutrients", collection: this.collection});
+			nutrientsView.render();
+			
+			return nutrientsView;
 		},
 		close: function() {
 			_.forEach(this.subviews, function(subview){

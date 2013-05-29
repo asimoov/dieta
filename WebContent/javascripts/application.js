@@ -26,9 +26,9 @@ define([
 			});
 			
 			var routes = [AppRouter, DietsRouter, SearchRouter, IntermentsRouter, WardsRouter];
-				_.forEach(routes, function(Route) {
-					var route = new Route();
-					route.on('route', function() {
+			_.forEach(routes, function(Route) {
+				var route = new Route();
+				route.on('route', function() {
 					Analytics.trigger('track');
 				});
 			});

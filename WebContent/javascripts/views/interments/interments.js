@@ -8,15 +8,14 @@ define([
 	return Backbone.View.extend({
 		subviews: [], 
 		render: function() {
-			this.$el.empty();
 			this.$el.append(home);
 			
 			console.time("interments");
 			var frag = document.createDocumentFragment();
 			this.collection.each(function(interment) {
 				var intermentView = new IntermentView({model: interment, ward: this.options.ward, "selected": this.options.selected, root: this.options.root});
-				frag.appendChild(intermentView.el);
 				intermentView.render();
+				frag.appendChild(intermentView.el);
 
 				this.subviews.push(intermentView);
 			}, this);
