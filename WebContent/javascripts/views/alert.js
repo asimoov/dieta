@@ -1,6 +1,6 @@
 define([ 
   'backbone', 
-  'text!templates/layouts/alert.html'
+  'text!templates/alert.html'
 ], function(Backbone, home) {
 	var AlertView = Backbone.View.extend({
 		events: {

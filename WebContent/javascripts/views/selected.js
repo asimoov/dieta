@@ -2,7 +2,7 @@ define([
   'jquery', 
   'underscore', 
   'backbone', 
-  'text!templates/layouts/selected.html'
+  'text!templates/interments/selected.html'
 ], function($, _, Backbone, home) {
 	return Backbone.View.extend({
 		template: _.template(home),

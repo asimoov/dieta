@@ -1,15 +1,15 @@
 <% var monthNames = [ "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez" ] %>
-<% var diets = model.patient().diets() %>
-<% diets.each(function(diet) { %>
+<% var patient = model.patient() %>
+<% var diets = patient.diets() %>
+<% diets.each(function(diet, index) { %>
 	<div class="box-section with-icon">
 		<div class="news-time">
     		 <span><%= (new Date(diet.get('createdAt'))).getDate() %></span>
     		 <%= monthNames[(new Date(diet.get('createdAt'))).getMonth()] %>
 		</div>
 		<div class="news-content">
-			<div class="news-title">
-				Nivel de Assistência: <%= diet.levelOfAssistance() %>, Peso: <%= diet.weight() %>, Altura: <%= diet.height() %>, Compania: <%= diet.companion() %>, Obs: <%= diet.observation() %>
-			</div>
+			Nivel de Assistência: <%= diet.levelOfAssistance() %>, Peso: <%= diet.weight() %>, Altura: <%= diet.height() %>, Compania: <%= diet.companion() %>, IMC: <%= patient.imc(index) %>, TMB: <%= patient.tmb(index) %>, GET: <%= patient.ndc(index) %>, Obs: <%= diet.observation() %>
+			<br />
 			<% var meals = diet.meals() %>
 			<% meals.each(function(meal) { %>
 				<span class="label label-purple"><%= meal.period() %></span>
