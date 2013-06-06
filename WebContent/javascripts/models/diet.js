@@ -5,6 +5,11 @@ define([
 	"use strict";
 	return Backbone.Model.extend({
 		urlRoot: "diets",
+		defaults: {
+			createdAt: new Date(),
+			weight: 0,
+			height: 0
+		},
 		meals: function() {
 			return new Meals(this.get('meals'));
 		},

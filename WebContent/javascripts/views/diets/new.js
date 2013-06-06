@@ -122,12 +122,15 @@ define([
 		weight: function(event) {
 			var weight = parseFloat($("#weight").val());
 			var height = parseFloat($("#height").val());
-	
+
 			this.model.set({"weight": weight});
 			
 			if(weight !== undefined && height !== undefined) {
-				var v = (weight / (height * height)).toFixed(2);
-				$('#value-imc').text(v);
+				var p = this.model.patient();
+				p.set({diets:[this.model]});
+				$('#imc').val(p.imc(0));
+				$('#tmb').val(p.tmb(0));
+				$('#get').val(p.ndc(0));
 			}
 		},
 		height: function(event) {
@@ -137,8 +140,11 @@ define([
 			this.model.set({"height": height});
 			
 			if(weight !== undefined && height !== undefined) {
-				var v = (weight / (height * height)).toFixed(2);
-				$('#value-imc').text(v);
+				var p = this.model.patient();
+				p.set({diets:[this.model]});
+				$('#imc').val(p.imc(0));
+				$('#tmb').val(p.tmb(0));
+				$('#get').val(p.ndc(0));
 			}
 		},
 		companion: function(event) {

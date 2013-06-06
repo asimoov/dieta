@@ -8,7 +8,7 @@
 		        		<span class="title"><%= patient.get('name') %> (<%= patient.get('handbook') %>), <%= patient.age() %>, <%= patient.get('sex') %>, <%= interment.get('cid') %>, <%= interment.get('bed') %></span>
 		     		 </div>
 					<div class="box-content">
-						<% var last = patient.diets().last() || new Diet() %>
+						<% var last = patient.diets().first() || new Diet() %>
 						<div class="row-fluid">
 							<div class="span6">
 								<div class="padded separate-sections">
@@ -22,6 +22,12 @@
 										<label class="control-label">Obs.</label>
 										<div class="controls chat-message-box">
 											<textarea id="observation" class="wysihtml5-toolbar" rows="5" ><%= last.observation() %></textarea>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">IMC</label>
+										<div class="controls chat-message-box">
+											<input id="imc" type="text" value="<%= patient.imc(0) %>" disabled="disabled"/>
 										</div>
 									</div>
 								</div>
@@ -57,6 +63,18 @@
 											  	Nao
 										 	 <input required="required" style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="false" <%= last.companion() ? "checked" : "" %> />
 											</label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">TMB</label>
+										<div class="controls chat-message-box">
+											<input id="tmb" type="text" value="<%= patient.tmb(0) %>" disabled="disabled"/>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">GET</label>
+										<div class="controls chat-message-box">
+											<input id="get" type="text" value="<%= patient.ndc(0) %>" disabled="disabled"/>
 										</div>
 									</div>
 								</div>

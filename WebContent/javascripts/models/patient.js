@@ -46,6 +46,7 @@ define([
 		},
 		imc: function(index) {
 			var last = this.diets().at(index);
+			if(last === undefined){ return 0 };
 			
 			var weight = parseFloat(last.weight());
 			var height = parseFloat(last.height());
@@ -54,16 +55,17 @@ define([
 		},
 		tmb: function(index) {
 			var last = this.diets().at(index);
+			if(last === undefined){ return 0 };
 			
 			var weight = parseFloat(last.weight());
 			var height = parseFloat(last.height());
 			var age = this.age();
 			
 			if (this.sex() === "M") {
-				return 66.5 + (13.75 * weight) + (5.003 * (height * 100)) - (6.775 * age);
+				return (66.5 + (13.75 * weight) + (5.003 * (height * 100)) - (6.775 * age)).toFixed(2);
 			}
 
-			return 655.1 + (9.563 * weight) + (1.850 * (height * 100)) - (4.676 * age);
+			return (655.1 + (9.563 * weight) + (1.850 * (height * 100)) - (4.676 * age)).toFixed(2);
 		},
 		ndc: function(index) {
 			var tmb = this.tmb(index);
