@@ -6,18 +6,23 @@ define([
 		events: {
 			"click .close":	"close"
 		},
-		render: function() {
-			this.$el.prepend(home);
+		template: _.template(home),
+		render: function(options) {
+			this.$el.prepend(this.template(options));
 		},
 		close: function(ev) {
 			this.$el.empty().unbind();
 		}
 	});
-	
+
 	return {
 		success: function() {
-			var alertView = new AlertView({el: "section#log"});
-			alertView.render();
+			var alertView = new AlertView({el: "#log"});
+			alertView.render({text: "<strong>Add Dieta!</strong> Você add uma dieta com sucesso.", status: "success"});
+		},
+		error: function() {
+			var alertView = new AlertView({el: "#log"});
+			alertView.render({text: "<strong>Add Dieta!</strong> Você add uma dieta com sucesso.", status: "error"});
 		}
 	};
 });

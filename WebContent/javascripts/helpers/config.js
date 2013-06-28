@@ -18,6 +18,7 @@ require([
 			500: "Internal Server Error.",
 			503: "Service Unavailable"
 		};
+
 		if (xhr.status) {
 			message = statusErrorMap[xhr.status];
 			if (xhr.status === 403) {
