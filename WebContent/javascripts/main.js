@@ -2,8 +2,9 @@ require.config({
   //urlArgs: "bust=" +  (new Date()).getTime(),
   paths: {
 	jquery: 'vendor/jquery',
-	underscore: 'vendor/underscore',
+	underscore: 'vendor/lodash.compat',
 	backbone: 'vendor/backbone',
+	"backbone.marionette": 'vendor/backbone.marionette',
 	"jquery-ui": 'vendor/jquery-ui',
 	"jquery-gritter": 'vendor/jquery.gritter',
 	fetchCache: 'vendor/backbone.fetch-cache',
@@ -20,6 +21,9 @@ require.config({
 	backbone: {
 		deps: ["underscore", "jquery"],
 		exports: "Backbone"
+	},
+	"backbone.marionette": {
+		deps: ["backbone"]
 	},
 	handlebars: {
 		exports: 'Handlebars'
