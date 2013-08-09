@@ -35,9 +35,9 @@ public class ReportsController {
 		this.context = context;
 	}
 
-	@Get("/reports/pantry")
-	public Download pantry() throws JRException {
-		InputStream file = this.context.getResourceAsStream("WEB-INF/reports/pantry.jrxml");
+	@Get("/reports/scullery")
+	public Download scullery() throws JRException {
+		InputStream file = this.context.getResourceAsStream("WEB-INF/reports/scullery.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file);
 		Map<String, Object> parametros = new HashMap<String, Object>();
 		//parametros.put("nomeAluno", nome);
@@ -52,6 +52,26 @@ public class ReportsController {
 		InputStream document = new ByteArrayInputStream(os.toByteArray());
 
 		return new InputStreamDownload(document, "application/pdf",
-				"pantry.pdf", true, os.toByteArray().length);
+				"scullery.pdf", true, os.toByteArray().length);
+	}
+	
+	@Get("/reports/clinic")
+	public Download clinic() throws JRException {
+		InputStream file = this.context.getResourceAsStream("WEB-INF/reports/clinic.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(file);
+		Map<String, Object> parametros = new HashMap<String, Object>();
+		//parametros.put("nomeAluno", nome);
+		//parametros.put("codigo", "6503000");
+
+		SessionImplementor hibernateSession = this.entityManager.unwrap(SessionImplementor.class);
+		Connection connection = hibernateSession.connection(); 
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, connection);
+
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		JasperExportManager.exportReportToPdfStream(jasperPrint, os);
+		InputStream document = new ByteArrayInputStream(os.toByteArray());
+
+		return new InputStreamDownload(document, "application/pdf",
+				"clinic.pdf", true, os.toByteArray().length);
 	}
 }
