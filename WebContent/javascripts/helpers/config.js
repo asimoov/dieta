@@ -7,7 +7,7 @@ require([
 	});
 	
 	$(document).ajaxComplete(function() {
-		$('#loading').delay(3000).hide(0);
+		$('#loading').hide();
 	});
 	
 	$(document).ajaxError(function(event, xhr, settings, exception) {
