@@ -7,8 +7,10 @@ define([
 ], function($, _, Backbone, Ward, home) {
 	return  Backbone.View.extend({
 		tagName:  "li",
+		initialize: function() {
+			this.listenTo(this.model, 'change', this.render);
+		},
 		render : function() {
-			this.$el.empty();
 			return this.$el.append(_.template(home, {"ward": this.model}));
 		}
 	});

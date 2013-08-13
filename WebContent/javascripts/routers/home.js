@@ -1,9 +1,8 @@
 define([
   'backbone',
   'helpers/viewmanager',
-  'routers/interments',
   'views/home',
-], function(Backbone, ViewManager, IntermentsRouter, HomeView) {
+], function(Backbone, ViewManager, HomeView) {
 	return Backbone.Router.extend({
 		routes: {
 			// Default

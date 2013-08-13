@@ -18,20 +18,17 @@ define([
 		},
 		interments: function(wardId) {
 			var ward = new Ward({id: wardId});
-			
-			var params = {data: { "_format": "json" },cache: true};
-			$.when(ward.fetch(params)).then($.proxy(function() {
-				ViewManager.render('section#center', new IntermentsView({ward: ward, collection: ward.interments(), root: "#wards/" + ward.id + "/interments"}));
-			}, this));
+			ward.fetch({data: { "_format": "json" }, cache: true});
+			ViewManager.render('section#center', new IntermentsView({ward: ward, root: "#wards/" + ward.id + "/interments"}));
 		},
 		details: function(wardId, intermentId) {
 			var interment = new Interment({id: intermentId});
 			var ward = new Ward({id: wardId});
 			
 			var params = {data: {"_format": "json" }, cache: true};
-			$.when(ward.fetch(params), interment.fetch(params)).then($.proxy(function() {
-				ViewManager.render('section#center', new IntermentsView({ward: ward, collection: ward.interments(), selected: interment, root: "#wards/" + ward.id + "/interments"}));
-			},this));
+			ward.fetch(params);
+			interment.fetch(params);
+			ViewManager.render('section#center', new IntermentsView({ward: ward, collection: ward.interments(), selected: interment, root: "#wards/" + ward.id + "/interments"}));
 		}
 	});
 });

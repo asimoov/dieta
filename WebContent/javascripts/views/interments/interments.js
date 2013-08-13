@@ -7,13 +7,23 @@ define([
 ], function($, _, Backbone, IntermentView, home) {
 	return Backbone.View.extend({
 		subviews: [], 
+		initialize: function() {
+			if(this.options.ward !== undefined) {
+				this.listenTo(this.options.ward, 'change', function() { this.close(); this.render(); });
+			}
+			
+			if(this.collection !== undefined) {
+				this.listenTo(this.collection, 'reset', function() { this.close(); this.render(); });
+			}
+		},
 		render: function() {
+			console.log("entrou");
 			this.$el.append(home);
 			
-			console.time("interments");
 			this.makeSelector();
 			var frag = document.createDocumentFragment();
-			this.collection.each(function(interment) {
+			var collection = this.options.ward !== undefined ? this.options.ward.interments() : this.collection;
+			collection.each(function(interment) {
 				var intermentView = new IntermentView({model: interment, ward: this.options.ward, "selected": this.options.selected, root: this.options.root});
 				intermentView.render();
 				frag.appendChild(intermentView.el);
@@ -22,7 +32,6 @@ define([
 			}, this);
 			
 			$("ul", this.$el).append(frag);
-			console.timeEnd("interments");
 		},
 		makeSelector: function() {
 			$("li.active").removeClass("active");

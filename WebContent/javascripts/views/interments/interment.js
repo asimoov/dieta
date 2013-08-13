@@ -16,6 +16,13 @@ define([
 		tagName:  "li",
 		className: "arrow-box-left gray",
 		template: _.template(home),
+		initialize: function() {
+			this.listenTo(this.model, 'all', function() { this.close(); this.render(); } );
+
+			if(this.options.selected !== undefined) {
+				this.listenTo(this.options.selected, 'all', function() { this.close(); this.render(); });
+			}
+		},
 		serialize: function() {
 			return {"interment": this.model, ward: this.options.ward, root: this.options.root, "Nature": Nature, "Patient": Patient, "Ward": Ward, "Diets": Diets, "Meals": Meals};
 		},

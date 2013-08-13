@@ -14,21 +14,20 @@ define([
 		},
 		home: function(q) {
 			var interments = new Interments();
-			var options = {cache: false, expires: -10, data: {"q": q}};
+			var options = {data: {"q": q}, cache: false, expires: -10, reset: true};
 	
-			$.when(interments.fetch(options)).then($.proxy(function() {
-				ViewManager.render('section#center', new IntermentsView({"q": q, collection: interments, root: '#search/' + q + "/interments"}));
-			},this));
+			interments.fetch(options);
+			ViewManager.render('section#center', new IntermentsView({"q": q, collection: interments, root: '#search/' + q + "/interments"}));
 		},
 		show: function(q, intermentId) {
 			var interments = new Interments();
 			var interment = new Interment({id: intermentId});
-			var options1 = {cache: false, expires: -10, data: {"q": q}};
-			var options2 = {cache: false, expires: -10, data: {"_format": "json"}};
+			var options1 = {data: {"q": q}, cache: false, expires: -10, reset: true};
+			var options2 = {data: {"_format": "json"}, cache: false, expires: -10, };
 
-			$.when(interments.fetch(options1), interment.fetch(options2)).then($.proxy(function() {
-				ViewManager.render('section#center', new IntermentsView({"q": q, collection: interments, selected: interment, root: "#search/" + q + "/interments"}));
-			}, this));
+			interments.fetch(options1);
+			interment.fetch(options2);
+			ViewManager.render('section#center', new IntermentsView({"q": q, collection: interments, selected: interment, root: "#search/" + q + "/interments"}));
 		}
 	});
 });
