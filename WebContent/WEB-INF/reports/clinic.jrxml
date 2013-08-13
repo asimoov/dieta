@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Clinic" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="88d7b233-679b-4932-bd35-e3d2fa2a1dc0">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Clinic" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="88d7b233-679b-4932-bd35-e3d2fa2a1dc0">
+	<property name="ireport.zoom" value="0.9090909090909091"/>
+	<property name="ireport.x" value="87"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[select * from dual]]>
@@ -13,14 +13,45 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="8e383244-593f-46f1-b572-5ae702c42b08" x="234" y="27" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[Clinica]]></text>
+				<reportElement uuid="422e3253-49bc-4d74-8c3d-fbec1167ca63" mode="Transparent" x="268" y="0" width="252" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hospital Universitário Prof. Edgard Santos]]></text>
 			</staticText>
+			<staticText>
+				<reportElement uuid="74c1b8a9-7405-4749-860e-019b8720086e" x="268" y="15" width="252" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Serviço de Nutrição - Ramal: 8173]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="64051917-2e9f-441f-8219-0a9556dc99b0" x="207" y="30" width="366" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Data: " + new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0e0b5e02-ca04-4a0b-b601-39574334014f" x="0" y="64" width="391" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Enfermaria: 1B - ONCOHEMATOLOG/TMO"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6575760a-85e1-436e-904c-095ea5d8a8e7" mode="Transparent" x="608" y="30" width="194" height="15" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[MAPA DE TRABALHO - CLÍNICO]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="fe1eb87b-92a8-4e6e-9da5-30566e29291d" x="702" y="64" width="100" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Página " + ($V{PAGE_COUNT} + 1)]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="34" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch"/>

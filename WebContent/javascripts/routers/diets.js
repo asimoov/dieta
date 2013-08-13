@@ -16,11 +16,10 @@ define([
 			var natures = new Natures();
 			var foods = new Foods();
 
-			var params1 = {data: {"_format": "json"}, cache: true};
-			var params2 = {expires: 86400, cache: true};
-			$.when(interment.fetch(params1), natures.fetch(params2), foods.fetch(params2)).then($.proxy(function() {
-				ViewManager.render('section#center', new NewView({interment: interment, "natures": natures, "foods": foods}));
-			}, this));
+			interment.fetch({data: {"_format": "json"}, reset: true});
+			foods.fetch({reset: true});
+			natures.fetch({reset: true});
+			ViewManager.render('section#center', new NewView({interment: interment, "natures": natures, "foods": foods}));
 		}
 	});
 });

@@ -2,6 +2,7 @@ define([
   'jquery',
   'underscore', 
   'backbone', 
+  'helpers/viewmanager',
   'models/diet',
   'models/meal',
   'models/patient',
@@ -15,7 +16,7 @@ define([
   'views/diets/nutrients',
   'text!templates/diets/new.html',
   'text!templates/diets/submit.params'
-], function($, _, Backbone, Diet, Meal, Patient, Period, Type, Meals, Alert, FoodsView, MealsView, NaturesView, NutrientsView, home, submit) {
+], function($, _, Backbone, ViewManager, Diet, Meal, Patient, Period, Type, Meals, Alert, FoodsView, MealsView, NaturesView, NutrientsView, home, submit) {
 	return Backbone.View.extend({
 		events: {
 			"submit #new":               "save",
@@ -43,20 +44,14 @@ define([
 			
 			this.$el.append(this.template(this.serialize()));
 			
-			console.time("natures");
 			var mealsView = this.makeMeals();
 			this.subviews.push(mealsView);
-			console.timeEnd("natures");
-			
-			console.time("natures");
+
 			var naturesView = this.makeNaturesView(mealsView);
 			this.subviews.push(naturesView);
-			console.timeEnd("natures");
 
-			console.time("foods");
 			var foodsView = this.makeFoodsView(mealsView);
 			this.subviews.push(foodsView);
-			console.timeEnd("foods");
 			
 			console.time("nutrients");
 			var nutrientsView = this.makeNutrientsView();
@@ -64,20 +59,20 @@ define([
 			console.timeEnd("nutrients");
 		},
 		makeMeals: function() {
-			var mealsView = new MealsView({el: "#meals", "collection": this.collection});
-			mealsView.render();
+			var mealsView = new MealsView({"collection": this.collection});
+			ViewManager.render("#meals", mealsView);
 			
 			return mealsView;
 		},
 		makeNaturesView: function(mealsView) {
-			var naturesView = new NaturesView({el: "#natures", collection: this.options.natures, view: mealsView});
-			naturesView.render();
+			var naturesView = new NaturesView({collection: this.options.natures, view: mealsView});
+			ViewManager.render("#natures", naturesView);
 			
 			return naturesView;
 		},
 		makeFoodsView: function(mealsView) {
-			var foodsView = new FoodsView({el: "#foods", collection: this.options.foods, view: mealsView});
-			foodsView.render();
+			var foodsView = new FoodsView({collection: this.options.foods, view: mealsView});
+			ViewManager.render('#foods', foodsView);
 			
 			return foodsView;
 		},
@@ -105,8 +100,10 @@ define([
 
 			this.model.set({id: undefined, meals: meals.toJSON()});
 			$.ajax({url: 'diets', type: 'POST', data: JSON.parse(_.template(submit, {model: this.model}))}).done($.proxy(function() {
-				Backbone.fetchCache.clearItem(this.options.interment.url());
-				Backbone.fetchCache.clearItem('interments?_format=json');
+				//Clean all
+				_.each(Backbone.fetchCache._cache, function(object, key){
+					Backbone.fetchCache.clearItem(key);
+				});
 				Backbone.history.navigate('', true);
 				Alert.success("Add com sucesso");
 			}, this)).fail(function() {

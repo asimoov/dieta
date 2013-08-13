@@ -12,6 +12,9 @@ define([
 		events: {
 			"click":	"select"
 		},
+		initialize: function() {
+			this.listenTo(this.model, 'all', this.render);
+		},
 		render: function() {
 			var link = document.createElement("a");
 			var text = document.createTextNode(this.model.get('description'));

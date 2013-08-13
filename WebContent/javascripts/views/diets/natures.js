@@ -7,8 +7,10 @@ define([
 ], function($, _, Backbone, NatureView, home) {
 	return Backbone.View.extend({
 		subviews: [],
-		render: function() {		
-			this.$el.empty();
+		initialize: function() {
+			this.listenTo(this.collection, 'reset', function() { this.close(); this.render(); });
+		},
+		render: function() {
 			this.$el.append(home);
 			
 			$("a:first", this.$el).tab("show");

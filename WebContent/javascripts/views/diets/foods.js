@@ -8,6 +8,9 @@ define([
 ], function($,  _, Backbone, Type, FoodView, home) {
 	return Backbone.View.extend({
 		subviews: [],
+		initialize: function() {
+			this.listenTo(this.collection, 'reset', function() { this.close(); this.render(); });
+		},
 		render: function() {
 			this.$el.append(home);
 			

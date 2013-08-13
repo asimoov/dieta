@@ -10,8 +10,10 @@ define([
 ], function($, _, Backbone, Meal, Period, Meals, MealView, home) {
 	return Backbone.View.extend({
 		subviews: [],
+		initialize: function() {
+			this.listenTo(this.collection, 'reset', function() { this.close(); this.render(); });
+		},
 		render: function() {
-			this.$el.empty();
 			this.$el.append(home);
 
 			_.forEach(Period.periods, function(hour, index) {
