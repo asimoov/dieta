@@ -16,9 +16,9 @@ define([
 			var natures = new Natures();
 			var foods = new Foods();
 
-			interment.fetch({data: {"_format": "json"}, reset: true});
-			foods.fetch({reset: true});
-			natures.fetch({reset: true});
+			interment.fetch({data: {"_format": "json"}, cache: true});
+			foods.fetch({reset: true, cache: true});
+			natures.fetch({reset: true, cache: true});
 			ViewManager.render('section#center', new NewView({interment: interment, "natures": natures, "foods": foods}));
 		}
 	});

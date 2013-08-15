@@ -10,22 +10,18 @@ define([
   'models/type',
   'collections/meals', 
   'views/alert',
+  'views/diets/interment',
   'views/diets/foods',
   'views/diets/meals',
   'views/diets/natures',
   'views/diets/nutrients',
   'text!templates/diets/new.html',
   'text!templates/diets/submit.params'
-], function($, _, Backbone, ViewManager, Diet, Meal, Patient, Period, Type, Meals, Alert, FoodsView, MealsView, NaturesView, NutrientsView, home, submit) {
+], function($, _, Backbone, ViewManager, Diet, Meal, Patient, Period, Type, Meals, Alert, IntermentView, FoodsView, MealsView, NaturesView, NutrientsView, home, submit) {
 	return Backbone.View.extend({
 		events: {
 			"submit #new":               "save",
-			"click #cancel":             "cancel",
-			"change #weight":            "weight",
-			"change #height":            "height",
-			"change #companion":         "companion",
-			"change #levelOfAssistance": "levelOfAssistance",
-			"change #observation":       "observation"
+			"click #cancel":             "cancel"
 		},
 		subviews: [],
 		template: _.template(home),
@@ -44,6 +40,9 @@ define([
 			
 			this.$el.append(this.template(this.serialize()));
 			
+			var intermentView = this.makeInterment(interment);
+			this.subviews.push(intermentView);
+			
 			var mealsView = this.makeMeals();
 			this.subviews.push(mealsView);
 
@@ -52,11 +51,15 @@ define([
 
 			var foodsView = this.makeFoodsView(mealsView);
 			this.subviews.push(foodsView);
-			
-			console.time("nutrients");
+
 			var nutrientsView = this.makeNutrientsView();
 			this.subviews.push(nutrientsView);
-			console.timeEnd("nutrients");
+		},
+		makeInterment: function(interment) {
+			var intermentView = new IntermentView({"model": interment});
+			ViewManager.render("#interment", intermentView);
+			
+			return intermentView;
 		},
 		makeMeals: function() {
 			var mealsView = new MealsView({"collection": this.collection});
@@ -86,7 +89,7 @@ define([
 			_.forEach(this.subviews, function(subview){
 				subview.close();
 			});
-			this.$el.empty();
+			this.$el.unbind().empty();
 		},
 		save: function(event) {
 			event.preventDefault();
@@ -115,43 +118,6 @@ define([
 		},
 		cancel: function() {
 			Backbone.history.navigate('', true); 
-		},
-		weight: function(event) {
-			var weight = parseFloat($("#weight").val());
-			var height = parseFloat($("#height").val());
-
-			this.model.set({"weight": weight});
-			
-			if(weight !== undefined && height !== undefined) {
-				var p = this.model.patient();
-				p.set({diets:[this.model]});
-				$('#imc').val(p.imc(0));
-				$('#tmb').val(p.tmb(0));
-				$('#get').val(p.ndc(0));
-			}
-		},
-		height: function(event) {
-			var weight = parseFloat($("#weight").val());
-			var height = parseFloat($("#height").val());
-			
-			this.model.set({"height": height});
-			
-			if(weight !== undefined && height !== undefined) {
-				var p = this.model.patient();
-				p.set({diets:[this.model]});
-				$('#imc').val(p.imc(0));
-				$('#tmb').val(p.tmb(0));
-				$('#get').val(p.ndc(0));
-			}
-		},
-		companion: function(event) {
-			this.model.set({"companion": $(event.target).val()});
-		},
-		levelOfAssistance: function(event) {
-			this.model.set({"levelOfAssistance": $(event.target).val()});
-		},
-		observation: function(event) {
-			this.model.set({"observation": $(event.target).val()});
 		}
 	});
 });
