@@ -5,6 +5,8 @@ define([
   'views/diets/nature',
   'text!templates/diets/natures.html'
 ], function($, _, Backbone, NatureView, home) {
+	"use strict";
+	
 	return Backbone.View.extend({
 		subviews: [],
 		initialize: function() {
@@ -26,6 +28,8 @@ define([
 			_.forEach(this.subviews, function(subview){
 				subview.close();
 			});
+			
+			this.subviews = [];
 			this.$el.unbind().empty();
 		}
 	});

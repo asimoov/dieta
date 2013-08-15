@@ -15,6 +15,7 @@ define([
 			
 			if(current) {
 				current.close();
+				delete this.views[el];
 			}
 
 			this.views[el] = view;

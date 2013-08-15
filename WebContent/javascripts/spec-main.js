@@ -7,7 +7,6 @@ require.config({
 	"jquery-gritter": 'vendor/jquery.gritter',
 	fetchCache: 'vendor/backbone.fetch-cache',
 	tab: 'vendor/bootstrap.tab',
-	handlebars: 'vendor/handlebars',
 	modernizr: 'vendor/modernizr',
 	keymaster: 'vendor/keymaster',
 	sinon: 'vendor/sinon',
@@ -21,9 +20,6 @@ require.config({
 	backbone: {
 		deps: ["underscore", "jquery"],
 		exports: "Backbone"
-	},
-	handlebars: {
-		exports: 'Handlebars'
 	},
 	tab: {
 		deps: ["jquery"]

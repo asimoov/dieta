@@ -3,9 +3,8 @@ define([
   'underscore', 
   'backbone', 
   'keymaster',
-  'handlebars',
   'text!templates/application.html'
-], function($, _, Backbone, Keymaster, Handlebars, home) {
+], function($, _, Backbone, Keymaster, home) {
 	return Backbone.View.extend({
 		template: _.template(home),
 		events: {

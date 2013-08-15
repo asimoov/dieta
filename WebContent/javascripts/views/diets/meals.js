@@ -8,6 +8,8 @@ define([
   'views/diets/meal',
   'text!templates/diets/meals.html'
 ], function($, _, Backbone, Meal, Period, Meals, MealView, home) {
+	"use strict";
+	
 	return Backbone.View.extend({
 		subviews: [],
 		initialize: function() {
@@ -32,6 +34,8 @@ define([
 			_.forEach(this.subviews, function(subview){
 				subview.close();
 			});
+			
+			this.subviews = [];
 			this.$el.unbind().empty();
 		},
 		selecteds: function() {

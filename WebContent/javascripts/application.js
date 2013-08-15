@@ -19,9 +19,8 @@ define([
 			ViewManager.render('body', new ApplicationView({el: 'body'}));
 
 			var wards = new Wards();
-			$.when(wards.fetch({cache: true})).then(function() {
-				ViewManager.render('.primary-sidebar', new WardsView({collection: wards}));
-			});
+			wards.fetch({reset: true});
+			ViewManager.render('.primary-sidebar', new WardsView({collection: wards}));
 			
 			var routes = [HomeRouter, DietsRouter, SearchRouter, WardsRouter];
 			_.forEach(routes, function(Route) {

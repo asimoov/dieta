@@ -2,7 +2,6 @@ define([
   'jquery', 
   'underscore', 
   'backbone', 
-  'handlebars',
   'models/interment',
   'models/nature',
   'models/patient',
@@ -11,7 +10,7 @@ define([
   'collections/meals',
   'views/selected',
   'text!templates/interments/interment.html'
-], function($, _, Backbone, Handlebars, Interment, Nature, Patient, Ward, Diets, Meals, SelectedView, home) {
+], function($, _, Backbone, Interment, Nature, Patient, Ward, Diets, Meals, SelectedView, home) {
 	return Backbone.View.extend({
 		tagName:  "li",
 		className: "arrow-box-left gray",
