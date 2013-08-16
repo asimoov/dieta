@@ -23,7 +23,7 @@ define([
 			return this.$el.append(link);
 		},
 		close: function() {
-			this.$el.unbind().empty();
+			this.remove();
 		},
 		select: function() {
 			var selecteds = this.options.view.selecteds();

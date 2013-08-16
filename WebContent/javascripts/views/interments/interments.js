@@ -17,7 +17,6 @@ define([
 			}
 		},
 		render: function() {
-			console.log("entrou");
 			this.$el.append(home);
 			
 			this.makeSelector();

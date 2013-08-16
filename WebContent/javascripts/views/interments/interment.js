@@ -36,7 +36,7 @@ define([
 			return this.$el;
 		},
 		close: function() {
-			this.$el.unbind().empty();
+			this.remove();
 			if(this.selectedView) {
 				this.selectedView.close();
 			}

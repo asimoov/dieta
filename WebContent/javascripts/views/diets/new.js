@@ -39,51 +39,24 @@ define([
 			this.collection = this.model.meals();
 			
 			this.$el.append(this.template(this.serialize()));
-			
-			var intermentView = this.makeInterment(interment);
-			this.subviews.push(intermentView);
-			
-			var mealsView = this.makeMeals();
-			this.subviews.push(mealsView);
 
-			var naturesView = this.makeNaturesView(mealsView);
-			this.subviews.push(naturesView);
-
-			var foodsView = this.makeFoodsView(mealsView);
-			this.subviews.push(foodsView);
-
-			var nutrientsView = this.makeNutrientsView();
-			this.subviews.push(nutrientsView);
-		},
-		makeInterment: function(interment) {
-			var intermentView = new IntermentView({"model": interment});
-			ViewManager.render("#interment", intermentView);
-			
-			return intermentView;
-		},
-		makeMeals: function() {
-			var mealsView = new MealsView({"collection": this.collection});
-			ViewManager.render("#meals", mealsView);
-			
-			return mealsView;
-		},
-		makeNaturesView: function(mealsView) {
+			var intermentView = new IntermentView({model: interment});
+			var mealsView = new MealsView({collection: this.collection});
 			var naturesView = new NaturesView({collection: this.options.natures, view: mealsView});
-			ViewManager.render("#natures", naturesView);
-			
-			return naturesView;
-		},
-		makeFoodsView: function(mealsView) {
 			var foodsView = new FoodsView({collection: this.options.foods, view: mealsView});
+			var nutrientsView = new NutrientsView({collection: this.collection});
+			
+			ViewManager.render("#interment", intermentView);
+			ViewManager.render("#meals", mealsView);
+			ViewManager.render("#natures", naturesView);
 			ViewManager.render('#foods', foodsView);
+			ViewManager.render('#nutrients', nutrientsView);
 			
-			return foodsView;
-		},
-		makeNutrientsView: function() {
-			var nutrientsView = new NutrientsView({el: "#nutrients", collection: this.collection});
-			nutrientsView.render();
-			
-			return nutrientsView;
+			this.subviews.push(intermentView);
+			this.subviews.push(mealsView);
+			this.subviews.push(naturesView);
+			this.subviews.push(foodsView);
+			this.subviews.push(nutrientsView);
 		},
 		close: function() {
 			_.forEach(this.subviews, function(subview){

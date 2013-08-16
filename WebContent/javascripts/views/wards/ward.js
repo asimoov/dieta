@@ -12,6 +12,9 @@ define([
 		},
 		render : function() {
 			return this.$el.append(_.template(home, {"ward": this.model}));
+		},
+		close: function() {
+			this.remove();
 		}
 	});
 });

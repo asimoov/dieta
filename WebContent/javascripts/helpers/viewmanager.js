@@ -13,9 +13,17 @@ define([
 		render: function(el, view) {
 			var current = this.views[el];
 			
-			if(current) {
+			if(current !== undefined) {
 				current.close();
-				delete this.views[el];
+				for(var key in this.views) {
+					var v = this.views[key];
+					if ($(v.$el.selector).length === 0) {
+						v.close();
+						v.remove();
+						delete this.views[key];
+						console.log("close");
+					}
+				}
 			}
 
 			this.views[el] = view;

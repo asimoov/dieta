@@ -9,6 +9,7 @@ define([
 	return Backbone.View.extend({
 		tagName: 'div',
 		className: 'span2 action-nav-button',
+		template: _.template(home),
 		events: {
 			'click span.label': 'remove',
 			'click a':          'select'
@@ -16,16 +17,14 @@ define([
 		initialize: function() {
 			this.listenTo(this.model, 'all', this.render);
 		},
-		template: _.template(home),
 		serialize: function() {
 			return {"model": this.model};
 		},
 		render: function() {
-			this.$el.empty();
 			return this.$el.append(this.template(this.serialize()));
 		},
 		close: function() {
-			this.$el.unbind().empty();
+			this.$el.remove();
 		},
 		select: function() {
 			$(this.el).toggleClass("selected");
