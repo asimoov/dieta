@@ -15,7 +15,6 @@
 		<script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-40871261-1']);
-			_gaq.push(["_setDomainName", "none"]);
 			_gaq.push(['_trackPageview']);
 			
 			(function() {
