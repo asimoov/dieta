@@ -15,7 +15,7 @@ define([
 			'click a':          'select'
 		},
 		initialize: function() {
-			this.listenTo(this.model, 'all', this.render);
+			this.listenTo(this.model, 'all', function(){ this.$el.empty(); this.render(); } );
 		},
 		serialize: function() {
 			return {"model": this.model};
