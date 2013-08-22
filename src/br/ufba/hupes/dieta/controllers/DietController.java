@@ -1,14 +1,6 @@
 package br.ufba.hupes.dieta.controllers;
 
-import java.util.List;
-
-import br.com.caelum.vraptor.Delete;
-import br.com.caelum.vraptor.Get;
-import br.com.caelum.vraptor.Post;
-import br.com.caelum.vraptor.Put;
-import br.com.caelum.vraptor.Resource;
-import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.*;
 import br.ufba.hupes.dieta.models.Diet;
 import br.ufba.hupes.dieta.models.Meal;
 import br.ufba.hupes.dieta.models.Variation;
@@ -16,6 +8,8 @@ import br.ufba.hupes.dieta.repositories.DietRepository;
 import br.ufba.hupes.dieta.repositories.FoodRepository;
 import br.ufba.hupes.dieta.repositories.NatureRepository;
 import br.ufba.hupes.dieta.repositories.PatientRepository;
+
+import java.util.List;
 
 @Resource
 public class DietController {

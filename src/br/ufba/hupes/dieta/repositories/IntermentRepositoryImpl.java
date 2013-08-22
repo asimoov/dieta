@@ -1,12 +1,11 @@
 package br.ufba.hupes.dieta.repositories;
 
-import java.util.List;
+import br.com.caelum.vraptor.ioc.Component;
+import br.ufba.hupes.dieta.models.Interment;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
-import br.com.caelum.vraptor.ioc.Component;
-import br.ufba.hupes.dieta.models.Interment;
+import java.util.List;
 
 @Component
 public class IntermentRepositoryImpl

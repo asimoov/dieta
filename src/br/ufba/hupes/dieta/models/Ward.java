@@ -1,9 +1,8 @@
 package br.ufba.hupes.dieta.models;
 
-import java.util.List;
-
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.List;
 
 @javax.persistence.Entity
 public class Ward {

@@ -1,8 +1,8 @@
 package br.ufba.hupes.dieta.repositories;
 
-import java.util.List;
-
 import br.ufba.hupes.dieta.models.Food;
+
+import java.util.List;
 
 public interface FoodRepository {
 	/*

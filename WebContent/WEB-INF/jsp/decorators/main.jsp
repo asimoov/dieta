@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Dieta & Nutri&ccedil;&atilde;o</title>
 		<decorator:head />
 	</head>
 	<body>

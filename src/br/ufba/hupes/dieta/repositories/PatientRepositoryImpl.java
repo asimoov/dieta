@@ -1,9 +1,9 @@
 package br.ufba.hupes.dieta.repositories;
 
-import javax.persistence.EntityManager;
-
 import br.com.caelum.vraptor.ioc.Component;
 import br.ufba.hupes.dieta.models.Patient;
+
+import javax.persistence.EntityManager;
 
 @Component
 public class PatientRepositoryImpl

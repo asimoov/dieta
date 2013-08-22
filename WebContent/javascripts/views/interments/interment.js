@@ -8,7 +8,7 @@ define([
   'models/ward',
   'collections/diets',
   'collections/meals',
-  'views/selected',
+  'views/interments/selected',
   'text!templates/interments/interment.html'
 ], function($, _, Backbone, Interment, Nature, Patient, Ward, Diets, Meals, SelectedView, home) {
 	return Backbone.View.extend({
@@ -17,10 +17,6 @@ define([
 		template: _.template(home),
 		initialize: function() {
 			this.listenTo(this.model, 'all', function() { this.close(); this.render(); } );
-
-			if(this.options.selected !== undefined) {
-				this.listenTo(this.options.selected, 'all', function() { this.close(); this.render(); });
-			}
 		},
 		serialize: function() {
 			return {"interment": this.model, ward: this.options.ward, root: this.options.root, "Nature": Nature, "Patient": Patient, "Ward": Ward, "Diets": Diets, "Meals": Meals};
@@ -29,7 +25,7 @@ define([
 			this.$el.append(this.template(this.serialize()));
 			
 			if (this.options.selected !== undefined && this.model.id === this.options.selected.id) {
-				this.selectedView = new SelectedView({el: this.$el, model: this.options.selected});
+				this.selectedView = new SelectedView({el: $(".selected", this.el), model: this.options.selected});
 				this.selectedView.render();
 			}
 			

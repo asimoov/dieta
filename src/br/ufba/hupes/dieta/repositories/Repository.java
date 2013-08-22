@@ -1,11 +1,10 @@
 package br.ufba.hupes.dieta.repositories;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 public abstract class Repository<T, I extends Serializable> {
 	

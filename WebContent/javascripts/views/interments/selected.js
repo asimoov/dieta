@@ -6,6 +6,9 @@ define([
 ], function($, _, Backbone, home) {
 	return Backbone.View.extend({
 		template: _.template(home),
+		initialize: function() {
+			this.listenTo(this.model, 'all', function() { this.close(); this.render(); } );
+		},
 		serialize: function() {
 			return {"model": this.model, "interment": this.options.interment};
 		},

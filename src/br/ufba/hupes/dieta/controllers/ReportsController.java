@@ -1,28 +1,20 @@
 package br.ufba.hupes.dieta.controllers;
 
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Resource;
+import br.com.caelum.vraptor.interceptor.download.Download;
+import br.com.caelum.vraptor.interceptor.download.InputStreamDownload;
+import net.sf.jasperreports.engine.*;
+import org.hibernate.engine.spi.SessionImplementor;
+
+import javax.persistence.EntityManager;
+import javax.servlet.ServletContext;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.persistence.EntityManager;
-import javax.servlet.ServletContext;
-
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-
-import org.hibernate.engine.spi.SessionImplementor;
-
-import br.com.caelum.vraptor.Get;
-import br.com.caelum.vraptor.Resource;
-import br.com.caelum.vraptor.interceptor.download.Download;
-import br.com.caelum.vraptor.interceptor.download.InputStreamDownload;
 
 @Resource
 public class ReportsController {

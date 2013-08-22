@@ -1,11 +1,10 @@
 package br.ufba.hupes.dieta.models;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
+import java.util.List;
 
 @javax.persistence.Entity
 @SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_FOOD") 

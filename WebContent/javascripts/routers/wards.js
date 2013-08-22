@@ -18,6 +18,7 @@ define([
 		},
 		interments: function(wardId) {
 			var ward = new Ward({id: wardId});
+			
 			ward.fetch({data: { "_format": "json" }});
 			ViewManager.render('section#center', new IntermentsView({ward: ward, root: "#wards/" + ward.id + "/interments"}));
 		},
@@ -27,8 +28,8 @@ define([
 			
 			var params = {data: {"_format": "json" }};
 			ward.fetch(params);
-			interment.fetch(params);
-			ViewManager.render('section#center', new IntermentsView({ward: ward, collection: ward.interments(), selected: interment, root: "#wards/" + ward.id + "/interments"}));
+			//interment.fetch(params);
+			ViewManager.render('section#center', new IntermentsView({ward: ward, selected: interment, root: "#wards/" + ward.id + "/interments"}));
 		}
 	});
 });

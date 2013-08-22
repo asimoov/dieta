@@ -1,13 +1,12 @@
 package br.ufba.hupes.dieta.models;
 
-import static ch.lambdaj.Lambda.on;
-import static ch.lambdaj.Lambda.selectMax;
-
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import static ch.lambdaj.Lambda.on;
+import static ch.lambdaj.Lambda.selectMax;
 
 @javax.persistence.Entity
 public class Patient {

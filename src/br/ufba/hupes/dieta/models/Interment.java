@@ -1,10 +1,9 @@
 package br.ufba.hupes.dieta.models;
 
-import java.util.Date;
-
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.util.Date;
 
 @javax.persistence.Entity
 public class Interment {
