@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+	<ShortName>Dieta - Nutrição</ShortName>
+	<Description>Use o Dieta - Nutrição para buscar</Description>
+	<Image height="64" width="64" type="image/vnd.microsoft.icon">
+		http://intranet.hupes.ufba.br:8080/dieta/favicon.ico
+	</Image>
+	<Url method="get" type="text/html" rel="results"
+		template="http://intranet.hupes.ufba.br:8080/dieta/#search/{searchTerms}" />
+</OpenSearchDescription>

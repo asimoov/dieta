@@ -41,11 +41,11 @@
 							<label class="control-label">Nivel de Assistencia</label>
 							<div class="controls">
 								<select id="levelOfAssistance">
-									<option value="1" <%= last.get('levelOfAssistance') == "1" ? "selected" : "" %> >1 - Leve</option>
-									<option value="2" <%= last.get('levelOfAssistance') == "2" ? "selected" : "" %> >2 - Moderado</option>
-									<option value="3" <%= last.get('levelOfAssistance') == "3" ? "selected" : "" %> >3 - Normal</option>
-									<option value="4" <%= last.get('levelOfAssistance') == "4" ? "selected" : "" %> >4 - Grave</option>
-									<option value="5" <%= last.get('levelOfAssistance') == "5" ? "selected" : "" %> >5 - Muito Grave</option>
+									<option value="1" selected="<%= last.get('levelOfAssistance') == '1' ? 'selected' : '' %>" >1 - Leve</option>
+									<option value="2" selected="<%= last.get('levelOfAssistance') == '2' ? 'selected' : '' %>" >2 - Moderado</option>
+									<option value="3" selected="<%= last.get('levelOfAssistance') == '3' ? 'selected' : '' %>" >3 - Normal</option>
+									<option value="4" selected="<%= last.get('levelOfAssistance') == '4' ? 'selected' : '' %>" >4 - Grave</option>
+									<option value="5" selected="<%= last.get('levelOfAssistance') == '5' ? 'selected' : '' %>" >5 - Muito Grave</option>
 								</select>
 							</div>
 						</div>
@@ -54,11 +54,11 @@
 							<div class="controls">
 								<label class="radio" style="<%= patient.isNeedCompanion() ? 'color:red' : '' %>">
 									Sim
-							 	 <input required="required" style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="true" <%= last.companion() ? "checked" : "" %> />
+							 	 <input required="required" style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="true" checked="<%= last.companion() ? 'checked' : '' %>" />
 								</label>
 								<label class="radio">
 								  	Nao
-							 	 <input required="required" style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="false" <%= last.companion() ? "checked" : "" %> />
+							 	 <input required="required" style="width: auto; margin-left: 0px;" type="radio" name="companion" id="companion" value="false" checked="<%= last.companion() ? 'checked' : '' %>" />
 								</label>
 							</div>
 						</div>
